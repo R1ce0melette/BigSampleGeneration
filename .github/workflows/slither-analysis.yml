@@ -11,6 +11,11 @@ on:
       - 'contracts/**/*.sol'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
 jobs:
   slither-analysis:
     runs-on: ubuntu-latest
@@ -70,6 +75,19 @@ jobs:
       with:
         name: slither-reports
         path: reports/
+        
+    - name: Commit Reports to Repository
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add reports/
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update Slither analysis reports [skip ci]"
+          git push
+        fi
         
     - name: Comment PR with Results
       if: github.event_name == 'pull_request'
