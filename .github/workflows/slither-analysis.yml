@@ -19,10 +19,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        python-version: '3.9'
+        node-version: '20'
+        
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
         
     - name: Install Slither
       run: |
@@ -30,7 +35,7 @@ jobs:
         
     - name: Install Solidity Compiler
       run: |
-        wget https://github.com/ethereum/solidity/releases/download/v0.8.21/solc-static-linux
+        wget https://github.com/ethereum/solidity/releases/download/v0.8.28/solc-static-linux
         chmod +x solc-static-linux
         sudo mv solc-static-linux /usr/local/bin/solc
         
@@ -59,14 +64,14 @@ jobs:
         done
         
     - name: Upload Slither Reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: slither-reports
         path: reports/
         
     - name: Comment PR with Results
       if: github.event_name == 'pull_request'
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           const fs = require('fs');

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.28;
 
 /**
  * @title VulnerableBank
@@ -58,9 +58,9 @@ contract VulnerableBank {
         return block.timestamp % 2 == 0;
     }
     
-    // Vulnerable: Weak randomness
+    // Vulnerable: Weak randomness using prevrandao
     function randomNumber() public view returns (uint256) {
-        return uint256(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender))) % 100;
+        return uint256(keccak256(abi.encodePacked(block.timestamp, block.prevrandao, msg.sender))) % 100;
     }
     
     // Vulnerable: Unchecked low-level call
