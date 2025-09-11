@@ -1,0 +1,20 @@
+'solc --version' running
+'solc contracts/contract_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/TestSlither/TestSlither/contracts' running
+Compilation warnings/errors on contracts/contract_2.sol:
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> contracts/contract_2.sol
+
+
+INFO:Detectors:
+TimeLockedWallet.constructor(uint256) (contracts/contract_2.sol#12-16) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_unlockTime > block.timestamp,Unlock time must be in the future) (contracts/contract_2.sol#13)
+TimeLockedWallet.withdraw() (contracts/contract_2.sol#22-29) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= unlockTime,Funds are still locked) (contracts/contract_2.sol#24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+TimeLockedWallet.owner (contracts/contract_2.sol#6) should be immutable 
+TimeLockedWallet.unlockTime (contracts/contract_2.sol#7) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/contract_2.sol analyzed (1 contracts with 100 detectors), 4 result(s) found
