@@ -1,0 +1,110 @@
+name: Slither Security Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: 
+      - 'contracts/**/*.sol'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'contracts/**/*.sol'
+  workflow_dispatch:
+
+jobs:
+  slither-analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install Slither
+      run: |
+        pip install slither-analyzer
+        
+    - name: Install Solidity Compiler
+      run: |
+        wget https://github.com/ethereum/solidity/releases/download/v0.8.21/solc-static-linux
+        chmod +x solc-static-linux
+        sudo mv solc-static-linux /usr/local/bin/solc
+        
+    - name: Verify Solidity Installation
+      run: solc --version
+      
+    - name: Create reports directory
+      run: mkdir -p reports
+      
+    - name: Run Slither Analysis
+      run: |
+        # Run Slither on all Solidity files and generate reports
+        for contract in contracts/*.sol; do
+          if [ -f "$contract" ]; then
+            echo "Analyzing $contract..."
+            contract_name=$(basename "$contract" .sol)
+            
+            # Run Slither with JSON output
+            slither "$contract" --json reports/"${contract_name}_slither_report.json" || true
+            
+            # Run Slither with text output for human readability
+            slither "$contract" > reports/"${contract_name}_slither_report.txt" 2>&1 || true
+            
+            echo "Analysis completed for $contract"
+          fi
+        done
+        
+    - name: Upload Slither Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: slither-reports
+        path: reports/
+        
+    - name: Comment PR with Results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Read all report files
+          const reportsDir = 'reports';
+          let comment = '## 🔍 Slither Security Analysis Results\n\n';
+          
+          if (fs.existsSync(reportsDir)) {
+            const files = fs.readdirSync(reportsDir);
+            const txtFiles = files.filter(f => f.endsWith('.txt'));
+            
+            if (txtFiles.length > 0) {
+              for (const file of txtFiles) {
+                const content = fs.readFileSync(path.join(reportsDir, file), 'utf8');
+                const contractName = file.replace('_slither_report.txt', '');
+                
+                comment += `### 📄 ${contractName}\n\n`;
+                comment += '```\n';
+                comment += content.substring(0, 2000); // Limit content length
+                if (content.length > 2000) {
+                  comment += '\n... (truncated, see full report in artifacts)';
+                }
+                comment += '\n```\n\n';
+              }
+            } else {
+              comment += '✅ No issues found or no contracts to analyze.\n';
+            }
+          } else {
+            comment += '❌ No reports generated.\n';
+          }
+          
+          comment += '\n📋 Full reports are available in the workflow artifacts.';
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
