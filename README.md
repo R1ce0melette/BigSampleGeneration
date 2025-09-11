@@ -38,11 +38,12 @@ testAutoSlither/
 
 ### Latest Versions Used
 
-- **Solidity**: 0.8.28 (Latest stable)
+- **Solidity**: ^0.8.20+ (Compatible with latest stable releases)
 - **Python**: 3.12 (Latest stable) 
 - **Node.js**: 20 (Latest LTS)
 - **GitHub Actions**: Latest action versions (v4/v5/v7)
 - **Slither**: Latest version (auto-installed via pip)
+- **solc-select**: For better Solidity version management
 
 ### Setup Instructions
 

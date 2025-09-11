@@ -32,12 +32,14 @@ jobs:
     - name: Install Slither
       run: |
         pip install slither-analyzer
+        # Install solc-select for better version management
+        pip install solc-select
         
-    - name: Install Solidity Compiler
+    - name: Install and Set Solidity Compiler
       run: |
-        wget https://github.com/ethereum/solidity/releases/download/v0.8.28/solc-static-linux
-        chmod +x solc-static-linux
-        sudo mv solc-static-linux /usr/local/bin/solc
+        # Install the latest stable version
+        solc-select install 0.8.28
+        solc-select use 0.8.28
         
     - name: Verify Solidity Installation
       run: solc --version
