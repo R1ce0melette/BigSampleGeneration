@@ -54,20 +54,25 @@ jobs:
       
     - name: Run Slither Analysis
       run: |
-        # Run Slither on all Solidity files and generate reports
-        for contract in contracts/*.sol; do
-          if [ -f "$contract" ]; then
-            echo "Analyzing $contract..."
-            contract_name=$(basename "$contract" .sol)
-            
-            # Run Slither with JSON output
-            slither "$contract" --json reports/"${contract_name}_slither_report.json" || true
-            
-            # Run Slither with text output for human readability
-            slither "$contract" > reports/"${contract_name}_slither_report.txt" 2>&1 || true
-            
-            echo "Analysis completed for $contract"
-          fi
+        # Create reports directory
+        mkdir -p reports
+        # Find all Solidity files recursively under contracts/
+        find contracts/ -name "*.sol" -type f | while read contract; do
+          echo "Analyzing $contract..."
+          
+          # Extract just the filename without path and extension for report naming
+          contract_name=$(basename "$contract" .sol)
+          
+          # Get the relative path to use as a unique identifier
+          relative_path=$(echo "$contract" | sed 's|contracts/||' | sed 's|/|_|g' | sed 's|\.sol$||')
+          
+          # Run Slither with JSON output
+          slither "$contract" --json "reports/${relative_path}_slither_report.json" || true
+          
+          # Run Slither with text output for human readability  
+          slither "$contract" > "reports/${relative_path}_slither_report.txt" 2>&1 || true
+          
+          echo "Analysis completed for $contract"
         done
         
     - name: Upload Slither Reports
