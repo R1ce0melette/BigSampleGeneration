@@ -1,0 +1,11 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.25"
+
+[rpc_endpoints]
+mainnet = "https://eth-mainnet.alchemyapi.io/v2/${API_KEY_ALCHEMY}"
+
+[etherscan]
+mainnet = { key = "${API_KEY_ETHERSCAN}" }
