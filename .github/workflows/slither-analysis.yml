@@ -2,11 +2,11 @@ name: Slither Security Analysis
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ BigSampleGeneration ]
     paths: 
       - 'contracts/**/*.sol'
   pull_request:
-    branches: [ main ]
+    branches: [ BigSampleGeneration ]
     paths:
       - 'contracts/**/*.sol'
   workflow_dispatch:
@@ -65,10 +65,7 @@ jobs:
           
           # Get the relative path to use as a unique identifier
           relative_path=$(echo "$contract" | sed 's|contracts/||' | sed 's|/|_|g' | sed 's|\.sol$||')
-          
-          # Run Slither with JSON output
-          slither "$contract" --json "reports/${relative_path}_slither_report.json" || true
-          
+                    
           # Run Slither with text output for human readability  
           slither "$contract" > "reports/${relative_path}_slither_report.txt" 2>&1 || true
           
@@ -104,7 +101,7 @@ jobs:
           
           // Read all report files
           const reportsDir = 'reports';
-          let comment = '## 🔍 Slither Security Analysis Results\n\n';
+          let comment = '## Slither Static Code Analysis Results\n\n';
           
           if (fs.existsSync(reportsDir)) {
             const files = fs.readdirSync(reportsDir);
@@ -115,7 +112,7 @@ jobs:
                 const content = fs.readFileSync(path.join(reportsDir, file), 'utf8');
                 const contractName = file.replace('_slither_report.txt', '');
                 
-                comment += `### 📄 ${contractName}\n\n`;
+                comment += `### ${contractName}\n\n`;
                 comment += '```\n';
                 comment += content.substring(0, 2000); // Limit content length
                 if (content.length > 2000) {
@@ -124,13 +121,13 @@ jobs:
                 comment += '\n```\n\n';
               }
             } else {
-              comment += '✅ No issues found or no contracts to analyze.\n';
+              comment += 'No issues found or no contracts to analyze.\n';
             }
           } else {
-            comment += '❌ No reports generated.\n';
+            comment += 'No reports generated.\n';
           }
           
-          comment += '\n📋 Full reports are available in the workflow artifacts.';
+          comment += '\nFull reports are available in the workflow artifacts.';
           
           github.rest.issues.createComment({
             issue_number: context.issue.number,
