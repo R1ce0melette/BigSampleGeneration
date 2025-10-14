@@ -1,0 +1,36 @@
+'solc --version' running
+'solc contracts/iter1/prompt_30/Auction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_30' running
+INFO:Detectors:
+Auction.bid() (contracts/iter1/prompt_30/Auction.sol#20-29) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < endTime,Auction ended) (contracts/iter1/prompt_30/Auction.sol#21)
+Auction.endAuction() (contracts/iter1/prompt_30/Auction.sol#38-45) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= endTime,Auction not ended) (contracts/iter1/prompt_30/Auction.sol#40)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1/prompt_30/Auction.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Auction.endAuction() (contracts/iter1/prompt_30/Auction.sol#38-45):
+	External calls:
+	- address(owner).transfer(highestBid) (contracts/iter1/prompt_30/Auction.sol#43)
+	Event emitted after the call(s):
+	- AuctionEnded(highestBidder,highestBid) (contracts/iter1/prompt_30/Auction.sol#44)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Auction.endTime (contracts/iter1/prompt_30/Auction.sol#6) should be immutable 
+Auction.owner (contracts/iter1/prompt_30/Auction.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1/prompt_30/Auction.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

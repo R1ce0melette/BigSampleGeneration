@@ -1,0 +1,42 @@
+'solc --version' running
+'solc contracts/iter1/prompt_10/EthLocker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_10' running
+INFO:Detectors:
+EthLocker.lockEth() (contracts/iter1/prompt_10/EthLocker.sol#18-23) uses a dangerous strict equality:
+	- require(bool,string)(locks[msg.sender].amount == 0 || locks[msg.sender].claimed,Already locked) (contracts/iter1/prompt_10/EthLocker.sol#20)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+EthLocker.lockEth() (contracts/iter1/prompt_10/EthLocker.sol#18-23) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(locks[msg.sender].amount == 0 || locks[msg.sender].claimed,Already locked) (contracts/iter1/prompt_10/EthLocker.sol#20)
+EthLocker.unlockEth() (contracts/iter1/prompt_10/EthLocker.sol#25-35) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(userLock.amount > 0,Nothing locked) (contracts/iter1/prompt_10/EthLocker.sol#27)
+	- require(bool,string)(! userLock.claimed,Already claimed) (contracts/iter1/prompt_10/EthLocker.sol#28)
+	- require(bool,string)(block.timestamp >= userLock.unlockTime,Lock period not over) (contracts/iter1/prompt_10/EthLocker.sol#29)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1/prompt_10/EthLocker.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in EthLocker.unlockEth() (contracts/iter1/prompt_10/EthLocker.sol#25-35):
+	External calls:
+	- address(msg.sender).transfer(payout) (contracts/iter1/prompt_10/EthLocker.sol#33)
+	Event emitted after the call(s):
+	- Unlocked(msg.sender,userLock.amount,interest) (contracts/iter1/prompt_10/EthLocker.sol#34)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+EthLocker.interestRate (contracts/iter1/prompt_10/EthLocker.sol#11) should be constant 
+EthLocker.lockPeriod (contracts/iter1/prompt_10/EthLocker.sol#12) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Slither:contracts/iter1/prompt_10/EthLocker.sol analyzed (1 contracts with 100 detectors), 7 result(s) found
