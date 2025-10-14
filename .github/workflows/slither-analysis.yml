@@ -2,11 +2,11 @@ name: Slither Security Analysis
 
 on:
   push:
-    branches: [ BigSampleGeneration ]
+    branches: [ main ]
     paths: 
       - 'contracts/**/*.sol'
   pull_request:
-    branches: [ BigSampleGeneration ]
+    branches: [ main ]
     paths:
       - 'contracts/**/*.sol'
   workflow_dispatch:
