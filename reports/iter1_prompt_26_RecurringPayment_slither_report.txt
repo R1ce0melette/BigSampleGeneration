@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter1/prompt_26/RecurringPayment.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_26' running
+INFO:Detectors:
+RecurringPayment.executePayment(uint256) (contracts/iter1/prompt_26/RecurringPayment.sol#30-38) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(p.active,Payment not active) (contracts/iter1/prompt_26/RecurringPayment.sol#32)
+	- require(bool,string)(block.timestamp >= p.nextPayment,Too early) (contracts/iter1/prompt_26/RecurringPayment.sol#33)
+	- require(bool,string)(address(this).balance >= p.amount,Insufficient contract balance) (contracts/iter1/prompt_26/RecurringPayment.sol#34)
+RecurringPayment.cancelPayment(uint256) (contracts/iter1/prompt_26/RecurringPayment.sol#40-46) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == p.payer,Not payer) (contracts/iter1/prompt_26/RecurringPayment.sol#42)
+	- require(bool,string)(p.active,Already cancelled) (contracts/iter1/prompt_26/RecurringPayment.sol#43)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1/prompt_26/RecurringPayment.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in RecurringPayment.executePayment(uint256) (contracts/iter1/prompt_26/RecurringPayment.sol#30-38):
+	External calls:
+	- address(p.payee).transfer(p.amount) (contracts/iter1/prompt_26/RecurringPayment.sol#36)
+	Event emitted after the call(s):
+	- PaymentExecuted(paymentId,p.payer,p.payee,p.amount) (contracts/iter1/prompt_26/RecurringPayment.sol#37)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Slither:contracts/iter1/prompt_26/RecurringPayment.sol analyzed (1 contracts with 100 detectors), 4 result(s) found
