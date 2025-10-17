@@ -29,6 +29,15 @@ jobs:
       with:
         node-version: '20'
         
+    - name: Preparing package
+      run: |
+        find contracts -name "package-lock.json" | while read lockfile; do
+          if [ -f "$lockfile" ]; then
+            echo "Installing dependencies in $(dirname "$lockfile")"
+            (cd "$(dirname "$lockfile")" && npm ci)
+          fi
+        done
+        
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
