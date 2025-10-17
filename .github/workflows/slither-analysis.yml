@@ -66,7 +66,7 @@ jobs:
         # Create reports directory
         mkdir -p reports
         # Find all Solidity files recursively under contracts/
-        find contracts/ -name "*.sol" -type f | while read contract; do
+        find contracts/ -name "node_modules" -type d -prune -o -name "*.sol" -type f -print | while read contract; do
           echo "Analyzing $contract..."
           
           # Extract just the filename without path and extension for report naming
@@ -110,7 +110,7 @@ jobs:
                     
           # Run Slither with text output for human readability.
           # The `eval` is used to correctly handle the quoted remappings argument.
-          eval slither '"$contract"' $remaps_arg > '"reports/${relative_path}_slither_report.txt"' 2>&1 || true
+          eval slither '"$contract"' $remaps_arg > '"../reports/${relative_path}_slither_report.txt"' 2>&1 || true
           
           echo "Analysis completed for $contract"
         done
