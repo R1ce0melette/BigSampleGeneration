@@ -29,15 +29,6 @@ jobs:
       with:
         node-version: '20'
         
-    - name: Preparing package
-      run: |
-        find contracts -name "package-lock.json" | while read lockfile; do
-          if [ -f "$lockfile" ]; then
-            echo "Installing dependencies in $(dirname "$lockfile")"
-            (cd "$(dirname "$lockfile")" && npm ci)
-          fi
-        done
-        
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -66,7 +57,7 @@ jobs:
         # Create reports directory
         mkdir -p reports
         # Find all Solidity files recursively under contracts/
-        find contracts/ -name "node_modules" -type d -prune -o -name "*.sol" -type f -print | while read contract; do
+        find contracts/ -name "*.sol" -type f | while read contract; do
           echo "Analyzing $contract..."
           
           # Extract just the filename without path and extension for report naming
@@ -74,43 +65,9 @@ jobs:
           
           # Get the relative path to use as a unique identifier
           relative_path=$(echo "$contract" | sed 's|contracts/||' | sed 's|/|_|g' | sed 's|\.sol$||')
-
-          # --- Dynamic Remapping Logic ---
-          contract_dir=$(dirname "$contract")
-          node_modules_path="$contract_dir/node_modules"
-          remaps_arg=""
-          
-          if [ -d "$node_modules_path" ]; then
-            echo "Found node_modules in $contract_dir. Generating remappings..."
-            remaps=""
-            for item in "$node_modules_path"/*; do
-              if [ -d "$item" ]; then
-                dep_name=$(basename "$item")
-                if [[ "$dep_name" == @* ]]; then
-                  # Handle scoped packages like @openzeppelin
-                  for scoped_item in "$item"/*; do
-                    if [ -d "$scoped_item" ]; then
-                      scoped_dep_name=$(basename "$scoped_item")
-                      remaps="$remaps $dep_name/$scoped_dep_name=$scoped_item"
-                    fi
-                  done
-                else
-                  # Handle regular packages
-                  remaps="$remaps $dep_name=$item"
-                fi
-              fi
-            done
-            
-            if [ -n "$remaps" ]; then
-              remaps_arg="--solc-remaps \"$remaps\""
-              echo "Generated remappings: $remaps_arg"
-            fi
-          fi
-          # --- End Dynamic Remapping Logic ---
                     
-          # Run Slither with text output for human readability.
-          # The `eval` is used to correctly handle the quoted remappings argument.
-          eval slither '"$contract"' $remaps_arg > '"../reports/${relative_path}_slither_report.txt"' 2>&1 || true
+          # Run Slither with text output for human readability  
+          slither "$contract" --solc-remaps @openzeppelin=node_modules/@openzeppelin > "reports/${relative_path}_slither_report.txt" 2>&1 || true
           
           echo "Analysis completed for $contract"
         done
@@ -126,7 +83,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git pull 
         git add reports/
         if git diff --staged --quiet; then
           echo "No changes to commit"
