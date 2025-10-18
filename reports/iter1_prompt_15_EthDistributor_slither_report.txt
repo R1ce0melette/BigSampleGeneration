@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_15/EthDistributor.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_15' running
+'solc contracts/iter1/prompt_15/EthDistributor.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_15' running
 INFO:Detectors:
 EthDistributor.distribute(address[]) (contracts/iter1/prompt_15/EthDistributor.sol#18-27) has external calls inside a loop: address(recipients[i]).transfer(amountPerRecipient) (contracts/iter1/prompt_15/EthDistributor.sol#24)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop

@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_14/TokenFaucet.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_14' running
+'solc contracts/iter1/prompt_14/TokenFaucet.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_14' running
 INFO:Detectors:
 Reentrancy in TokenFaucet.claim() (contracts/iter1/prompt_14/TokenFaucet.sol#20-25):
 	External calls:

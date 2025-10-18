@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_3' running
+'solc contracts/iter1/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_3' running
 INFO:Detectors:
 Crowdfunding.contribute() (contracts/iter1/prompt_3/Crowdfunding.sol#24-34) uses timestamp for comparisons
 	Dangerous comparisons:

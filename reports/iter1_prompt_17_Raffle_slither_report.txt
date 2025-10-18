@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_17' running
+'solc contracts/iter1/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_17' running
 INFO:Detectors:
 Raffle.closeRaffleAndPickWinner() (contracts/iter1/prompt_17/Raffle.sol#40-50) uses a weak PRNG: "winnerIndex = uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,participants.length))) % participants.length (contracts/iter1/prompt_17/Raffle.sol#44)" 
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG

@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_16' running
+'solc contracts/iter1/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_16' running
 INFO:Detectors:
 Escrow.constructor(address,address)._seller (contracts/iter1/prompt_16/Escrow.sol#16) lacks a zero-check on :
 		- seller = _seller (contracts/iter1/prompt_16/Escrow.sol#18)

@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_32/TaskReward.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_32' running
+'solc contracts/iter1/prompt_32/TaskReward.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_32' running
 INFO:Detectors:
 TaskReward.completeTask(uint256) (contracts/iter1/prompt_32/TaskReward.sol#35-42) sends eth to arbitrary user
 	Dangerous calls:

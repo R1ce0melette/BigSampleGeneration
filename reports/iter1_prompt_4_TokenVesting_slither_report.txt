@@ -1,5 +1,5 @@
 'solc --version' running
-'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_4' running
+'solc contracts/iter1/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_4' running
 INFO:Detectors:
 TokenVesting.constructor(address,address,uint256,uint256,uint256)._beneficiary (contracts/iter1/prompt_4/TokenVesting.sol#20) lacks a zero-check on :
 		- beneficiary = _beneficiary (contracts/iter1/prompt_4/TokenVesting.sol#23)
