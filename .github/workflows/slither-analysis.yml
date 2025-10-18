@@ -65,8 +65,8 @@ jobs:
       run: |
         # Create reports directory
         mkdir -p reports
-        # Find all Solidity files recursively under contracts/
-        find contracts/ -name "*.sol" -type f | while read contract; do
+        # Find all Solidity files recursively under contracts/, excluding node_modules
+        find contracts/ -name "node_modules" -type d -prune -o -name "*.sol" -type f -print | while read contract; do
           echo "Analyzing $contract..."
           
           # Extract just the filename without path and extension for report naming
