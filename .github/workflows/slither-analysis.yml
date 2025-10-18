@@ -79,7 +79,7 @@ jobs:
           contract_dir=$(dirname "$contract")
           remaps=""
           if [ -d "$contract_dir/node_modules" ]; then
-            remaps="--solc-remaps @openzeppelin=$contract_dir/node_modules/@openzeppelin"
+            remaps="--solc-remaps @openzeppelin=./node_modules/@openzeppelin"
             echo "Found node_modules, using remaps: $remaps"
           fi
                     
