@@ -29,15 +29,6 @@ jobs:
       with:
         node-version: '20'
         
-    - name: Preparing package
-      run: |
-        find contracts -name "package-lock.json" | while read lockfile; do
-          if [ -f "$lockfile" ]; then
-            echo "Installing dependencies in $(dirname "$lockfile")"
-            (cd "$(dirname "$lockfile")" && npm ci)
-          fi
-        done
-        
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -65,8 +56,8 @@ jobs:
       run: |
         # Create reports directory
         mkdir -p reports
-        # Find all Solidity files recursively under contracts/, excluding node_modules
-        find contracts/ -name "node_modules" -type d -prune -o -name "*.sol" -type f -print | while read contract; do
+        # Find all Solidity files recursively under contracts/
+        find contracts/ -name "*.sol" -type f | while read contract; do
           echo "Analyzing $contract..."
           
           # Extract just the filename without path and extension for report naming
@@ -74,17 +65,9 @@ jobs:
           
           # Get the relative path to use as a unique identifier
           relative_path=$(echo "$contract" | sed 's|contracts/||' | sed 's|/|_|g' | sed 's|\.sol$||')
-          
-          # Check if a node_modules directory exists and construct remaps
-          contract_dir=$(dirname "$contract")
-          remaps=""
-          if [ -d "$contract_dir/node_modules" ]; then
-            remaps="--solc-remaps @openzeppelin=./node_modules/@openzeppelin"
-            echo "Found node_modules, using remaps: $remaps"
-          fi
                     
           # Run Slither with text output for human readability  
-          slither "$contract" $remaps > "reports/${relative_path}_slither_report.txt" 2>&1 || true
+          slither "$contract" > "reports/${relative_path}_slither_report.txt" 2>&1 || true
           
           echo "Analysis completed for $contract"
         done
@@ -100,7 +83,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git pull 
         git add reports/
         if git diff --staged --quiet; then
           echo "No changes to commit"
