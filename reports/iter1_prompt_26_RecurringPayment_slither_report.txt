@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_26/RecurringPayment.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_26' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_26/RecurringPayment.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_26' running
 INFO:Detectors:
 RecurringPayment.executePayment(uint256) (contracts/iter1/prompt_26/RecurringPayment.sol#30-38) uses timestamp for comparisons
 	Dangerous comparisons:

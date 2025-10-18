@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_1/SavingsWallet.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_1' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_1/SavingsWallet.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_1' running
 INFO:Detectors:
 SavingsWallet.setMinDeposit(uint256) (contracts/iter1/prompt_1/SavingsWallet.sol#34-37) should emit an event for: 
 	- minDeposit = _minDeposit (contracts/iter1/prompt_1/SavingsWallet.sol#36) 

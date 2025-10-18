@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_13/CharityDonation.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_13' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_13/CharityDonation.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_13' running
 INFO:Detectors:
 Contract locking ether found:
 	Contract CharityDonation (contracts/iter1/prompt_13/CharityDonation.sol#4-32) has payable functions:

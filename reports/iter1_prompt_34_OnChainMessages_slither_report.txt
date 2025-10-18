@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_34/OnChainMessages.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_34' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_34/OnChainMessages.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_34' running
 INFO:Detectors:
 OnChainMessages.likeMessage(uint256) (contracts/iter1/prompt_34/OnChainMessages.sol#24-30) uses timestamp for comparisons
 	Dangerous comparisons:

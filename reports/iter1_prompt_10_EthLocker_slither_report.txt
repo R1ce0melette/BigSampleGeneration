@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_10/EthLocker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_10' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_10/EthLocker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_10' running
 INFO:Detectors:
 EthLocker.lockEth() (contracts/iter1/prompt_10/EthLocker.sol#18-23) uses a dangerous strict equality:
 	- require(bool,string)(locks[msg.sender].amount == 0 || locks[msg.sender].claimed,Already locked) (contracts/iter1/prompt_10/EthLocker.sol#20)

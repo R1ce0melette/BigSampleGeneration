@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_27/CertificateNFT.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_27' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_27/CertificateNFT.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_27' running
 INFO:Detectors:
 Reentrancy in CertificateNFT.mintCertificate(address,string) (contracts/iter1/prompt_27/CertificateNFT.sol#25-29):
 	External calls:

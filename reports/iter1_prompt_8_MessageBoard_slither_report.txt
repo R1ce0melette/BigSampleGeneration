@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_8/MessageBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_8' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_8/MessageBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_8' running
 INFO:Detectors:
 MessageBoard.getMessage(uint256) (contracts/iter1/prompt_8/MessageBoard.sol#21-25) uses timestamp for comparisons
 	Dangerous comparisons:

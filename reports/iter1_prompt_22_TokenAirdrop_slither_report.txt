@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_22/TokenAirdrop.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_22' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_22/TokenAirdrop.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_22' running
 INFO:Detectors:
 Reentrancy in TokenAirdrop.airdrop(address[],uint256) (contracts/iter1/prompt_22/TokenAirdrop.sol#25-33):
 	External calls:

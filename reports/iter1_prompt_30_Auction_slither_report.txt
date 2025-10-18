@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_30/Auction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_30' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_30/Auction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_30' running
 INFO:Detectors:
 Auction.bid() (contracts/iter1/prompt_30/Auction.sol#20-29) uses timestamp for comparisons
 	Dangerous comparisons:

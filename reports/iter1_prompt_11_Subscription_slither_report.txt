@@ -1,5 +1,5 @@
 'solc --version' running
-'solc contracts/iter1/prompt_11/Subscription.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_11' running
+'solc @openzeppelin=node_modules/@openzeppelin contracts/iter1/prompt_11/Subscription.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1/prompt_11' running
 INFO:Detectors:
 Subscription.subscribe() (contracts/iter1/prompt_11/Subscription.sol#22-28) uses timestamp for comparisons
 	Dangerous comparisons:
