@@ -1,0 +1,25 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_35' running
+INFO:Detectors:
+Reentrancy in PausableWallet.withdraw() (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#92-101):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#97)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amount) (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#100)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in PausableWallet.withdraw() (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#92-101):
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#97)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+PausableWallet.owner (contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol#11) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_35/PausableWallet.sol analyzed (1 contracts with 100 detectors), 4 result(s) found

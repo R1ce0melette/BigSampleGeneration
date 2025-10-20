@@ -1,0 +1,54 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_19' running
+INFO:Detectors:
+TodoList.completeTask(uint256) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#55-66) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! task.completed,Task is already completed) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#59)
+	- require(bool,string)(bytes(task.description).length > 0,Task does not exist) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#60)
+TodoList.uncompleteTask(uint256) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#72-83) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(task.completed,Task is not completed) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#76)
+	- require(bool,string)(bytes(task.description).length > 0,Task does not exist) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#77)
+TodoList.updateTask(uint256,string) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#90-100) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bytes(task.description).length > 0,Task does not exist) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#95)
+TodoList.deleteTask(uint256) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#106-115) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bytes(task.description).length > 0,Task does not exist) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#110)
+TodoList.getActiveTaskIds(address) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#195-217) uses timestamp for comparisons
+	Dangerous comparisons:
+	- bytes(userTasks[user][i].description).length > 0 (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#201)
+	- bytes(userTasks[user][i_scope_0].description).length > 0 (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#210)
+TodoList.getCompletedTaskIds(address) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#224-246) uses timestamp for comparisons
+	Dangerous comparisons:
+	- bytes(userTasks[user][i].description).length > 0 && userTasks[user][i].completed (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#230)
+	- bytes(userTasks[user][i_scope_0].description).length > 0 && userTasks[user][i_scope_0].completed (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#239)
+TodoList.getPendingTaskIds(address) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#253-275) uses timestamp for comparisons
+	Dangerous comparisons:
+	- bytes(userTasks[user][i].description).length > 0 && ! userTasks[user][i].completed (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#259)
+	- bytes(userTasks[user][i_scope_0].description).length > 0 && ! userTasks[user][i_scope_0].completed (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#268)
+TodoList.getMyStats() (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#284-307) uses timestamp for comparisons
+	Dangerous comparisons:
+	- bytes(userTasks[msg.sender][i].description).length > 0 (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#296)
+TodoList.getUserStats(address) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#317-340) uses timestamp for comparisons
+	Dangerous comparisons:
+	- bytes(userTasks[user][i].description).length > 0 (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#329)
+TodoList.taskExists(address,uint256) (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#348-353) uses timestamp for comparisons
+	Dangerous comparisons:
+	- bytes(userTasks[user][taskId].description).length > 0 (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#352)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_19/ToDoList.sol analyzed (1 contracts with 100 detectors), 11 result(s) found

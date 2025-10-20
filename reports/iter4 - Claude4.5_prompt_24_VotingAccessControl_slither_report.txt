@@ -1,0 +1,76 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_24' running
+INFO:Detectors:
+VotingAccessControl.getActiveProposals() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#258-278) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.PENDING && block.timestamp <= proposals[i].deadline (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#262)
+VotingAccessControl.getActiveProposals() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#258-278) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == ProposalStatus.PENDING && block.timestamp <= proposals[i_scope_0].deadline (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#271)
+VotingAccessControl.getExecutableProposals() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#284-308) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.PENDING && block.timestamp > proposals[i].deadline && ! proposals[i].executed (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#288-290)
+VotingAccessControl.getExecutableProposals() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#284-308) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == ProposalStatus.PENDING && block.timestamp > proposals[i_scope_0].deadline && ! proposals[i_scope_0].executed (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#299-301)
+VotingAccessControl.getSystemStats() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#346-361) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.PENDING && block.timestamp <= proposals[i].deadline (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#355)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+VotingAccessControl.transferOwnership(address) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#367-382) should emit an event for: 
+	- owner = _newOwner (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#371) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+VotingAccessControl.updateVotingPeriod(uint256) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#325-328) should emit an event for: 
+	- votingPeriod = _newPeriod (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#327) 
+VotingAccessControl.updateQuorumPercentage(uint256) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#334-337) should emit an event for: 
+	- quorumPercentage = _newPercentage (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#336) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+VotingAccessControl.vote(uint256,bool) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#153-171) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.PENDING,Proposal not pending) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#158)
+	- require(bool,string)(block.timestamp <= proposal.deadline,Voting period ended) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#159)
+VotingAccessControl.executeProposal(uint256) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#177-211) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.PENDING,Proposal not pending) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#182)
+	- require(bool,string)(block.timestamp > proposal.deadline,Voting period not ended) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#183)
+	- require(bool,string)(! proposal.executed,Proposal already executed) (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#184)
+VotingAccessControl.getActiveProposals() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#258-278) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.PENDING && block.timestamp <= proposals[i].deadline (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#262)
+	- proposals[i_scope_0].status == ProposalStatus.PENDING && block.timestamp <= proposals[i_scope_0].deadline (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#271)
+VotingAccessControl.getExecutableProposals() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#284-308) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.PENDING && block.timestamp > proposals[i].deadline && ! proposals[i].executed (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#288-290)
+	- proposals[i_scope_0].status == ProposalStatus.PENDING && block.timestamp > proposals[i_scope_0].deadline && ! proposals[i_scope_0].executed (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#299-301)
+VotingAccessControl.getSystemStats() (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#346-361) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.PENDING && block.timestamp <= proposals[i].deadline (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#355)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter VotingAccessControl.addMember(address)._member (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#76) is not in mixedCase
+Parameter VotingAccessControl.removeMember(address)._member (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#90) is not in mixedCase
+Parameter VotingAccessControl.proposeAddAdmin(address)._candidate (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#104) is not in mixedCase
+Parameter VotingAccessControl.proposeRemoveAdmin(address)._admin (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#116) is not in mixedCase
+Parameter VotingAccessControl.vote(uint256,bool)._proposalId (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#153) is not in mixedCase
+Parameter VotingAccessControl.vote(uint256,bool)._support (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#153) is not in mixedCase
+Parameter VotingAccessControl.executeProposal(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#177) is not in mixedCase
+Parameter VotingAccessControl.getProposal(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#226) is not in mixedCase
+Parameter VotingAccessControl.hasUserVoted(uint256,address)._proposalId (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#316) is not in mixedCase
+Parameter VotingAccessControl.hasUserVoted(uint256,address)._voter (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#316) is not in mixedCase
+Parameter VotingAccessControl.updateVotingPeriod(uint256)._newPeriod (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#325) is not in mixedCase
+Parameter VotingAccessControl.updateQuorumPercentage(uint256)._newPercentage (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#334) is not in mixedCase
+Parameter VotingAccessControl.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol#367) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_24/VotingAccessControl.sol analyzed (1 contracts with 100 detectors), 27 result(s) found

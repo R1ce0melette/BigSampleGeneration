@@ -1,0 +1,56 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_24' running
+INFO:Detectors:
+VotingAccessControl.getPendingProposals() (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#274-293) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.PENDING (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#278)
+VotingAccessControl.getPendingProposals() (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#274-293) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == ProposalStatus.PENDING (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#286)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+VotingAccessControl.transferOwnership(address) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#349-366) should emit an event for: 
+	- owner = newOwner (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#364) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+VotingAccessControl.updateVotingParameters(uint256,uint256,uint256) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#317-329) should emit an event for: 
+	- votingDuration = _votingDuration (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#326) 
+	- quorumPercentage = _quorumPercentage (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#327) 
+	- approvalPercentage = _approvalPercentage (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#328) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+VotingAccessControl.vote(uint256,bool) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#149-166) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.PENDING,Proposal is not pending) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#153)
+	- require(bool,string)(block.timestamp <= proposal.votingEndsAt,Voting period has ended) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#154)
+	- require(bool,string)(! proposal.hasVoted[msg.sender],Already voted) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#155)
+VotingAccessControl.executeProposal(uint256) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#172-217) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.PENDING,Proposal is not pending) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#176)
+	- require(bool,string)(block.timestamp > proposal.votingEndsAt,Voting period has not ended) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#177)
+VotingAccessControl.getPendingProposals() (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#274-293) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.PENDING (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#278)
+	- proposals[i_scope_0].status == ProposalStatus.PENDING (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#286)
+VotingAccessControl.canExecuteProposal(uint256) (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#336-343) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposal.status == ProposalStatus.PENDING && block.timestamp > proposal.votingEndsAt (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#342)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter VotingAccessControl.updateVotingParameters(uint256,uint256,uint256)._votingDuration (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#318) is not in mixedCase
+Parameter VotingAccessControl.updateVotingParameters(uint256,uint256,uint256)._quorumPercentage (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#319) is not in mixedCase
+Parameter VotingAccessControl.updateVotingParameters(uint256,uint256,uint256)._approvalPercentage (contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol#320) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_24/VotingAccessControl.sol analyzed (1 contracts with 100 detectors), 12 result(s) found

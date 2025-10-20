@@ -1,0 +1,39 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_29' running
+Compilation warnings/errors on contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol:
+Warning: This declaration shadows an existing declaration.
+   --> contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol:128:9:
+    |
+128 |         uint256[] storage records = ownerRecords[owner];
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol:15:5:
+   |
+15 |     mapping(uint256 => DataRecord) public records;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+EncryptedDataStorage._removeRecordFromOwner(address,uint256).records (contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol#128) shadows:
+	- EncryptedDataStorage.records (contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol#15) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+EncryptedDataStorage.verifyOwnership(uint256,address) (contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol#139-141) uses timestamp for comparisons
+	Dangerous comparisons:
+	- records[recordId].owner == claimedOwner (contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol#140)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

@@ -1,0 +1,39 @@
+'solc --version' running
+'solc contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Gemini2.5/prompt_11' running
+INFO:Detectors:
+Subscription.subscribe() (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#23-29) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(subscribers[msg.sender] < block.timestamp,You are already subscribed.) (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#25)
+Subscription.renew() (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#31-37) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(subscribers[msg.sender] >= block.timestamp,Your subscription has expired, please subscribe again.) (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#33)
+Subscription.cancelSubscription() (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#39-43) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(subscribers[msg.sender] > 0,You are not subscribed.) (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#40)
+Subscription.isSubscribed(address) (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#45-47) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscribers[_user] >= block.timestamp (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter Subscription.isSubscribed(address)._user (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#45) is not in mixedCase
+Parameter Subscription.getSubscriptionEndTime(address)._user (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#49) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Subscription.monthlyFee (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#6) should be immutable 
+Subscription.owner (contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Gemini2.5/prompt_11/Subscription.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

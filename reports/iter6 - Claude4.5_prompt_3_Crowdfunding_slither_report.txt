@@ -1,0 +1,54 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_3' running
+INFO:Detectors:
+Reentrancy in Crowdfunding.claimRefund() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#111-123):
+	External calls:
+	- (success,None) = msg.sender.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#119)
+	Event emitted after the call(s):
+	- RefundClaimed(msg.sender,amount) (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#122)
+Reentrancy in Crowdfunding.withdrawFunds() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#89-102):
+	External calls:
+	- (success,None) = owner.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#98)
+	Event emitted after the call(s):
+	- FundsWithdrawn(owner,amount) (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#101)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Crowdfunding.contribute() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#49-64) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Campaign deadline has passed) (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#51)
+Crowdfunding.checkGoalReached() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#70-80) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign deadline has not passed yet) (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#71)
+Crowdfunding.getRemainingTime() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#138-143) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= deadline (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#139)
+Crowdfunding.isActive() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#149-151) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! campaignClosed && block.timestamp < deadline (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#150)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Crowdfunding.withdrawFunds() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#89-102):
+	- (success,None) = owner.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#98)
+Low level call in Crowdfunding.claimRefund() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#111-123):
+	- (success,None) = msg.sender.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#119)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Crowdfunding.deadline (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#12) should be immutable 
+Crowdfunding.fundingGoal (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#11) should be immutable 
+Crowdfunding.owner (contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_3/Crowdfunding.sol analyzed (1 contracts with 100 detectors), 12 result(s) found

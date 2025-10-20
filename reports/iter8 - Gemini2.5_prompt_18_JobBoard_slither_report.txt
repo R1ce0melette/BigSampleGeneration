@@ -1,0 +1,40 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_18' running
+INFO:Detectors:
+Reentrancy in JobBoard.cancelJob(uint256) (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#97-108):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: job.reward}() (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#104)
+	Event emitted after the call(s):
+	- JobClosed(_jobId) (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#107)
+Reentrancy in JobBoard.closeJobAndAward(uint256,address) (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#80-91):
+	External calls:
+	- (success,None) = _worker.call{value: job.reward}() (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#87)
+	Event emitted after the call(s):
+	- JobClosed(_jobId) (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#90)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in JobBoard.closeJobAndAward(uint256,address) (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#80-91):
+	- (success,None) = _worker.call{value: job.reward}() (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#87)
+Low level call in JobBoard.cancelJob(uint256) (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#97-108):
+	- (success,None) = address(msg.sender).call{value: job.reward}() (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#104)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter JobBoard.postJob(string)._description (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#43) is not in mixedCase
+Parameter JobBoard.applyForJob(uint256)._jobId (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#64) is not in mixedCase
+Parameter JobBoard.closeJobAndAward(uint256,address)._jobId (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#80) is not in mixedCase
+Parameter JobBoard.closeJobAndAward(uint256,address)._worker (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#80) is not in mixedCase
+Parameter JobBoard.cancelJob(uint256)._jobId (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#97) is not in mixedCase
+Parameter JobBoard.getApplicants(uint256)._jobId (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#115) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+JobBoard.owner (contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 12 result(s) found

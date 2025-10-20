@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_15' running
+INFO:Detectors:
+ETHDistributor.transferOwnership(address) (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#78-81) should emit an event for: 
+	- owner = _newOwner (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#80) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+ETHDistributor.distribute(address[]) (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#46-61) has external calls inside a loop: (sent,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#56)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in ETHDistributor.distribute(address[]) (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#46-61):
+	External calls:
+	- (sent,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#56)
+	Event emitted after the call(s):
+	- ETHDistributed(msg.sender,msg.value,recipientCount) (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#60)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in ETHDistributor.distribute(address[]) (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#46-61):
+	- (sent,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#56)
+Low level call in ETHDistributor.withdrawRemainingETH() (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#66-72):
+	- (sent,None) = address(owner).call{value: balance}() (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter ETHDistributor.distribute(address[])._recipients (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#46) is not in mixedCase
+Parameter ETHDistributor.transferOwnership(address)._newOwner (contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol#78) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_15/ETHDistributor.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

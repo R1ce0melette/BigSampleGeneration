@@ -1,0 +1,61 @@
+'solc --version' running
+'solc contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Claude4.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.transferOwnership(address) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#592-599) should emit an event for: 
+	- owner = newOwner (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#597) 
+	- owner = newOwner (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#597) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EventAttendance.createEvent(string,string,uint256,uint256,uint256) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#104-135) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(startTime >= block.timestamp,Start time must be in the future) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#113)
+EventAttendance.checkIn(uint256,string) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#142-179) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= eventData.startTime,Event has not started yet) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#149)
+	- require(bool,string)(block.timestamp <= eventData.endTime,Event has ended) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#150)
+	- require(bool,string)(eventData.attendeeCount < eventData.maxAttendees,Event is at maximum capacity) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#154)
+EventAttendance.activateEvent(uint256) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#193-201) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! events[eventId].active,Event is already active) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#198)
+EventAttendance.deactivateEvent(uint256) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#207-215) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(events[eventId].active,Event is already inactive) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#212)
+EventAttendance.getUpcomingEvents() (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#331-352) uses timestamp for comparisons
+	Dangerous comparisons:
+	- eventData.active && eventData.startTime > block.timestamp (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#335)
+	- eventData_scope_1.active && eventData_scope_1.startTime > block.timestamp (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#345)
+EventAttendance.getOngoingEvents() (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#358-383) uses timestamp for comparisons
+	Dangerous comparisons:
+	- eventData.active && eventData.startTime <= block.timestamp && eventData.endTime >= block.timestamp (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#362-364)
+	- eventData_scope_1.active && eventData_scope_1.startTime <= block.timestamp && eventData_scope_1.endTime >= block.timestamp (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#374-376)
+EventAttendance.getEventsByOrganizer(address) (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#483-503) uses timestamp for comparisons
+	Dangerous comparisons:
+	- events[allEventIds[i]].organizer == organizer (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#486)
+	- eventData.organizer == organizer (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#496)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#360) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#372) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#294) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#485) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#494) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#307) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#316) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#333) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#343) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 18 result(s) found

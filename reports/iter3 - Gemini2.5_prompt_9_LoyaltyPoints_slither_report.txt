@@ -1,0 +1,22 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_9' running
+INFO:Detectors:
+LoyaltyPoints.transferOwnership(address) (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#86-89) should emit an event for: 
+	- owner = newOwner (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#88) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter LoyaltyPoints.grantPoints(address,uint256)._user (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#48) is not in mixedCase
+Parameter LoyaltyPoints.grantPoints(address,uint256)._amount (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#48) is not in mixedCase
+Parameter LoyaltyPoints.deductPoints(address,uint256)._user (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#63) is not in mixedCase
+Parameter LoyaltyPoints.deductPoints(address,uint256)._amount (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#63) is not in mixedCase
+Parameter LoyaltyPoints.getPoints(address)._user (contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol#77) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_9/LoyaltyPoints.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

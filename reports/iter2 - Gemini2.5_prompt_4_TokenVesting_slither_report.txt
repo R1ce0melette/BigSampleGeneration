@@ -1,0 +1,29 @@
+'solc --version' running
+'solc contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Gemini2.5/prompt_4' running
+INFO:Detectors:
+TokenVesting.release() (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#51-59) ignores return value by IERC20(token).transfer(beneficiary,releasableAmount) (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#58)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+INFO:Detectors:
+TokenVesting.vestedAmount() (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#39-49) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < start (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#40)
+	- block.timestamp >= start + duration (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#43)
+TokenVesting.release() (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#51-59) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(releasableAmount > 0,No tokens available for release.) (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter2 - Gemini2.5/prompt_4/TokenVesting.sol analyzed (2 contracts with 100 detectors), 4 result(s) found

@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_18' running
+INFO:Detectors:
+Reentrancy in JobBoard.cancelJob(uint256) (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#105-120):
+	External calls:
+	- (success,None) = address(job.employer).call{value: refundAmount}() (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#116)
+	Event emitted after the call(s):
+	- JobCancelled(jobId) (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#119)
+Reentrancy in JobBoard.completeJob(uint256) (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#89-103):
+	External calls:
+	- (success,None) = address(job.selectedWorker).call{value: payment}() (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#99)
+	Event emitted after the call(s):
+	- JobCompleted(jobId,job.selectedWorker,payment) (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#102)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in JobBoard.completeJob(uint256) (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#89-103):
+	- (success,None) = address(job.selectedWorker).call{value: payment}() (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#99)
+Low level call in JobBoard.cancelJob(uint256) (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#105-120):
+	- (success,None) = address(job.employer).call{value: refundAmount}() (contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol#116)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

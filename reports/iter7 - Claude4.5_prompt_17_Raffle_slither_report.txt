@@ -1,0 +1,146 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_17' running
+INFO:Detectors:
+Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127) uses a weak PRNG: "randomIndex = _generateRandomNumber() % participants.length (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#110)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Reentrancy in Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183):
+	External calls:
+	- (success,None) = participant.call{value: refundAmount}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#175)
+	State variables written after the call(s):
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#182)
+		- delete participants (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#151)
+	Raffle.participants (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#22) can be used in cross function reentrancies:
+	- Raffle._generateRandomNumber() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#134-141)
+	- Raffle._resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#146-158)
+	- Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183)
+	- Raffle.emergencyWithdraw() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#284-292)
+	- Raffle.enter() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#66-75)
+	- Raffle.enterMultiple(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#81-94)
+	- Raffle.getParticipantCount() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#189-191)
+	- Raffle.getParticipants() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#197-199)
+	- Raffle.getRaffleInfo() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#234-248)
+	- Raffle.getUniqueParticipantCount() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#205-224)
+	- Raffle.participants (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#22)
+	- Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127)
+	- Raffle.setEntryFee(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#271-279)
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#182)
+		- state = RaffleState.OPEN (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#155)
+	Raffle.state (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#21) can be used in cross function reentrancies:
+	- Raffle._resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#146-158)
+	- Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183)
+	- Raffle.constructor(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#50-58)
+	- Raffle.getRaffleInfo() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#234-248)
+	- Raffle.raffleOpen() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#41-44)
+	- Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127)
+	- Raffle.state (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#21)
+Reentrancy in Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127):
+	External calls:
+	- (success,None) = winner.call{value: prize}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#120)
+	State variables written after the call(s):
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#126)
+		- delete participants (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#151)
+	Raffle.participants (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#22) can be used in cross function reentrancies:
+	- Raffle._generateRandomNumber() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#134-141)
+	- Raffle._resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#146-158)
+	- Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183)
+	- Raffle.emergencyWithdraw() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#284-292)
+	- Raffle.enter() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#66-75)
+	- Raffle.enterMultiple(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#81-94)
+	- Raffle.getParticipantCount() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#189-191)
+	- Raffle.getParticipants() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#197-199)
+	- Raffle.getRaffleInfo() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#234-248)
+	- Raffle.getUniqueParticipantCount() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#205-224)
+	- Raffle.participants (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#22)
+	- Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127)
+	- Raffle.setEntryFee(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#271-279)
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#126)
+		- prizePool = 0 (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#153)
+	Raffle.prizePool (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#24) can be used in cross function reentrancies:
+	- Raffle._resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#146-158)
+	- Raffle.enter() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#66-75)
+	- Raffle.enterMultiple(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#81-94)
+	- Raffle.getRaffleInfo() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#234-248)
+	- Raffle.prizePool (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#24)
+	- Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127)
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#126)
+		- state = RaffleState.OPEN (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#155)
+	Raffle.state (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#21) can be used in cross function reentrancies:
+	- Raffle._resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#146-158)
+	- Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183)
+	- Raffle.constructor(uint256) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#50-58)
+	- Raffle.getRaffleInfo() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#234-248)
+	- Raffle.raffleOpen() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#41-44)
+	- Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127)
+	- Raffle.state (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#21)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183) has external calls inside a loop: (success,None) = participant.call{value: refundAmount}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#175)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183):
+	External calls:
+	- (success,None) = participant.call{value: refundAmount}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#175)
+	State variables written after the call(s):
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#182)
+		- delete participantEntryCount[participants[i]] (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#149)
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#182)
+		- prizePool = 0 (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#153)
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#182)
+		- raffleId ++ (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#154)
+Reentrancy in Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127):
+	External calls:
+	- (success,None) = winner.call{value: prize}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#120)
+	State variables written after the call(s):
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#126)
+		- delete participantEntryCount[participants[i]] (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#149)
+	- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#126)
+		- raffleId ++ (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#154)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+INFO:Detectors:
+Reentrancy in Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183):
+	External calls:
+	- (success,None) = participant.call{value: refundAmount}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#175)
+	Event emitted after the call(s):
+	- RaffleClosed(raffleId) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#179)
+	- RaffleStarted(raffleId,entryFee,block.timestamp) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#157)
+		- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#182)
+Reentrancy in Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127):
+	External calls:
+	- (success,None) = winner.call{value: prize}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#120)
+	Event emitted after the call(s):
+	- RaffleStarted(raffleId,entryFee,block.timestamp) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#157)
+		- _resetRaffle() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#126)
+	- WinnerSelected(raffleId,winner,prize,block.timestamp) (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#123)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Raffle.selectWinner() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#103-127):
+	- (success,None) = winner.call{value: prize}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#120)
+Low level call in Raffle.closeAndRefund() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#166-183):
+	- (success,None) = participant.call{value: refundAmount}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#175)
+Low level call in Raffle.emergencyWithdraw() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#284-292):
+	- (success,None) = owner.call{value: balance}() (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#290)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Loop condition i < participants.length (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#173) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < participants.length (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#208) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < participants.length (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#148) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Detectors:
+Raffle.owner (contracts/iter7 - Claude4.5/prompt_17/Raffle.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

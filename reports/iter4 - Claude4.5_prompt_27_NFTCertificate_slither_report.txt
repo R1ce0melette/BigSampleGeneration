@@ -1,0 +1,77 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_27' running
+Compilation warnings/errors on contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol:
+Warning: This declaration has the same name as another declaration.
+   --> contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol:148:9:
+    |
+148 |         string memory name,
+    |         ^^^^^^^^^^^^^^^^^^
+Note: The other declaration is here:
+   --> contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol:331:5:
+    |
+331 |     function name() external view returns (string memory) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+INFO:Detectors:
+NFTCertificate.getCertificate(uint256).name (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#148) shadows:
+	- NFTCertificate.name() (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#331-333) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+NFTCertificate.transferOwnership(address) (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#389-394) should emit an event for: 
+	- owner = _newOwner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#393) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+NFTCertificate.tokensOfOwner(address) (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#184-208) uses timestamp for comparisons
+	Dangerous comparisons:
+	- tokenExists[tokenId] && certificates[tokenId].owner == _owner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#190)
+	- tokenExists[tokenId_scope_1] && certificates[tokenId_scope_1].owner == _owner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#201)
+NFTCertificate.getMyTokens() (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#214-236) uses timestamp for comparisons
+	Dangerous comparisons:
+	- tokenExists[tokenId] && certificates[tokenId].owner == msg.sender (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#219)
+	- tokenExists[tokenId_scope_1] && certificates[tokenId_scope_1].owner == msg.sender (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#229)
+NFTCertificate.balanceOf(address) (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#243-254) uses timestamp for comparisons
+	Dangerous comparisons:
+	- tokenExists[tokenId] && certificates[tokenId].owner == _owner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#248)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+NFTCertificate.batchMintCertificates(address[],string[],string[],string[]) (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#350-383) has costly operations inside a loop:
+	- totalSupply ++ (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#365)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter NFTCertificate.mintCertificate(address,string,string,string)._to (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#65) is not in mixedCase
+Parameter NFTCertificate.mintCertificate(address,string,string,string)._name (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#66) is not in mixedCase
+Parameter NFTCertificate.mintCertificate(address,string,string,string)._description (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#67) is not in mixedCase
+Parameter NFTCertificate.mintCertificate(address,string,string,string)._metadataURI (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#68) is not in mixedCase
+Parameter NFTCertificate.transferCertificate(address,uint256)._to (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#97) is not in mixedCase
+Parameter NFTCertificate.transferCertificate(address,uint256)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#97) is not in mixedCase
+Parameter NFTCertificate.burnCertificate(uint256)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#112) is not in mixedCase
+Parameter NFTCertificate.updateMetadata(uint256,string)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#126) is not in mixedCase
+Parameter NFTCertificate.updateMetadata(uint256,string)._newMetadataURI (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#126) is not in mixedCase
+Parameter NFTCertificate.getCertificate(uint256)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#145) is not in mixedCase
+Parameter NFTCertificate.ownerOf(uint256)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#174) is not in mixedCase
+Parameter NFTCertificate.tokensOfOwner(address)._owner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#184) is not in mixedCase
+Parameter NFTCertificate.balanceOf(address)._owner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#243) is not in mixedCase
+Parameter NFTCertificate.exists(uint256)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#313) is not in mixedCase
+Parameter NFTCertificate.tokenURI(uint256)._tokenId (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#322) is not in mixedCase
+Parameter NFTCertificate.batchMintCertificates(address[],string[],string[],string[])._recipients (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#351) is not in mixedCase
+Parameter NFTCertificate.batchMintCertificates(address[],string[],string[],string[])._names (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#352) is not in mixedCase
+Parameter NFTCertificate.batchMintCertificates(address[],string[],string[],string[])._descriptions (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#353) is not in mixedCase
+Parameter NFTCertificate.batchMintCertificates(address[],string[],string[],string[])._metadataURIs (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#354) is not in mixedCase
+Parameter NFTCertificate.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol#389) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_27/NFTCertificate.sol analyzed (1 contracts with 100 detectors), 27 result(s) found

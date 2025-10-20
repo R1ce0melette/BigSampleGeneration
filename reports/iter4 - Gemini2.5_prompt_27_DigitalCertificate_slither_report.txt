@@ -1,0 +1,44 @@
+'solc --version' running
+'solc contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Gemini2.5/prompt_27' running
+Compilation warnings/errors on contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol:
+Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol:68:26:
+   |
+68 |     function getApproved(uint256 tokenId) external view override returns (address operator) { return address(0); }
+   |                          ^^^^^^^^^^^^^^^
+
+Warning: Function state mutability can be restricted to pure
+  --> contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol:68:5:
+   |
+68 |     function getApproved(uint256 tokenId) external view override returns (address operator) { return address(0); }
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Function state mutability can be restricted to pure
+  --> contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol:70:5:
+   |
+70 |     function isApprovedForAll(address, address) external view override returns (bool) { return false; }
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DigitalCertificate.mint(address,string)._to (contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol#42) is not in mixedCase
+Parameter DigitalCertificate.mint(address,string)._tokenURI (contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol#42) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+DigitalCertificate.owner (contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol#30) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter4 - Gemini2.5/prompt_27/DigitalCertificate.sol analyzed (3 contracts with 100 detectors), 4 result(s) found

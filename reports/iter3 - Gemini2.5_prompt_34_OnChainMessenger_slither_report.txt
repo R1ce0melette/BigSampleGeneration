@@ -1,0 +1,27 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_34' running
+Compilation warnings/errors on contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol:
+Warning: This declaration shadows a builtin symbol.
+  --> contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol:78:9:
+   |
+78 |         Message storage msg = messages[_messageId - 1];
+   |         ^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+OnChainMessenger.getMessage(uint256).msg (contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol#78) (local variable) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter OnChainMessenger.sendMessage(string)._content (contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol#40) is not in mixedCase
+Parameter OnChainMessenger.likeMessage(uint256)._messageId (contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol#58) is not in mixedCase
+Parameter OnChainMessenger.getMessage(uint256)._messageId (contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol#76) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_34/OnChainMessenger.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

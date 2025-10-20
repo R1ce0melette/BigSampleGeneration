@@ -1,0 +1,36 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_13' running
+INFO:Detectors:
+Reentrancy in CharityDonationTracker.withdrawFunds(uint256) (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#62-75):
+	External calls:
+	- (success,None) = charityOwner.call{value: withdrawAmount}() (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#71)
+	Event emitted after the call(s):
+	- FundsWithdrawn(charityOwner,withdrawAmount,block.timestamp) (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#74)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+CharityDonationTracker.getTopDonors(uint256) (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#175-231) uses timestamp for comparisons
+	Dangerous comparisons:
+	- uniqueDonors[j] == donor (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#188)
+CharityDonationTracker.getStats() (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#240-273) uses timestamp for comparisons
+	Dangerous comparisons:
+	- uniqueDonors[j] == donor (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#255)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CharityDonationTracker.withdrawFunds(uint256) (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#62-75):
+	- (success,None) = charityOwner.call{value: withdrawAmount}() (contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol#71)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_13/CharityDonationTracker.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

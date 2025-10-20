@@ -1,0 +1,32 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_34' running
+INFO:Detectors:
+OnChainMessaging.likeMessage(uint256) (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#81-93) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(messages[messageId].sender != msg.sender,Cannot like your own message) (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#83)
+OnChainMessaging.getMostLikedMessages(uint256) (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#232-280) uses timestamp for comparisons
+	Dangerous comparisons:
+	- topMessages[j] == 0 || likes > topLikes[j] (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#248)
+OnChainMessaging.getMessagesLikedByUser(address) (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#287-308) uses timestamp for comparisons
+	Dangerous comparisons:
+	- messages[i].exists && hasLiked[i][user] (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#292)
+	- messages[i_scope_0].exists && hasLiked[i_scope_0][user] (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#301)
+OnChainMessaging.messageExistsCheck(uint256) (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#337-339) uses timestamp for comparisons
+	Dangerous comparisons:
+	- messageId > 0 && messageId <= messageCount && messages[messageId].exists (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#338)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_34/OnChainMessaging.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

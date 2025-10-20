@@ -1,0 +1,58 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_17' running
+INFO:Detectors:
+Raffle._generateRandomNumber(uint256) (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#128-139) uses a weak PRNG: "uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,raffles[raffleId].participants.length,raffles[raffleId].prizePool))) % _max (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#129-138)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Raffle.updateEntryFee(uint256) (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#230-234) should emit an event for: 
+	- entryFee = _newEntryFee (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#233) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+Reentrancy in Raffle.selectWinner() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#96-121):
+	External calls:
+	- (success,None) = address(winner).call{value: prizeAmount}() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#116)
+	Event emitted after the call(s):
+	- RaffleFinalized(raffleId) (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#120)
+	- WinnerSelected(raffleId,winner,prizeAmount) (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#119)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Raffle.enterRaffle() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#65-91) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < raffles[raffleId].endTime,Raffle has ended) (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#68)
+Raffle.selectWinner() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#96-121) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= raffles[raffleId].endTime,Raffle has not ended yet) (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#99)
+Raffle.getCurrentRaffleStatus() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#199-224) uses timestamp for comparisons
+	Dangerous comparisons:
+	- raffle.isActive && block.timestamp < raffle.endTime (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#213)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Raffle.selectWinner() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#96-121):
+	- (success,None) = address(winner).call{value: prizeAmount}() (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#116)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter Raffle.startRaffle(uint256)._duration (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#44) is not in mixedCase
+Parameter Raffle.getRaffleDetails(uint256)._raffleId (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#153) is not in mixedCase
+Parameter Raffle.getParticipantEntries(uint256,address)._raffleId (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#185) is not in mixedCase
+Parameter Raffle.getParticipantEntries(uint256,address)._participant (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#185) is not in mixedCase
+Parameter Raffle.updateEntryFee(uint256)._newEntryFee (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#230) is not in mixedCase
+Parameter Raffle.getParticipants(uint256)._raffleId (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#241) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Raffle.owner (contracts/iter9 - Claude4.5/prompt_17/Raffle.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 15 result(s) found

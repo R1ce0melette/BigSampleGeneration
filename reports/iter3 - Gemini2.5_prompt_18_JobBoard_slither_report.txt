@@ -1,0 +1,26 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_18' running
+INFO:Detectors:
+JobBoard.postJob(string,string,uint256).newJob (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#76) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter JobBoard.postJob(string,string,uint256)._title (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#72) is not in mixedCase
+Parameter JobBoard.postJob(string,string,uint256)._description (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#72) is not in mixedCase
+Parameter JobBoard.postJob(string,string,uint256)._reward (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#72) is not in mixedCase
+Parameter JobBoard.applyForJob(uint256)._jobId (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#94) is not in mixedCase
+Parameter JobBoard.closeJob(uint256)._jobId (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#114) is not in mixedCase
+Parameter JobBoard.getJob(uint256)._jobId (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#130) is not in mixedCase
+Parameter JobBoard.getApplicants(uint256)._jobId (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#141) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+JobBoard.owner (contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol#20) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 10 result(s) found

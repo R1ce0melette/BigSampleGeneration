@@ -1,0 +1,75 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_33' running
+Compilation warnings/errors on contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol:
+Warning: This declaration has the same name as another declaration.
+   --> contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol:299:9:
+    |
+299 |         bool isMember,
+    |         ^^^^^^^^^^^^^
+Note: The other declaration is here:
+   --> contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol:404:5:
+    |
+404 |     function isMember(address account) external view returns (bool) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+INFO:Detectors:
+CommunityProposals.getProposalsByStatus(CommunityProposals.ProposalStatus) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#349-370) uses a dangerous strict equality:
+	- proposals[i].status == status (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#354)
+CommunityProposals.getProposalsByStatus(CommunityProposals.ProposalStatus) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#349-370) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == status (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#363)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+CommunityProposals.getMemberInfo(address).isMember (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#299) shadows:
+	- CommunityProposals.isMember(address) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#404-406) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+CommunityProposals.transferOwnership(address) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#448-452) should emit an event for: 
+	- owner = newOwner (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#451) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+CommunityProposals.joinCommunity() (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#94-108) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! members[msg.sender].isMember,Already a member) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#95)
+CommunityProposals.removeMember(address) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#114-122) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(members[member].isMember,Not a member) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#115)
+CommunityProposals.finalizeProposal(uint256) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#186-205) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.isActive,Proposal is not active) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#189)
+	- require(bool,string)(block.timestamp >= proposal.votingDeadline,Voting period has not ended) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#190)
+CommunityProposals.executeProposal(uint256) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#211-222) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.Passed,Proposal has not passed) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#214)
+	- require(bool,string)(! proposal.isExecuted,Proposal already executed) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#215)
+CommunityProposals.getActiveProposals() (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#321-342) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].isActive && block.timestamp < proposals[i].votingDeadline (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#326)
+	- proposals[i_scope_0].isActive && block.timestamp < proposals[i_scope_0].votingDeadline (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#335)
+CommunityProposals.getProposalsByStatus(CommunityProposals.ProposalStatus) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#349-370) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == status (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#354)
+	- proposals[i_scope_0].status == status (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#363)
+CommunityProposals.transferOwnership(address) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#448-452) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(members[newOwner].isMember,New owner must be a member) (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#450)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < memberAddresses.length (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#380) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < memberAddresses.length (contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol#389) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_33/CommunityProposals.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

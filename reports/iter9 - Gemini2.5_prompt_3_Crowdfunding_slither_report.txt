@@ -1,0 +1,42 @@
+'solc --version' running
+'solc contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+Crowdfunding.contribute() (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#31-44) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Campaign has ended.) (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#33)
+Crowdfunding.checkCampaignStatus() (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#46-57) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= deadline (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#48)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Crowdfunding.getRefund() (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#66-74):
+	External calls:
+	- address(msg.sender).transfer(amount) (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#72)
+	Event emitted after the call(s):
+	- Refunded(msg.sender,amount) (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#73)
+Reentrancy in Crowdfunding.withdrawFunds() (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#59-64):
+	External calls:
+	- owner.transfer(amount) (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#62)
+	Event emitted after the call(s):
+	- FundsWithdrawn(amount) (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#63)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Crowdfunding.deadline (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#7) should be immutable 
+Crowdfunding.fundingGoal (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#6) should be immutable 
+Crowdfunding.owner (contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter9 - Gemini2.5/prompt_3/Crowdfunding.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

@@ -1,0 +1,50 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_20' running
+INFO:Detectors:
+PropertyRegistry.changeRegistrar(address) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#160-163) should emit an event for: 
+	- registrar = _newRegistrar (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#162) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+PropertyRegistry.transferProperty(uint256,address) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#66-82) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(property.isRegistered,Property is not registered) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#72)
+	- require(bool,string)(msg.sender == property.owner || msg.sender == registrar,Not authorized to transfer) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#73)
+	- require(bool,string)(_newOwner != property.owner,New owner is the same as current owner) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#74)
+PropertyRegistry.updatePropertyDetails(uint256,string) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#84-97) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(property.isRegistered,Property is not registered) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#92)
+PropertyRegistry.verifyOwnership(uint256,address) (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#99-105) uses timestamp for comparisons
+	Dangerous comparisons:
+	- property.isRegistered && property.owner == _owner (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#104)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter PropertyRegistry.registerProperty(string,string,address)._propertyAddress (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#41) is not in mixedCase
+Parameter PropertyRegistry.registerProperty(string,string,address)._description (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#42) is not in mixedCase
+Parameter PropertyRegistry.registerProperty(string,string,address)._owner (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#43) is not in mixedCase
+Parameter PropertyRegistry.transferProperty(uint256,address)._propertyId (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#66) is not in mixedCase
+Parameter PropertyRegistry.transferProperty(uint256,address)._newOwner (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#66) is not in mixedCase
+Parameter PropertyRegistry.updatePropertyDetails(uint256,string)._propertyId (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#84) is not in mixedCase
+Parameter PropertyRegistry.updatePropertyDetails(uint256,string)._newDescription (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#84) is not in mixedCase
+Parameter PropertyRegistry.verifyOwnership(uint256,address)._propertyId (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#99) is not in mixedCase
+Parameter PropertyRegistry.verifyOwnership(uint256,address)._owner (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#99) is not in mixedCase
+Parameter PropertyRegistry.getProperty(uint256)._propertyId (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#107) is not in mixedCase
+Parameter PropertyRegistry.getPropertyByAddress(string)._propertyAddress (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#129) is not in mixedCase
+Parameter PropertyRegistry.getOwnerProperties(address)._owner (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#152) is not in mixedCase
+Parameter PropertyRegistry.getOwnerPropertyCount(address)._owner (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#156) is not in mixedCase
+Parameter PropertyRegistry.changeRegistrar(address)._newRegistrar (contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol#160) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_20/PropertyRegistry.sol analyzed (1 contracts with 100 detectors), 19 result(s) found

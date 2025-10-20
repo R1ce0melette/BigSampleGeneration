@@ -1,0 +1,60 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_27' running
+INFO:Detectors:
+DigitalCertificate.getCertificatesByType(string) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#264-287) uses a dangerous strict equality:
+	- certificates[i].exists && keccak256(bytes)(bytes(certificates[i].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#269-270)
+DigitalCertificate.getCertificatesByType(string) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#264-287) uses a dangerous strict equality:
+	- certificates[i_scope_0].exists && keccak256(bytes)(bytes(certificates[i_scope_0].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#279-280)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+DigitalCertificate.transferOwnership(address) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#374-383) should emit an event for: 
+	- contractOwner = newOwner (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#382) 
+	- contractOwner = newOwner (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#382) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+DigitalCertificate.transfer(address,uint256) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#103-122) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(certificates[tokenId].exists,Certificate does not exist) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#106)
+DigitalCertificate.transferFrom(address,address,uint256) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#130-153) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(certificates[tokenId].exists,Certificate does not exist) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#131)
+DigitalCertificate.approve(address,uint256) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#160-167) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(certificates[tokenId].exists,Certificate does not exist) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#162)
+DigitalCertificate.getApproved(uint256) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#187-190) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(certificates[tokenId].exists,Certificate does not exist) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#188)
+DigitalCertificate.getCertificate(uint256) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#214-237) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(certificates[tokenId].exists,Certificate does not exist) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#224)
+DigitalCertificate.getCertificatesByType(string) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#264-287) uses timestamp for comparisons
+	Dangerous comparisons:
+	- certificates[i].exists && keccak256(bytes)(bytes(certificates[i].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#269-270)
+	- certificates[i_scope_0].exists && keccak256(bytes)(bytes(certificates[i_scope_0].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#279-280)
+DigitalCertificate.getCertificatesByIssuer(address) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#294-315) uses timestamp for comparisons
+	Dangerous comparisons:
+	- certificates[i].exists && certificates[i].issuedBy == issuer (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#299)
+	- certificates[i_scope_0].exists && certificates[i_scope_0].issuedBy == issuer (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#308)
+DigitalCertificate.ownerOf(uint256) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#322-325) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(certificates[tokenId].exists,Certificate does not exist) (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#323)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+DigitalCertificate.name (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#22) should be constant 
+DigitalCertificate.symbol (contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol#23) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_27/DigitalCertificate.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

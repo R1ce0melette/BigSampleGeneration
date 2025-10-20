@@ -1,0 +1,16 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_19/ToDoList.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_19' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_19/ToDoList.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter ToDoList.addTask(string)._content (contracts/iter5 - Gemini2.5/prompt_19/ToDoList.sol#40) is not in mixedCase
+Parameter ToDoList.completeTask(uint256)._taskId (contracts/iter5 - Gemini2.5/prompt_19/ToDoList.sol#58) is not in mixedCase
+Parameter ToDoList.getTask(uint256)._taskId (contracts/iter5 - Gemini2.5/prompt_19/ToDoList.sol#73) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_19/ToDoList.sol analyzed (1 contracts with 100 detectors), 4 result(s) found

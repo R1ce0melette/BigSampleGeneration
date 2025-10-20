@@ -1,0 +1,48 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_13' running
+INFO:Detectors:
+Reentrancy in CharityDonation.withdraw(uint256) (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#112-120):
+	External calls:
+	- (success,None) = owner.call{value: _amount}() (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#116)
+	Event emitted after the call(s):
+	- FundsWithdrawn(owner,_amount) (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#119)
+Reentrancy in CharityDonation.withdrawAll() (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#122-130):
+	External calls:
+	- (success,None) = owner.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#126)
+	Event emitted after the call(s):
+	- FundsWithdrawn(owner,balance) (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#129)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CharityDonation.withdraw(uint256) (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#112-120):
+	- (success,None) = owner.call{value: _amount}() (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#116)
+Low level call in CharityDonation.withdrawAll() (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#122-130):
+	- (success,None) = owner.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#126)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter CharityDonation.donate(string)._message (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#33) is not in mixedCase
+Parameter CharityDonation.getDonation(uint256)._donationId (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#53) is not in mixedCase
+Parameter CharityDonation.getDonorTotal(address)._donor (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#72) is not in mixedCase
+Parameter CharityDonation.getDonorDonationIds(address)._donor (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#76) is not in mixedCase
+Parameter CharityDonation.getDonorDonationCount(address)._donor (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#80) is not in mixedCase
+Parameter CharityDonation.getRecentDonations(uint256)._count (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#84) is not in mixedCase
+Parameter CharityDonation.getTopDonors(uint256)._count (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#97) is not in mixedCase
+Parameter CharityDonation.withdraw(uint256)._amount (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#112) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+CharityDonation.owner (contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_13/CharityDonation.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

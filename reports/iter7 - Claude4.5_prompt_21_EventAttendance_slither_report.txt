@@ -1,0 +1,33 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.transferOrganizer(address) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#341-346) should emit an event for: 
+	- eventOrganizer = newOrganizer (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#345) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EventAttendance.createEvent(string,string,uint256,uint256) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#67-93) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(startTime >= block.timestamp,Start time cannot be in the past) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#75)
+EventAttendance.checkIn(uint256) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#99-117) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= evt.startTime,Event has not started yet) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#103)
+	- require(bool,string)(block.timestamp <= evt.endTime,Event has ended) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#104)
+EventAttendance.isEventOngoing(uint256) (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#323-326) uses timestamp for comparisons
+	Dangerous comparisons:
+	- evt.isActive && block.timestamp >= evt.startTime && block.timestamp <= evt.endTime (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#325)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

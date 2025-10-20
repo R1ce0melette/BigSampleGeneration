@@ -1,0 +1,22 @@
+'solc --version' running
+'solc contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Gemini2.5/prompt_23' running
+INFO:Detectors:
+Reentrancy in TipJar.withdraw() (contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol#49-58):
+	External calls:
+	- (success,None) = address(creator).call{value: balance}() (contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol#54)
+	Event emitted after the call(s):
+	- Withdrawn(balance) (contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TipJar.withdraw() (contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol#49-58):
+	- (success,None) = address(creator).call{value: balance}() (contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter7 - Gemini2.5/prompt_23/TipJar.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

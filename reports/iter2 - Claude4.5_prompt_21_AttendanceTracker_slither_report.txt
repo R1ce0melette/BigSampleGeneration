@@ -1,0 +1,54 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_21' running
+INFO:Detectors:
+AttendanceTracker.transferOrganizer(address) (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#176-181) should emit an event for: 
+	- organizer = _newOrganizer (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#180) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+AttendanceTracker.createEvent(string,string,uint256,uint256) (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#48-71) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_endTime > block.timestamp,End time must be in the future) (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#56)
+AttendanceTracker.checkIn(uint256) (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#73-87) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= eventData.startTime,Event has not started yet) (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#77)
+	- require(bool,string)(block.timestamp <= eventData.endTime,Event has ended) (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#78)
+AttendanceTracker.getActiveEvents() (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#154-174) uses timestamp for comparisons
+	Dangerous comparisons:
+	- events[i].isActive && block.timestamp <= events[i].endTime (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#158)
+	- events[i_scope_0].isActive && block.timestamp <= events[i_scope_0].endTime (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#167)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter AttendanceTracker.createEvent(string,string,uint256,uint256)._eventName (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#49) is not in mixedCase
+Parameter AttendanceTracker.createEvent(string,string,uint256,uint256)._location (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#50) is not in mixedCase
+Parameter AttendanceTracker.createEvent(string,string,uint256,uint256)._startTime (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#51) is not in mixedCase
+Parameter AttendanceTracker.createEvent(string,string,uint256,uint256)._endTime (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#52) is not in mixedCase
+Parameter AttendanceTracker.checkIn(uint256)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#73) is not in mixedCase
+Parameter AttendanceTracker.activateEvent(uint256)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#89) is not in mixedCase
+Parameter AttendanceTracker.deactivateEvent(uint256)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#96) is not in mixedCase
+Parameter AttendanceTracker.getEvent(uint256)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#103) is not in mixedCase
+Parameter AttendanceTracker.getAttendees(uint256)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#123) is not in mixedCase
+Parameter AttendanceTracker.getAttendeeCount(uint256)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#127) is not in mixedCase
+Parameter AttendanceTracker.hasAttendeeCheckedIn(uint256,address)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#131) is not in mixedCase
+Parameter AttendanceTracker.hasAttendeeCheckedIn(uint256,address)._attendee (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#131) is not in mixedCase
+Parameter AttendanceTracker.getCheckInTime(uint256,address)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#135) is not in mixedCase
+Parameter AttendanceTracker.getCheckInTime(uint256,address)._attendee (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#135) is not in mixedCase
+Parameter AttendanceTracker.getUserAttendedEvents(address)._user (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#140) is not in mixedCase
+Parameter AttendanceTracker.getAttendanceRecord(uint256,address)._eventId (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#144) is not in mixedCase
+Parameter AttendanceTracker.getAttendanceRecord(uint256,address)._attendee (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#144) is not in mixedCase
+Parameter AttendanceTracker.transferOrganizer(address)._newOrganizer (contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol#176) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_21/AttendanceTracker.sol analyzed (1 contracts with 100 detectors), 23 result(s) found

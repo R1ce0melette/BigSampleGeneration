@@ -1,0 +1,61 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_25' running
+INFO:Detectors:
+DecentralizedNameService.registerName(string,string) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#42-59) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! nameExists[_name] || ! isNameActive(_name),Name is already registered) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#46)
+DecentralizedNameService.renewName(string) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#61-76) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.expiryTime < block.timestamp (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#67)
+DecentralizedNameService.getNameInfo(string) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#119-135) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (record.owner,record.expiryTime,record.resolvedAddress,record.isActive && block.timestamp < record.expiryTime) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#129-134)
+DecentralizedNameService.isNameActive(string) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#137-144) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.isActive && block.timestamp < record.expiryTime (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#143)
+DecentralizedNameService.isNameAvailable(string) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#146-148) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! nameExists[_name] || ! isNameActive(_name) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#147)
+DecentralizedNameService.timeUntilExpiry(string) (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#154-164) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= record.expiryTime (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DecentralizedNameService.withdrawFees() (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#166-172):
+	- (success,None) = owner.call{value: balance}() (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#170)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DecentralizedNameService.registerName(string,string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#42) is not in mixedCase
+Parameter DecentralizedNameService.registerName(string,string)._resolvedAddress (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#42) is not in mixedCase
+Parameter DecentralizedNameService.renewName(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#61) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#78) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._newOwner (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#78) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#91) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,string)._newAddress (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#91) is not in mixedCase
+Parameter DecentralizedNameService.releaseName(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#99) is not in mixedCase
+Parameter DecentralizedNameService.resolveName(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#105) is not in mixedCase
+Parameter DecentralizedNameService.getNameOwner(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#112) is not in mixedCase
+Parameter DecentralizedNameService.getNameInfo(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#119) is not in mixedCase
+Parameter DecentralizedNameService.isNameActive(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#137) is not in mixedCase
+Parameter DecentralizedNameService.isNameAvailable(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#146) is not in mixedCase
+Parameter DecentralizedNameService.getOwnerNames(address)._owner (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#150) is not in mixedCase
+Parameter DecentralizedNameService.timeUntilExpiry(string)._name (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#154) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+DecentralizedNameService.owner (contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 24 result(s) found

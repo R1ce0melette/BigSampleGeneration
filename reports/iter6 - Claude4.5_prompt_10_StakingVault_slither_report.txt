@@ -1,0 +1,42 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_10' running
+INFO:Detectors:
+Reentrancy in StakingVault.withdraw(uint256) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#76-96):
+	External calls:
+	- (success,None) = msg.sender.call{value: totalAmount}() (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#92)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,stakeIndex,principal,interest) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+StakingVault.withdraw(uint256) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#76-96) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= userStake.startTime + userStake.lockPeriod,Lock period not ended) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#81)
+StakingVault.canWithdraw(address,uint256) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#183-190) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! userStake.withdrawn && block.timestamp >= userStake.startTime + userStake.lockPeriod (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#189)
+StakingVault.getRemainingLockTime(address,uint256) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#198-212) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= unlockTime (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#207)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in StakingVault.withdraw(uint256) (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#76-96):
+	- (success,None) = msg.sender.call{value: totalAmount}() (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#92)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+StakingVault.owner (contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol#23) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_10/StakingVault.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

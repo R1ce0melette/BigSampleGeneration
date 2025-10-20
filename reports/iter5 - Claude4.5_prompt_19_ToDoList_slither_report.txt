@@ -1,0 +1,55 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_19' running
+INFO:Detectors:
+TodoList.completeTodo(uint256) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#40-50) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_todoId < userTodos[msg.sender].length,Todo does not exist) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#41)
+	- require(bool,string)(! todo.completed,Todo is already completed) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#44)
+TodoList.uncompleteTodo(uint256) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#52-62) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_todoId < userTodos[msg.sender].length,Todo does not exist) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#53)
+	- require(bool,string)(todo.completed,Todo is not completed) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#56)
+TodoList.updateTodo(uint256,string) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#64-72) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_todoId < userTodos[msg.sender].length,Todo does not exist) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#65)
+TodoList.deleteTodo(uint256) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#74-88) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_todoId < userTodos[msg.sender].length,Todo does not exist) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#75)
+	- _todoId != lastIndex (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#79)
+TodoList.getTodo(uint256) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#90-108) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_todoId < userTodos[msg.sender].length,Todo does not exist) (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#97)
+TodoList.getCompletedTodos() (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#118-138) uses timestamp for comparisons
+	Dangerous comparisons:
+	- i < userTodos[msg.sender].length (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#121)
+	- i_scope_0 < userTodos[msg.sender].length (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#130)
+TodoList.getPendingTodos() (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#140-160) uses timestamp for comparisons
+	Dangerous comparisons:
+	- i < userTodos[msg.sender].length (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#143)
+	- i_scope_0 < userTodos[msg.sender].length (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#152)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter TodoList.createTodo(string)._content (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#22) is not in mixedCase
+Parameter TodoList.completeTodo(uint256)._todoId (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#40) is not in mixedCase
+Parameter TodoList.uncompleteTodo(uint256)._todoId (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#52) is not in mixedCase
+Parameter TodoList.updateTodo(uint256,string)._todoId (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#64) is not in mixedCase
+Parameter TodoList.updateTodo(uint256,string)._newContent (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#64) is not in mixedCase
+Parameter TodoList.deleteTodo(uint256)._todoId (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#74) is not in mixedCase
+Parameter TodoList.getTodo(uint256)._todoId (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#90) is not in mixedCase
+Parameter TodoList.getUserTodos(address)._user (contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol#114) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_19/ToDoList.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

@@ -1,0 +1,45 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_34' running
+Compilation warnings/errors on contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol:
+Warning: This declaration shadows a builtin symbol.
+   --> contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol:236:9:
+    |
+236 |         Message memory msg = messages[messageId];
+    |         ^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+SocialMessages.getMessageInfo(uint256).msg (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#236) (local variable) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+INFO:Detectors:
+SocialMessages.likeMessage(uint256) (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#124-151) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(messages[messageId].author != msg.sender,Cannot like own message) (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#126)
+SocialMessages.getMostLikedMessages(uint256) (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#374-414) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! alreadySelected && messages[j].likeCount > maxLikes (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#402)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+SocialMessages.postMessage(string) (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#82-118) has costly operations inside a loop:
+	- messageIdCounter ++ (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#87)
+	Calls stack containing the loop:
+		SocialMessages.batchPostMessages(string[])
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+SocialMessages.owner (contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol#36) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_34/SocialMessages.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

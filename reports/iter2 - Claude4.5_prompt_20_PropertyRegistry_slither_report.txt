@@ -1,0 +1,56 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_20' running
+Compilation warnings/errors on contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol:
+Warning: This declaration shadows an existing declaration.
+   --> contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol:191:9:
+    |
+191 |         uint256[] storage properties = ownerProperties[_owner];
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol:23:5:
+   |
+23 |     mapping(uint256 => Property) public properties;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+PropertyRegistry._removePropertyFromOwner(address,uint256).properties (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#191) shadows:
+	- PropertyRegistry.properties (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#23) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+PropertyRegistry.verifyOwnership(uint256,address) (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#117-122) uses timestamp for comparisons
+	Dangerous comparisons:
+	- properties[_propertyId].owner == _claimedOwner (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#121)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter PropertyRegistry.registerProperty(string,string,address)._propertyAddress (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#49) is not in mixedCase
+Parameter PropertyRegistry.registerProperty(string,string,address)._description (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#50) is not in mixedCase
+Parameter PropertyRegistry.registerProperty(string,string,address)._owner (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#51) is not in mixedCase
+Parameter PropertyRegistry.transferProperty(uint256,address)._propertyId (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#76) is not in mixedCase
+Parameter PropertyRegistry.transferProperty(uint256,address)._newOwner (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#76) is not in mixedCase
+Parameter PropertyRegistry.updatePropertyDescription(uint256,string)._propertyId (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#106) is not in mixedCase
+Parameter PropertyRegistry.updatePropertyDescription(uint256,string)._newDescription (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#106) is not in mixedCase
+Parameter PropertyRegistry.verifyOwnership(uint256,address)._propertyId (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#117) is not in mixedCase
+Parameter PropertyRegistry.verifyOwnership(uint256,address)._claimedOwner (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#117) is not in mixedCase
+Parameter PropertyRegistry.getProperty(uint256)._propertyId (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#124) is not in mixedCase
+Parameter PropertyRegistry.getPropertyByAddress(string)._propertyAddress (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#143) is not in mixedCase
+Parameter PropertyRegistry.getOwnerProperties(address)._owner (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#162) is not in mixedCase
+Parameter PropertyRegistry.getTransferHistory(uint256)._propertyId (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#166) is not in mixedCase
+Parameter PropertyRegistry.getTransferCount(uint256)._propertyId (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#173) is not in mixedCase
+Parameter PropertyRegistry.transferRegistrar(address)._newRegistrar (contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol#180) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_20/PropertyRegistry.sol analyzed (1 contracts with 100 detectors), 18 result(s) found

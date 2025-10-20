@@ -1,0 +1,39 @@
+'solc --version' running
+'solc contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Gemini2.5/prompt_17' running
+Compilation warnings/errors on contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol:
+Warning: Since the VM version paris, "difficulty" was replaced by "prevrandao", which now returns a random number based on the beacon chain.
+  --> contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol:54:51:
+   |
+54 |         return uint256(keccak256(abi.encodePacked(block.difficulty, block.timestamp, participants)));
+   |                                                   ^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+Raffle.pickWinner() (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#31-43) uses a weak PRNG: "winnerIndex = _random() % participants.length (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#35)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Raffle.pickWinner() (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#31-43):
+	External calls:
+	- address(winner).transfer(prize) (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#40)
+	Event emitted after the call(s):
+	- WinnerPicked(winner,prize) (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#42)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Raffle.entryFee (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#6) should be immutable 
+Raffle.owner (contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter9 - Gemini2.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

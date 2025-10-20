@@ -1,0 +1,127 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_16' running
+INFO:Detectors:
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139):
+	External calls:
+	- (mediatorSuccess,None) = txn.mediator.call{value: mediatorFee}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#120)
+	State variables written after the call(s):
+	- txn.state = State.REFUNDED (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#126)
+	Escrow.transactions (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#23) can be used in cross function reentrancies:
+	- Escrow.confirmDelivery(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#70-84)
+	- Escrow.createEscrow(address,address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#41-64)
+	- Escrow.getTransaction(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#152-173)
+	- Escrow.getTransactionState(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#180-183)
+	- Escrow.getTransactionsByBuyer(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#190-208)
+	- Escrow.getTransactionsByMediator(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#240-258)
+	- Escrow.getTransactionsBySeller(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#215-233)
+	- Escrow.isComplete(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#275-278)
+	- Escrow.isDisputed(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#265-268)
+	- Escrow.raiseDispute(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#90-100)
+	- Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139)
+	- Escrow.transactions (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#23)
+	- txn.state = State.COMPLETE (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#132)
+	Escrow.transactions (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#23) can be used in cross function reentrancies:
+	- Escrow.confirmDelivery(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#70-84)
+	- Escrow.createEscrow(address,address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#41-64)
+	- Escrow.getTransaction(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#152-173)
+	- Escrow.getTransactionState(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#180-183)
+	- Escrow.getTransactionsByBuyer(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#190-208)
+	- Escrow.getTransactionsByMediator(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#240-258)
+	- Escrow.getTransactionsBySeller(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#215-233)
+	- Escrow.isComplete(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#275-278)
+	- Escrow.isDisputed(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#265-268)
+	- Escrow.raiseDispute(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#90-100)
+	- Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139)
+	- Escrow.transactions (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#23)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Escrow.isComplete(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#275-278) uses a dangerous strict equality:
+	- transactions[transactionId].state == State.COMPLETE (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#277)
+Escrow.isDisputed(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#265-268) uses a dangerous strict equality:
+	- transactions[transactionId].state == State.DISPUTED (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#267)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in Escrow.confirmDelivery(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#70-84):
+	External calls:
+	- (success,None) = txn.seller.call{value: txn.amount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#79)
+	Event emitted after the call(s):
+	- DeliveryConfirmed(transactionId,msg.sender) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#82)
+	- PaymentReleased(transactionId,txn.seller,txn.amount) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#83)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139):
+	External calls:
+	- (mediatorSuccess,None) = txn.mediator.call{value: mediatorFee}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#120)
+	- (success,None) = txn.buyer.call{value: remainingAmount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#127)
+	Event emitted after the call(s):
+	- RefundIssued(transactionId,txn.buyer,remainingAmount) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#129)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139):
+	External calls:
+	- (mediatorSuccess,None) = txn.mediator.call{value: mediatorFee}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#120)
+	- (success_scope_0,None) = txn.seller.call{value: remainingAmount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#133)
+	Event emitted after the call(s):
+	- PaymentReleased(transactionId,txn.seller,remainingAmount) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#135)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139):
+	External calls:
+	- (mediatorSuccess,None) = txn.mediator.call{value: mediatorFee}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#120)
+	- (success,None) = txn.buyer.call{value: remainingAmount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#127)
+	- (success_scope_0,None) = txn.seller.call{value: remainingAmount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#133)
+	Event emitted after the call(s):
+	- DisputeResolved(transactionId,msg.sender,buyerWins) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#138)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Escrow.confirmDelivery(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#70-84) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == txn.buyer,Only buyer can confirm delivery) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#74)
+	- require(bool,string)(txn.state == State.AWAITING_DELIVERY,Invalid transaction state) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#75)
+Escrow.raiseDispute(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#90-100) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == txn.buyer || msg.sender == txn.seller,Only buyer or seller can raise dispute) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#94)
+	- require(bool,string)(txn.state == State.AWAITING_DELIVERY,Invalid transaction state) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#95)
+Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == txn.mediator,Only mediator can resolve dispute) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#111)
+	- require(bool,string)(txn.state == State.DISPUTED,Transaction is not disputed) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#112)
+Escrow.getTransactionsByBuyer(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#190-208) uses timestamp for comparisons
+	Dangerous comparisons:
+	- transactions[i].buyer == buyer (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#193)
+	- transactions[i_scope_0].buyer == buyer (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#201)
+Escrow.getTransactionsBySeller(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#215-233) uses timestamp for comparisons
+	Dangerous comparisons:
+	- transactions[i].seller == seller (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#218)
+	- transactions[i_scope_0].seller == seller (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#226)
+Escrow.getTransactionsByMediator(address) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#240-258) uses timestamp for comparisons
+	Dangerous comparisons:
+	- transactions[i].mediator == mediator (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#243)
+	- transactions[i_scope_0].mediator == mediator (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#251)
+Escrow.isDisputed(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#265-268) uses timestamp for comparisons
+	Dangerous comparisons:
+	- transactions[transactionId].state == State.DISPUTED (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#267)
+Escrow.isComplete(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#275-278) uses timestamp for comparisons
+	Dangerous comparisons:
+	- transactions[transactionId].state == State.COMPLETE (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#277)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Escrow.confirmDelivery(uint256) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#70-84):
+	- (success,None) = txn.seller.call{value: txn.amount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#79)
+Low level call in Escrow.resolveDispute(uint256,bool) (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#107-139):
+	- (mediatorSuccess,None) = txn.mediator.call{value: mediatorFee}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#120)
+	- (success,None) = txn.buyer.call{value: remainingAmount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#127)
+	- (success_scope_0,None) = txn.seller.call{value: remainingAmount}() (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#133)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Escrow.mediatorFeePercent (contracts/iter6 - Claude4.5/prompt_16/Escrow.sol#25) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_16/Escrow.sol analyzed (1 contracts with 100 detectors), 19 result(s) found

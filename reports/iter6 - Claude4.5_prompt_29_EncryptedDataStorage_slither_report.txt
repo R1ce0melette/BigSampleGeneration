@@ -1,0 +1,93 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_29' running
+Compilation warnings/errors on contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:
+Warning: This declaration has the same name as another declaration.
+  --> contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:61:69:
+   |
+61 |     function storeData(bytes32 dataHash, string memory description, bool isPublic) external {
+   |                                                                     ^^^^^^^^^^^^^
+Note: The other declaration is here:
+   --> contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:322:5:
+    |
+322 |     function isPublic(bytes32 dataHash) external view dataExists(dataHash) returns (bool) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration has the same name as another declaration.
+   --> contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:107:46:
+    |
+107 |     function setVisibility(bytes32 dataHash, bool isPublic) external onlyDataOwner(dataHash) {
+    |                                              ^^^^^^^^^^^^^
+Note: The other declaration is here:
+   --> contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:322:5:
+    |
+322 |     function isPublic(bytes32 dataHash) external view dataExists(dataHash) returns (bool) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration has the same name as another declaration.
+   --> contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:171:9:
+    |
+171 |         bool isPublic
+    |         ^^^^^^^^^^^^^
+Note: The other declaration is here:
+   --> contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol:322:5:
+    |
+322 |     function isPublic(bytes32 dataHash) external view dataExists(dataHash) returns (bool) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+INFO:Detectors:
+EncryptedDataStorage.storeData(bytes32,string,bool).isPublic (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#61) shadows:
+	- EncryptedDataStorage.isPublic(bytes32) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#322-324) (function)
+EncryptedDataStorage.setVisibility(bytes32,bool).isPublic (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#107) shadows:
+	- EncryptedDataStorage.isPublic(bytes32) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#322-324) (function)
+EncryptedDataStorage.getData(bytes32).isPublic (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#171) shadows:
+	- EncryptedDataStorage.isPublic(bytes32) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#322-324) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+EncryptedDataStorage.transferContractOwnership(address) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#348-351) should emit an event for: 
+	- contractOwner = newOwner (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#350) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EncryptedDataStorage.storeData(bytes32,string,bool) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#61-78) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! dataRecords[dataHash].exists,Data hash already exists) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#63)
+EncryptedDataStorage.getData(bytes32) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#167-190) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(record.owner == msg.sender || record.isPublic || sharedWith[dataHash][msg.sender] || msg.sender == contractOwner,No permission to access this data) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#176-182)
+EncryptedDataStorage.verifyOwnership(bytes32,address) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#198-200) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[dataHash].owner == user (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#199)
+EncryptedDataStorage.hasAccess(bytes32,address) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#217-220) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.owner == user || record.isPublic || sharedWith[dataHash][user] (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#219)
+EncryptedDataStorage.getSharedDataHashes(address) (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#244-265) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[allDataHashes[i]].exists && sharedWith[allDataHashes[i]][user] (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#249)
+	- dataRecords[allDataHashes[i_scope_0]].exists && sharedWith[allDataHashes[i_scope_0]][user] (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#258)
+EncryptedDataStorage.getPublicDataHashes() (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#271-292) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[allDataHashes[i]].exists && dataRecords[allDataHashes[i]].isPublic (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#276)
+	- dataRecords[allDataHashes[i_scope_0]].exists && dataRecords[allDataHashes[i_scope_0]].isPublic (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#285)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#300) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#275) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#284) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#248) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#257) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

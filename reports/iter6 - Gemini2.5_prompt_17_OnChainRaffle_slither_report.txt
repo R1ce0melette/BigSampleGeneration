@@ -1,0 +1,31 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_17' running
+INFO:Detectors:
+OnChainRaffle.pickWinner() (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#74-87) uses a weak PRNG: "randomIndex = uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,participants.length))) % participants.length (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#78)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Reentrancy in OnChainRaffle.pickWinner() (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#74-87):
+	External calls:
+	- (success,None) = address(winner).call{value: prizeAmount}() (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#83)
+	Event emitted after the call(s):
+	- WinnerChosen(winner,prizeAmount) (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#86)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in OnChainRaffle.pickWinner() (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#74-87):
+	- (success,None) = address(winner).call{value: prizeAmount}() (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter OnChainRaffle.startRaffle(uint256)._ticketPrice (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#47) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+OnChainRaffle.owner (contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_17/OnChainRaffle.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

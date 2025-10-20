@@ -1,0 +1,40 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+Reentrancy in SimpleCrowdfund.getRefund() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#67-79):
+	External calls:
+	- (success,None) = msg.sender.call{value: amountToRefund}() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#75)
+	Event emitted after the call(s):
+	- Refund(msg.sender,amountToRefund) (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#78)
+Reentrancy in SimpleCrowdfund.withdraw() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#53-62):
+	External calls:
+	- (success,None) = owner.call{value: amount}() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#58)
+	Event emitted after the call(s):
+	- Withdrawal(owner,amount) (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#61)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+SimpleCrowdfund.contribute() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#36-48) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Campaign has ended.) (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#37)
+SimpleCrowdfund.getRefund() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#67-79) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still active.) (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#68)
+SimpleCrowdfund.getTimeRemaining() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#85-90) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= deadline (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#86)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in SimpleCrowdfund.withdraw() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#53-62):
+	- (success,None) = owner.call{value: amount}() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#58)
+Low level call in SimpleCrowdfund.getRefund() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#67-79):
+	- (success,None) = msg.sender.call{value: amountToRefund}() (contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol#75)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_3/SimpleCrowdfund.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

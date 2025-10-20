@@ -1,0 +1,79 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_33' running
+INFO:Detectors:
+CommunityProposals.getActiveProposals() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#194-214) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.ACTIVE && block.timestamp <= proposals[i].endTime (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#198)
+CommunityProposals.getActiveProposals() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#194-214) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == ProposalStatus.ACTIVE && block.timestamp <= proposals[i_scope_0].endTime (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#207)
+CommunityProposals.getPassedProposals() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#216-236) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.PASSED (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#220)
+CommunityProposals.getPassedProposals() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#216-236) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == ProposalStatus.PASSED (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#229)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+CommunityProposals.vote(uint256,bool) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#103-122) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.ACTIVE,Proposal is not active) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#108)
+	- require(bool,string)(block.timestamp <= proposal.endTime,Voting period has ended) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#109)
+	- require(bool,string)(! proposal.hasVoted[msg.sender],Already voted) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#110)
+CommunityProposals.finalizeProposal(uint256) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#124-139) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.ACTIVE,Proposal is not active) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#129)
+	- require(bool,string)(block.timestamp > proposal.endTime,Voting period has not ended) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#130)
+CommunityProposals.executeProposal(uint256) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#141-151) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.status == ProposalStatus.PASSED,Proposal has not passed) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#146)
+CommunityProposals.getVoteChoice(uint256,address) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#184-188) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposals[_proposalId].hasVoted[_member],Member has not voted) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#186)
+CommunityProposals.getActiveProposals() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#194-214) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.ACTIVE && block.timestamp <= proposals[i].endTime (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#198)
+	- proposals[i_scope_0].status == ProposalStatus.ACTIVE && block.timestamp <= proposals[i_scope_0].endTime (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#207)
+CommunityProposals.getPassedProposals() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#216-236) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.PASSED (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#220)
+	- proposals[i_scope_0].status == ProposalStatus.PASSED (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#229)
+CommunityProposals.timeRemainingToVote(uint256) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#246-256) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= proposal.endTime (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#251)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+CommunityProposals.removeMember(address) (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#63-79) has costly operations inside a loop:
+	- members.pop() (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#73)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter CommunityProposals.addMember(address)._member (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#53) is not in mixedCase
+Parameter CommunityProposals.removeMember(address)._member (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#63) is not in mixedCase
+Parameter CommunityProposals.submitProposal(string,string)._title (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#81) is not in mixedCase
+Parameter CommunityProposals.submitProposal(string,string)._description (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#81) is not in mixedCase
+Parameter CommunityProposals.vote(uint256,bool)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#103) is not in mixedCase
+Parameter CommunityProposals.vote(uint256,bool)._support (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#103) is not in mixedCase
+Parameter CommunityProposals.finalizeProposal(uint256)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#124) is not in mixedCase
+Parameter CommunityProposals.executeProposal(uint256)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#141) is not in mixedCase
+Parameter CommunityProposals.getProposal(uint256)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#153) is not in mixedCase
+Parameter CommunityProposals.hasVoted(uint256,address)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#179) is not in mixedCase
+Parameter CommunityProposals.hasVoted(uint256,address)._member (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#179) is not in mixedCase
+Parameter CommunityProposals.getVoteChoice(uint256,address)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#184) is not in mixedCase
+Parameter CommunityProposals.getVoteChoice(uint256,address)._member (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#184) is not in mixedCase
+Parameter CommunityProposals.getMemberProposals(address)._member (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#190) is not in mixedCase
+Parameter CommunityProposals.timeRemainingToVote(uint256)._proposalId (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#246) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+CommunityProposals.owner (contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_33/CommunityProposals.sol analyzed (1 contracts with 100 detectors), 29 result(s) found

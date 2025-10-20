@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_11' running
+INFO:Detectors:
+SubscriptionService.setMonthlyFee(uint256) (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#89-92) should emit an event for: 
+	- monthlyFee = _newFee (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#91) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+SubscriptionService.subscribe() (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#47-63) uses timestamp for comparisons
+	Dangerous comparisons:
+	- currentExpiration > block.timestamp (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#55)
+SubscriptionService.isSubscribed(address) (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#70-72) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscriptionExpiresAt[_user] > block.timestamp (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#71)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in SubscriptionService.withdrawFees() (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#77-83):
+	- (sent,None) = owner.call{value: balance}() (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#81)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter SubscriptionService.isSubscribed(address)._user (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#70) is not in mixedCase
+Parameter SubscriptionService.setMonthlyFee(uint256)._newFee (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#89) is not in mixedCase
+Parameter SubscriptionService.getSubscriptionExpiration(address)._user (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#99) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+SubscriptionService.owner (contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_11/SubscriptionService.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

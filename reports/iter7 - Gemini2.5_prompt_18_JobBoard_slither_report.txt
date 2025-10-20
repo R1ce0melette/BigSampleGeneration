@@ -1,0 +1,18 @@
+'solc --version' running
+'solc contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Gemini2.5/prompt_18' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter JobBoard.postJob(string,string)._title (contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol#58) is not in mixedCase
+Parameter JobBoard.postJob(string,string)._description (contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol#58) is not in mixedCase
+Parameter JobBoard.applyForJob(uint256)._jobId (contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol#79) is not in mixedCase
+Parameter JobBoard.closeJob(uint256)._jobId (contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol#97) is not in mixedCase
+Parameter JobBoard.getApplicants(uint256)._jobId (contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol#113) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter7 - Gemini2.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

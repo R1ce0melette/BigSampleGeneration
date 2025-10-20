@@ -1,0 +1,44 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_16' running
+INFO:Detectors:
+Reentrancy in Escrow.confirmDelivery(uint256) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#53-67):
+	External calls:
+	- (success,None) = txn.seller.call{value: txn.amount}() (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#62)
+	Event emitted after the call(s):
+	- DeliveryConfirmed(transactionId) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#65)
+	- FundsReleased(transactionId,txn.seller,txn.amount) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#66)
+Reentrancy in Escrow.refundBuyer(uint256) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#105-118):
+	External calls:
+	- (success,None) = txn.buyer.call{value: txn.amount}() (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#114)
+	Event emitted after the call(s):
+	- TransactionRefunded(transactionId,txn.buyer,txn.amount) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#117)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#81-103):
+	External calls:
+	- (success,None) = recipient.call{value: txn.amount}() (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#98)
+	Event emitted after the call(s):
+	- DisputeResolved(transactionId,msg.sender,refundToBuyer) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#101)
+	- FundsReleased(transactionId,recipient,txn.amount) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#102)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Escrow.confirmDelivery(uint256) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#53-67):
+	- (success,None) = txn.seller.call{value: txn.amount}() (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#62)
+Low level call in Escrow.resolveDispute(uint256,bool) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#81-103):
+	- (success,None) = recipient.call{value: txn.amount}() (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#98)
+Low level call in Escrow.refundBuyer(uint256) (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#105-118):
+	- (success,None) = txn.buyer.call{value: txn.amount}() (contracts/iter10 - Claude4.5/prompt_16/Escrow.sol#114)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_16/Escrow.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

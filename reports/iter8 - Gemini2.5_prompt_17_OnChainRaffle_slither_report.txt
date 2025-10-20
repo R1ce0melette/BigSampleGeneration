@@ -1,0 +1,70 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_17' running
+INFO:Detectors:
+OnChainRaffle._generateRandomIndex() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#48-50) uses a weak PRNG: "uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,participants.length))) % participants.length (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#49)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Reentrancy in OnChainRaffle.cancelRaffle() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#78-89):
+	External calls:
+	- (success,None) = participants[i].call{value: ticketPrice}() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#83)
+	State variables written after the call(s):
+	- participants = new address[](0) (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#88)
+	OnChainRaffle.participants (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#11) can be used in cross function reentrancies:
+	- OnChainRaffle._generateRandomIndex() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#48-50)
+	- OnChainRaffle.cancelRaffle() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#78-89)
+	- OnChainRaffle.enter() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#35-41)
+	- OnChainRaffle.getParticipants() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#95-97)
+	- OnChainRaffle.participants (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#11)
+	- OnChainRaffle.pickWinner() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#56-73)
+Reentrancy in OnChainRaffle.pickWinner() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#56-73):
+	External calls:
+	- (success,None) = winner.call{value: prizeAmount}() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#65)
+	State variables written after the call(s):
+	- isRaffleOpen = true (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#72)
+	OnChainRaffle.isRaffleOpen (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#12) can be used in cross function reentrancies:
+	- OnChainRaffle.cancelRaffle() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#78-89)
+	- OnChainRaffle.constructor(uint256) (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#26-30)
+	- OnChainRaffle.enter() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#35-41)
+	- OnChainRaffle.isRaffleOpen (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#12)
+	- OnChainRaffle.pickWinner() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#56-73)
+	- participants = new address[](0) (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#71)
+	OnChainRaffle.participants (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#11) can be used in cross function reentrancies:
+	- OnChainRaffle._generateRandomIndex() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#48-50)
+	- OnChainRaffle.cancelRaffle() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#78-89)
+	- OnChainRaffle.enter() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#35-41)
+	- OnChainRaffle.getParticipants() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#95-97)
+	- OnChainRaffle.participants (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#11)
+	- OnChainRaffle.pickWinner() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#56-73)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+OnChainRaffle.cancelRaffle() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#78-89) has external calls inside a loop: (success,None) = participants[i].call{value: ticketPrice}() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in OnChainRaffle.pickWinner() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#56-73):
+	External calls:
+	- (success,None) = winner.call{value: prizeAmount}() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#65)
+	Event emitted after the call(s):
+	- WinnerPicked(winner,prizeAmount) (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#68)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in OnChainRaffle.pickWinner() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#56-73):
+	- (success,None) = winner.call{value: prizeAmount}() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#65)
+Low level call in OnChainRaffle.cancelRaffle() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#78-89):
+	- (success,None) = participants[i].call{value: ticketPrice}() (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Loop condition i < participants.length (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#82) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Detectors:
+OnChainRaffle.owner (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#9) should be immutable 
+OnChainRaffle.ticketPrice (contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_17/OnChainRaffle.sol analyzed (1 contracts with 100 detectors), 11 result(s) found

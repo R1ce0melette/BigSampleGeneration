@@ -1,0 +1,43 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_35' running
+INFO:Detectors:
+PausableTransfers.transfer(address,uint256) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#42-48) sends eth to arbitrary user
+	Dangerous calls:
+	- _to.transfer(_amount) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+PausableTransfers (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#4-54) has incorrect ERC20 function interface:PausableTransfers.transfer(address,uint256) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#42-48)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+INFO:Detectors:
+PausableTransfers.transfer(address,uint256)._to (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#42) lacks a zero-check on :
+		- _to.transfer(_amount) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter PausableTransfers.transfer(address,uint256)._to (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#42) is not in mixedCase
+Parameter PausableTransfers.transfer(address,uint256)._amount (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#42) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Reentrancy in PausableTransfers.transfer(address,uint256) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#42-48):
+	External calls:
+	- _to.transfer(_amount) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#46)
+	Event emitted after the call(s):
+	- Transferred(msg.sender,_to,_amount) (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#47)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+PausableTransfers.owner (contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_35/PausableTransfers.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

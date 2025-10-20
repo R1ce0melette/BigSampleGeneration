@@ -1,0 +1,21 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_24' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter VotingBasedAccessControl.createProposal(address,VotingBasedAccessControl.VoteType)._candidate (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#59) is not in mixedCase
+Parameter VotingBasedAccessControl.createProposal(address,VotingBasedAccessControl.VoteType)._voteType (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#59) is not in mixedCase
+Parameter VotingBasedAccessControl.vote(uint256)._proposalId (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#78) is not in mixedCase
+Parameter VotingBasedAccessControl.executeProposal(uint256)._proposalId (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#90) is not in mixedCase
+Parameter VotingBasedAccessControl.getProposal(uint256)._proposalId (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#110) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+VotingBasedAccessControl.owner (contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#21) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

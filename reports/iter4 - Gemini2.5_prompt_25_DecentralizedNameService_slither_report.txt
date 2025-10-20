@@ -1,0 +1,23 @@
+'solc --version' running
+'solc contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Gemini2.5/prompt_25' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DecentralizedNameService.registerName(string)._name (contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol#11) is not in mixedCase
+Parameter DecentralizedNameService.transferName(address)._newOwner (contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol#21) is not in mixedCase
+Parameter DecentralizedNameService.resolveName(string)._name (contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol#37) is not in mixedCase
+Parameter DecentralizedNameService.reverseLookup(address)._owner (contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol#41) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Gemini2.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

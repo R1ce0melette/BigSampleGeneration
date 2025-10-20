@@ -1,0 +1,55 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataStorage.verifyOwnership(bytes32,address) (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#171-179) uses timestamp for comparisons
+	Dangerous comparisons:
+	- recordId == 0 || ! records[recordId].exists (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#174)
+	- records[recordId].owner == _claimedOwner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#178)
+EncryptedDataStorage.dataHashExists(bytes32) (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#186-189) uses timestamp for comparisons
+	Dangerous comparisons:
+	- recordId > 0 && records[recordId].exists (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#188)
+EncryptedDataStorage.getOwnerByHash(bytes32) (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#299-307) uses timestamp for comparisons
+	Dangerous comparisons:
+	- recordId == 0 || ! records[recordId].exists (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#302)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+EncryptedDataStorage.batchStoreData(bytes32[],string[]) (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#66-99) has costly operations inside a loop:
+	- recordCount ++ (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#79)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EncryptedDataStorage.storeData(bytes32,string)._dataHash (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#37) is not in mixedCase
+Parameter EncryptedDataStorage.storeData(bytes32,string)._description (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#37) is not in mixedCase
+Parameter EncryptedDataStorage.batchStoreData(bytes32[],string[])._dataHashes (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#67) is not in mixedCase
+Parameter EncryptedDataStorage.batchStoreData(bytes32[],string[])._descriptions (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#68) is not in mixedCase
+Parameter EncryptedDataStorage.updateData(uint256,bytes32,string)._recordId (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#108) is not in mixedCase
+Parameter EncryptedDataStorage.updateData(uint256,bytes32,string)._newDataHash (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#109) is not in mixedCase
+Parameter EncryptedDataStorage.updateData(uint256,bytes32,string)._newDescription (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#110) is not in mixedCase
+Parameter EncryptedDataStorage.deleteData(uint256)._recordId (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#135) is not in mixedCase
+Parameter EncryptedDataStorage.transferOwnership(uint256,address)._recordId (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#152) is not in mixedCase
+Parameter EncryptedDataStorage.transferOwnership(uint256,address)._newOwner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#152) is not in mixedCase
+Parameter EncryptedDataStorage.verifyOwnership(bytes32,address)._dataHash (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#171) is not in mixedCase
+Parameter EncryptedDataStorage.verifyOwnership(bytes32,address)._claimedOwner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#171) is not in mixedCase
+Parameter EncryptedDataStorage.dataHashExists(bytes32)._dataHash (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#186) is not in mixedCase
+Parameter EncryptedDataStorage.getRecord(uint256)._recordId (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#201) is not in mixedCase
+Parameter EncryptedDataStorage.getRecordByHash(bytes32)._dataHash (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#233) is not in mixedCase
+Parameter EncryptedDataStorage.getRecordsByOwner(address)._owner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#261) is not in mixedCase
+Parameter EncryptedDataStorage.getActiveRecordsByOwner(address)._owner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#270) is not in mixedCase
+Parameter EncryptedDataStorage.getOwnerByHash(bytes32)._dataHash (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#299) is not in mixedCase
+Parameter EncryptedDataStorage.getRecordCount(address)._owner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#314) is not in mixedCase
+Parameter EncryptedDataStorage.getActiveRecordCount(address)._owner (contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol#323) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 25 result(s) found

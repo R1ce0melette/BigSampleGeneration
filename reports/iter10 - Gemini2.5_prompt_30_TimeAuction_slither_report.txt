@@ -1,0 +1,29 @@
+'solc --version' running
+'solc contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Gemini2.5/prompt_30' running
+INFO:Detectors:
+TimeAuction.bid() (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#22-33) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < auctionEndTime,Auction already ended.) (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#23)
+TimeAuction.auctionEnd() (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#47-59) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= auctionEndTime,Auction not yet ended.) (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#48)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+TimeAuction.auctionEndTime (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#6) should be immutable 
+TimeAuction.seller (contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Gemini2.5/prompt_30/TimeAuction.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

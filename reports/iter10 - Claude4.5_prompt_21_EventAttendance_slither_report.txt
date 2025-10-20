@@ -1,0 +1,30 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.changeOrganizer(address) (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#159-162) should emit an event for: 
+	- organizer = newOrganizer (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#161) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EventAttendance.createEvent(string,string,uint256,uint256) (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#47-70) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(startTime > block.timestamp,Start time must be in the future) (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#55)
+EventAttendance.checkIn(uint256) (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#72-85) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= eventData.startTime,Event has not started yet) (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#75)
+	- require(bool,string)(block.timestamp <= eventData.endTime,Event has already ended) (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#76)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 4 result(s) found

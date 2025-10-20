@@ -1,0 +1,31 @@
+'solc --version' running
+'solc contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+Crowdfunding.contribute() (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#25-32) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Campaign has ended.) (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#27)
+Crowdfunding.checkGoalReached() (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#34-42) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign has not ended yet.) (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Crowdfunding.withdraw() (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#44-52):
+	- (success,None) = beneficiary.call{value: amount}() (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#50)
+Low level call in Crowdfunding.getRefund() (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#54-63):
+	- (success,None) = msg.sender.call{value: amountToRefund}() (contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol#61)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter2 - Gemini2.5/prompt_3/Crowdfunding.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

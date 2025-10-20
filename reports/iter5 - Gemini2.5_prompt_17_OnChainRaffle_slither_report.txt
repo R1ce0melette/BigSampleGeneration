@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_17' running
+INFO:Detectors:
+OnChainRaffle.pickWinner() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#58-75) uses a weak PRNG: "winnerIndex = _pseudoRandom() % participants.length (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#62)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Reentrancy in OnChainRaffle.pickWinner() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#58-75):
+	External calls:
+	- (sent,None) = winner.call{value: prizeAmount}() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#70)
+	State variables written after the call(s):
+	- participants = new address[](0) (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#74)
+	OnChainRaffle.participants (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#11) can be used in cross function reentrancies:
+	- OnChainRaffle._pseudoRandom() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#82-88)
+	- OnChainRaffle.enter() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#45-51)
+	- OnChainRaffle.getParticipants() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#103-105)
+	- OnChainRaffle.participants (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#11)
+	- OnChainRaffle.pickWinner() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#58-75)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in OnChainRaffle.pickWinner() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#58-75):
+	- (sent,None) = winner.call{value: prizeAmount}() (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+OnChainRaffle.entryFee (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#10) should be immutable 
+OnChainRaffle.owner (contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_17/OnChainRaffle.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

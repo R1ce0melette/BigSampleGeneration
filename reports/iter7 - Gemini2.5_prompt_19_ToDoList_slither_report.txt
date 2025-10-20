@@ -1,0 +1,23 @@
+'solc --version' running
+'solc contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Gemini2.5/prompt_19' running
+INFO:Detectors:
+ToDoList.userToDoLists (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#16) is never initialized. It is used in:
+	- ToDoList.addToDo(string) (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#37-47)
+	- ToDoList.completeToDo(uint256) (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#53-60)
+	- ToDoList.getToDo(uint256) (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#67-73)
+	- ToDoList.getToDoCount() (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#79-81)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-state-variables
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter ToDoList.addToDo(string)._text (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#37) is not in mixedCase
+Parameter ToDoList.completeToDo(uint256)._index (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#53) is not in mixedCase
+Parameter ToDoList.getToDo(uint256)._index (contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol#67) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter7 - Gemini2.5/prompt_19/ToDoList.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

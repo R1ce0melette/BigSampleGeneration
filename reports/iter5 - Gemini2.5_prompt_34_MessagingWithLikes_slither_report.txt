@@ -1,0 +1,15 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_34/MessagingWithLikes.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_34' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_34/MessagingWithLikes.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter MessagingWithLikes.sendMessage(string)._content (contracts/iter5 - Gemini2.5/prompt_34/MessagingWithLikes.sol#27) is not in mixedCase
+Parameter MessagingWithLikes.likeMessage(uint256)._messageId (contracts/iter5 - Gemini2.5/prompt_34/MessagingWithLikes.sol#44) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_34/MessagingWithLikes.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

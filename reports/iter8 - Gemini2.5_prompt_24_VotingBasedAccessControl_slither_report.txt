@@ -1,0 +1,24 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_24' running
+INFO:Detectors:
+VotingBasedAccessControl.constructor(address[]) (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#45-56) has costly operations inside a loop:
+	- memberCount ++ (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#50)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter VotingBasedAccessControl.createProposal(VotingBasedAccessControl.ProposalType,address)._pType (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#58) is not in mixedCase
+Parameter VotingBasedAccessControl.createProposal(VotingBasedAccessControl.ProposalType,address)._target (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#58) is not in mixedCase
+Parameter VotingBasedAccessControl.vote(uint256)._proposalId (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#75) is not in mixedCase
+Parameter VotingBasedAccessControl.executeProposal(uint256)._proposalId (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#91) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+VotingBasedAccessControl.owner (contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol#20) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_24/VotingBasedAccessControl.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

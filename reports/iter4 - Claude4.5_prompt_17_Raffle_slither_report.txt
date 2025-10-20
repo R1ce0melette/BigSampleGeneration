@@ -1,0 +1,46 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_17' running
+INFO:Detectors:
+Raffle._generateRandomNumber(uint256) (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#133-140) uses a weak PRNG: "uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,msg.sender,raffles[raffleId].participants.length))) % _max (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#134-139)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Raffle.transferOwnership(address) (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#282-287) should emit an event for: 
+	- owner = _newOwner (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#286) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+Raffle.updateTicketPrice(uint256) (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#252-260) should emit an event for: 
+	- ticketPrice = _newPrice (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#259) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+Reentrancy in Raffle.selectWinner() (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#105-126):
+	External calls:
+	- (success,None) = address(winner).call{value: prize}() (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#122)
+	Event emitted after the call(s):
+	- WinnerSelected(raffleId,winner,prize) (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#125)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Raffle.selectWinner() (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#105-126):
+	- (success,None) = address(winner).call{value: prize}() (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#122)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter Raffle.buyTickets(uint256)._ticketAmount (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#70) is not in mixedCase
+Parameter Raffle.getRaffleInfo(uint256)._raffleId (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#187) is not in mixedCase
+Parameter Raffle.getUserTicketCount(address)._user (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#216) is not in mixedCase
+Parameter Raffle.updateTicketPrice(uint256)._newPrice (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#252) is not in mixedCase
+Parameter Raffle.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_17/Raffle.sol#282) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 11 result(s) found

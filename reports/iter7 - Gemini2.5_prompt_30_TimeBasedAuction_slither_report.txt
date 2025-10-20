@@ -1,0 +1,67 @@
+'solc --version' running
+'solc contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Gemini2.5/prompt_30' running
+INFO:Detectors:
+Reentrancy in TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61):
+	External calls:
+	- (success,None) = address(highestBidder).call{value: highestBid}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#52)
+	State variables written after the call(s):
+	- highestBid = msg.value (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#57)
+	TimeBasedAuction.highestBid (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#14) can be used in cross function reentrancies:
+	- TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61)
+	- TimeBasedAuction.endAuction() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#67-81)
+	- TimeBasedAuction.highestBid (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#14)
+	- highestBidder = msg.sender (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#56)
+	TimeBasedAuction.highestBidder (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#13) can be used in cross function reentrancies:
+	- TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61)
+	- TimeBasedAuction.endAuction() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#67-81)
+	- TimeBasedAuction.highestBidder (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#13)
+	- TimeBasedAuction.withdraw() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#88-97)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Reentrancy in TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61):
+	External calls:
+	- (success,None) = address(highestBidder).call{value: highestBid}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#52)
+	State variables written after the call(s):
+	- bids[msg.sender] = msg.value (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#58)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+INFO:Detectors:
+Reentrancy in TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61):
+	External calls:
+	- (success,None) = address(highestBidder).call{value: highestBid}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#52)
+	Event emitted after the call(s):
+	- NewBid(msg.sender,msg.value) (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#60)
+Reentrancy in TimeBasedAuction.endAuction() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#67-81):
+	External calls:
+	- (success,None) = seller.call{value: highestBid}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#74)
+	Event emitted after the call(s):
+	- AuctionEnded(highestBidder,highestBid) (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#76)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < auctionEndTime,Auction has already ended.) (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#47)
+TimeBasedAuction.endAuction() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#67-81) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= auctionEndTime,Auction has not ended yet.) (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#68)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TimeBasedAuction.bid() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#46-61):
+	- (success,None) = address(highestBidder).call{value: highestBid}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#52)
+Low level call in TimeBasedAuction.endAuction() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#67-81):
+	- (success,None) = seller.call{value: highestBid}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#74)
+Low level call in TimeBasedAuction.withdraw() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#88-97):
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+TimeBasedAuction.auctionEndTime (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#10) should be immutable 
+TimeBasedAuction.seller (contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter7 - Gemini2.5/prompt_30/TimeBasedAuction.sol analyzed (1 contracts with 100 detectors), 12 result(s) found

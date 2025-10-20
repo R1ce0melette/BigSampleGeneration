@@ -1,0 +1,161 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_26' running
+INFO:Detectors:
+Reentrancy in RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121):
+	External calls:
+	- (success,None) = sub.payee.call{value: sub.amount}() (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#110)
+	State variables written after the call(s):
+	- sub.lastPaymentTime = block.timestamp (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#114)
+	RecurringPayment.subscriptions (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#26) can be used in cross function reentrancies:
+	- RecurringPayment.cancelSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#165-176)
+	- RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentInterval) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#49-80)
+	- RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272-293)
+	- RecurringPayment.getDueSubscriptions(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300-327)
+	- RecurringPayment.getIntervalString(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#373-381)
+	- RecurringPayment.getSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#225-249)
+	- RecurringPayment.getTimeUntilNextPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#342-352)
+	- RecurringPayment.isPaymentDue(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#359-366)
+	- RecurringPayment.pauseSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#127-138)
+	- RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121)
+	- RecurringPayment.resumeSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#144-159)
+	- RecurringPayment.subscriptions (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#26)
+	- RecurringPayment.updateSubscriptionAmount(uint256,uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#183-195)
+	- sub.totalPayments ++ (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#115)
+	RecurringPayment.subscriptions (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#26) can be used in cross function reentrancies:
+	- RecurringPayment.cancelSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#165-176)
+	- RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentInterval) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#49-80)
+	- RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272-293)
+	- RecurringPayment.getDueSubscriptions(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300-327)
+	- RecurringPayment.getIntervalString(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#373-381)
+	- RecurringPayment.getSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#225-249)
+	- RecurringPayment.getTimeUntilNextPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#342-352)
+	- RecurringPayment.isPaymentDue(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#359-366)
+	- RecurringPayment.pauseSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#127-138)
+	- RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121)
+	- RecurringPayment.resumeSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#144-159)
+	- RecurringPayment.subscriptions (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#26)
+	- RecurringPayment.updateSubscriptionAmount(uint256,uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#183-195)
+	- sub.nextPaymentTime = block.timestamp + intervalSeconds (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#118)
+	RecurringPayment.subscriptions (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#26) can be used in cross function reentrancies:
+	- RecurringPayment.cancelSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#165-176)
+	- RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentInterval) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#49-80)
+	- RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272-293)
+	- RecurringPayment.getDueSubscriptions(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300-327)
+	- RecurringPayment.getIntervalString(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#373-381)
+	- RecurringPayment.getSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#225-249)
+	- RecurringPayment.getTimeUntilNextPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#342-352)
+	- RecurringPayment.isPaymentDue(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#359-366)
+	- RecurringPayment.pauseSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#127-138)
+	- RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121)
+	- RecurringPayment.resumeSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#144-159)
+	- RecurringPayment.subscriptions (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#26)
+	- RecurringPayment.updateSubscriptionAmount(uint256,uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#183-195)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272-293) uses a dangerous strict equality:
+	- subscriptions[allSubs[i]].status == SubscriptionStatus.ACTIVE (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#277)
+RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272-293) uses a dangerous strict equality:
+	- subscriptions[allSubs[i_scope_0]].status == SubscriptionStatus.ACTIVE (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#286)
+RecurringPayment.getDueSubscriptions(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300-327) uses a dangerous strict equality:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime && balances[_payer] >= sub.amount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#306-308)
+RecurringPayment.getDueSubscriptions(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300-327) uses a dangerous strict equality:
+	- sub_scope_1.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub_scope_1.nextPaymentTime && balances[_payer] >= sub_scope_1.amount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#318-320)
+RecurringPayment.getIntervalString(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#373-381) uses a dangerous strict equality:
+	- subscriptions[_subscriptionId].interval == PaymentInterval.WEEKLY (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#376)
+RecurringPayment.isPaymentDue(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#359-366) uses a dangerous strict equality:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#364-365)
+RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121) uses a dangerous strict equality:
+	- sub.interval == PaymentInterval.WEEKLY (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#117)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121):
+	External calls:
+	- (success,None) = sub.payee.call{value: sub.amount}() (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#110)
+	Event emitted after the call(s):
+	- PaymentProcessed(_subscriptionId,sub.payer,sub.payee,sub.amount,block.timestamp) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#120)
+Reentrancy in RecurringPayment.withdraw(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#201-211):
+	External calls:
+	- (success,None) = msg.sender.call{value: _amount}() (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#207)
+	Event emitted after the call(s):
+	- BalanceWithdrawn(msg.sender,_amount) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#210)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.status == SubscriptionStatus.ACTIVE,Subscription is not active) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#102)
+	- require(bool,string)(block.timestamp >= sub.nextPaymentTime,Payment not due yet) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#103)
+	- require(bool,string)(balances[sub.payer] >= sub.amount,Insufficient balance) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#104)
+	- sub.interval == PaymentInterval.WEEKLY (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#117)
+RecurringPayment.pauseSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#127-138) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can pause subscription) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#132)
+	- require(bool,string)(sub.status == SubscriptionStatus.ACTIVE,Subscription is not active) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#133)
+RecurringPayment.resumeSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#144-159) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can resume subscription) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#149)
+	- require(bool,string)(sub.status == SubscriptionStatus.PAUSED,Subscription is not paused) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#150)
+RecurringPayment.cancelSubscription(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#165-176) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can cancel subscription) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#170)
+	- require(bool,string)(sub.status != SubscriptionStatus.CANCELLED,Subscription already cancelled) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#171)
+RecurringPayment.updateSubscriptionAmount(uint256,uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#183-195) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can update subscription) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#189)
+	- require(bool,string)(sub.status != SubscriptionStatus.CANCELLED,Subscription is cancelled) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#190)
+RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272-293) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscriptions[allSubs[i]].status == SubscriptionStatus.ACTIVE (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#277)
+	- subscriptions[allSubs[i_scope_0]].status == SubscriptionStatus.ACTIVE (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#286)
+RecurringPayment.getDueSubscriptions(address) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300-327) uses timestamp for comparisons
+	Dangerous comparisons:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime && balances[_payer] >= sub.amount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#306-308)
+	- sub_scope_1.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub_scope_1.nextPaymentTime && balances[_payer] >= sub_scope_1.amount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#318-320)
+RecurringPayment.getTimeUntilNextPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#342-352) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= sub.nextPaymentTime (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#347)
+RecurringPayment.isPaymentDue(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#359-366) uses timestamp for comparisons
+	Dangerous comparisons:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#364-365)
+RecurringPayment.getIntervalString(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#373-381) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscriptions[_subscriptionId].interval == PaymentInterval.WEEKLY (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#376)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in RecurringPayment.processPayment(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97-121):
+	- (success,None) = sub.payee.call{value: sub.amount}() (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#110)
+Low level call in RecurringPayment.withdraw(uint256) (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#201-211):
+	- (success,None) = msg.sender.call{value: _amount}() (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#207)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentInterval)._payee (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#50) is not in mixedCase
+Parameter RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentInterval)._amount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#51) is not in mixedCase
+Parameter RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentInterval)._interval (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#52) is not in mixedCase
+Parameter RecurringPayment.processPayment(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#97) is not in mixedCase
+Parameter RecurringPayment.pauseSubscription(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#127) is not in mixedCase
+Parameter RecurringPayment.resumeSubscription(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#144) is not in mixedCase
+Parameter RecurringPayment.cancelSubscription(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#165) is not in mixedCase
+Parameter RecurringPayment.updateSubscriptionAmount(uint256,uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#183) is not in mixedCase
+Parameter RecurringPayment.updateSubscriptionAmount(uint256,uint256)._newAmount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#183) is not in mixedCase
+Parameter RecurringPayment.withdraw(uint256)._amount (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#201) is not in mixedCase
+Parameter RecurringPayment.getSubscription(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#225) is not in mixedCase
+Parameter RecurringPayment.getActiveSubscriptionsByPayer(address)._payer (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#272) is not in mixedCase
+Parameter RecurringPayment.getDueSubscriptions(address)._payer (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#300) is not in mixedCase
+Parameter RecurringPayment.getTimeUntilNextPayment(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#342) is not in mixedCase
+Parameter RecurringPayment.isPaymentDue(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#359) is not in mixedCase
+Parameter RecurringPayment.getIntervalString(uint256)._subscriptionId (contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol#373) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_26/RecurringPayment.sol analyzed (1 contracts with 100 detectors), 39 result(s) found

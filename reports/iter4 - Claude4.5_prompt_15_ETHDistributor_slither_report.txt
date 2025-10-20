@@ -1,0 +1,66 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_15' running
+INFO:Detectors:
+ETHDistributor.distributeEvenly(address[]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#30-50) has external calls inside a loop: (success,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#42)
+ETHDistributor.distributeAmount(address[],uint256) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#57-78) has external calls inside a loop: (success,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#70)
+ETHDistributor.distributeCustomAmounts(address[],uint256[]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#85-110) has external calls inside a loop: (success,None) = _recipients[i_scope_0].call{value: _amounts[i_scope_0]}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in ETHDistributor.distributeAmount(address[],uint256) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#57-78):
+	External calls:
+	- (success,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#70)
+	Event emitted after the call(s):
+	- ETHDistributed(_recipients,amountPerRecipient,totalDistributed) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#77)
+	- SingleDistribution(_recipients[i],amountPerRecipient) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#74)
+Reentrancy in ETHDistributor.distributeCustomAmounts(address[],uint256[]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#85-110):
+	External calls:
+	- (success,None) = _recipients[i_scope_0].call{value: _amounts[i_scope_0]}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#103)
+	Event emitted after the call(s):
+	- ETHDistributed(_recipients,0,totalRequired) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#109)
+	- SingleDistribution(_recipients[i_scope_0],_amounts[i_scope_0]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#106)
+Reentrancy in ETHDistributor.distributeEvenly(address[]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#30-50):
+	External calls:
+	- (success,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#42)
+	Event emitted after the call(s):
+	- ETHDistributed(_recipients,amountPerRecipient,totalDistributed) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#49)
+	- SingleDistribution(_recipients[i],amountPerRecipient) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in ETHDistributor.distributeEvenly(address[]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#30-50):
+	- (success,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#42)
+Low level call in ETHDistributor.distributeAmount(address[],uint256) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#57-78):
+	- (success,None) = _recipients[i].call{value: amountPerRecipient}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#70)
+Low level call in ETHDistributor.distributeCustomAmounts(address[],uint256[]) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#85-110):
+	- (success,None) = _recipients[i_scope_0].call{value: _amounts[i_scope_0]}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#103)
+Low level call in ETHDistributor.withdraw(uint256) (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#144-150):
+	- (success,None) = owner.call{value: _amount}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#148)
+Low level call in ETHDistributor.withdrawAll() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#155-161):
+	- (success,None) = owner.call{value: balance}() (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter ETHDistributor.distributeEvenly(address[])._recipients (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#30) is not in mixedCase
+Parameter ETHDistributor.distributeAmount(address[],uint256)._recipients (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#57) is not in mixedCase
+Parameter ETHDistributor.distributeAmount(address[],uint256)._totalAmount (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#57) is not in mixedCase
+Parameter ETHDistributor.distributeCustomAmounts(address[],uint256[])._recipients (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#85) is not in mixedCase
+Parameter ETHDistributor.distributeCustomAmounts(address[],uint256[])._amounts (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#85) is not in mixedCase
+Parameter ETHDistributor.calculateEvenDistribution(address[])._recipients (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#117) is not in mixedCase
+Parameter ETHDistributor.calculateDistributionFromAmount(address[],uint256)._recipients (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#129) is not in mixedCase
+Parameter ETHDistributor.calculateDistributionFromAmount(address[],uint256)._totalAmount (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#129) is not in mixedCase
+Parameter ETHDistributor.withdraw(uint256)._amount (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#144) is not in mixedCase
+Parameter ETHDistributor.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol#175) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_15/ETHDistributor.sol analyzed (1 contracts with 100 detectors), 22 result(s) found

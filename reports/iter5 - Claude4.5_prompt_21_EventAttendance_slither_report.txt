@@ -1,0 +1,44 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.createEvent(string,string,uint256,uint256) (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#40-64) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_startTime >= block.timestamp,Start time must be in the future) (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#49)
+EventAttendance.checkIn(uint256) (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#66-85) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= eventData.startTime,Event has not started yet) (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#72)
+	- require(bool,string)(block.timestamp <= eventData.endTime,Event has ended) (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#73)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._name (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#41) is not in mixedCase
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._location (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#42) is not in mixedCase
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._startTime (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#43) is not in mixedCase
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._endTime (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#44) is not in mixedCase
+Parameter EventAttendance.checkIn(uint256)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#66) is not in mixedCase
+Parameter EventAttendance.closeEvent(uint256)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#87) is not in mixedCase
+Parameter EventAttendance.isCheckedIn(uint256,address)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#98) is not in mixedCase
+Parameter EventAttendance.isCheckedIn(uint256,address)._attendee (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#98) is not in mixedCase
+Parameter EventAttendance.getEvent(uint256)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#103) is not in mixedCase
+Parameter EventAttendance.getEventAttendees(uint256)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#127) is not in mixedCase
+Parameter EventAttendance.getAttendeeCheckInTime(uint256,address)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#132) is not in mixedCase
+Parameter EventAttendance.getAttendeeCheckInTime(uint256,address)._attendee (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#132) is not in mixedCase
+Parameter EventAttendance.getAttendeeCount(uint256)._eventId (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#147) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+EventAttendance.organizer (contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 17 result(s) found

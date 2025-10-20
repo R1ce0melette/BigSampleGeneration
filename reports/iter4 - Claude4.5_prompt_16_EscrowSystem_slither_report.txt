@@ -1,0 +1,111 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_16' running
+INFO:Detectors:
+EscrowSystem.getDisputedEscrows() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#269-289) uses a dangerous strict equality:
+	- escrows[i].mediator == msg.sender && escrows[i].state == State.DISPUTED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#273)
+EscrowSystem.getDisputedEscrows() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#269-289) uses a dangerous strict equality:
+	- escrows[i_scope_0].mediator == msg.sender && escrows[i_scope_0].state == State.DISPUTED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#282)
+EscrowSystem.getEscrowState(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296-308) uses a dangerous strict equality:
+	- state == State.AWAITING_PAYMENT (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#301)
+EscrowSystem.getEscrowState(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296-308) uses a dangerous strict equality:
+	- state == State.AWAITING_DELIVERY (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#302)
+EscrowSystem.getEscrowState(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296-308) uses a dangerous strict equality:
+	- state == State.COMPLETE (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#303)
+EscrowSystem.getEscrowState(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296-308) uses a dangerous strict equality:
+	- state == State.DISPUTED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#304)
+EscrowSystem.getEscrowState(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296-308) uses a dangerous strict equality:
+	- state == State.REFUNDED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#305)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in EscrowSystem.confirmDelivery(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#74-91):
+	External calls:
+	- (success,None) = escrow.seller.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#87)
+	Event emitted after the call(s):
+	- PaymentReleased(_escrowId,escrow.seller,escrow.amount) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#90)
+Reentrancy in EscrowSystem.resolveDispute(uint256,bool) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116-141):
+	External calls:
+	- (success,None) = escrow.buyer.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#127)
+	Event emitted after the call(s):
+	- EscrowRefunded(_escrowId,escrow.buyer,escrow.amount) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#130)
+Reentrancy in EscrowSystem.resolveDispute(uint256,bool) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116-141):
+	External calls:
+	- (success_scope_0,None) = escrow.seller.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#134)
+	Event emitted after the call(s):
+	- PaymentReleased(_escrowId,escrow.seller,escrow.amount) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#137)
+Reentrancy in EscrowSystem.resolveDispute(uint256,bool) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116-141):
+	External calls:
+	- (success,None) = escrow.buyer.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#127)
+	- (success_scope_0,None) = escrow.seller.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#134)
+	Event emitted after the call(s):
+	- DisputeResolved(_escrowId,msg.sender,_buyerWins) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#140)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+EscrowSystem.confirmDelivery(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#74-91) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == escrow.buyer,Only buyer can confirm delivery) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#79)
+	- require(bool,string)(escrow.state == State.AWAITING_DELIVERY,Invalid escrow state) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#80)
+EscrowSystem.raiseDispute(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#97-109) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == escrow.buyer || msg.sender == escrow.seller,Only buyer or seller can raise dispute) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#102-103)
+	- require(bool,string)(escrow.state == State.AWAITING_DELIVERY,Invalid escrow state) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#104)
+EscrowSystem.resolveDispute(uint256,bool) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116-141) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == escrow.mediator,Only mediator can resolve dispute) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#121)
+	- require(bool,string)(escrow.state == State.DISPUTED,Escrow is not in disputed state) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#122)
+EscrowSystem.getMyEscrows() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#185-211) uses timestamp for comparisons
+	Dangerous comparisons:
+	- escrows[i].buyer == msg.sender || escrows[i].seller == msg.sender || escrows[i].mediator == msg.sender (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#190-192)
+	- escrows[i_scope_0].buyer == msg.sender || escrows[i_scope_0].seller == msg.sender || escrows[i_scope_0].mediator == msg.sender (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#202-204)
+EscrowSystem.getMyBuyerEscrows() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#217-237) uses timestamp for comparisons
+	Dangerous comparisons:
+	- escrows[i].buyer == msg.sender (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#221)
+	- escrows[i_scope_0].buyer == msg.sender (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#230)
+EscrowSystem.getMySellerEscrows() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#243-263) uses timestamp for comparisons
+	Dangerous comparisons:
+	- escrows[i].seller == msg.sender (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#247)
+	- escrows[i_scope_0].seller == msg.sender (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#256)
+EscrowSystem.getDisputedEscrows() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#269-289) uses timestamp for comparisons
+	Dangerous comparisons:
+	- escrows[i].mediator == msg.sender && escrows[i].state == State.DISPUTED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#273)
+	- escrows[i_scope_0].mediator == msg.sender && escrows[i_scope_0].state == State.DISPUTED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#282)
+EscrowSystem.getEscrowState(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296-308) uses timestamp for comparisons
+	Dangerous comparisons:
+	- state == State.AWAITING_PAYMENT (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#301)
+	- state == State.AWAITING_DELIVERY (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#302)
+	- state == State.COMPLETE (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#303)
+	- state == State.DISPUTED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#304)
+	- state == State.REFUNDED (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#305)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in EscrowSystem.confirmDelivery(uint256) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#74-91):
+	- (success,None) = escrow.seller.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#87)
+Low level call in EscrowSystem.resolveDispute(uint256,bool) (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116-141):
+	- (success,None) = escrow.buyer.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#127)
+	- (success_scope_0,None) = escrow.seller.call{value: escrow.amount}() (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#134)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter EscrowSystem.createEscrow(address,address,string)._seller (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#41) is not in mixedCase
+Parameter EscrowSystem.createEscrow(address,address,string)._mediator (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#42) is not in mixedCase
+Parameter EscrowSystem.createEscrow(address,address,string)._description (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#43) is not in mixedCase
+Parameter EscrowSystem.confirmDelivery(uint256)._escrowId (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#74) is not in mixedCase
+Parameter EscrowSystem.raiseDispute(uint256)._escrowId (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#97) is not in mixedCase
+Parameter EscrowSystem.resolveDispute(uint256,bool)._escrowId (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116) is not in mixedCase
+Parameter EscrowSystem.resolveDispute(uint256,bool)._buyerWins (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#116) is not in mixedCase
+Parameter EscrowSystem.getEscrow(uint256)._escrowId (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#155) is not in mixedCase
+Parameter EscrowSystem.getEscrowState(uint256)._escrowId (contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol#296) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_16/EscrowSystem.sol analyzed (1 contracts with 100 detectors), 31 result(s) found

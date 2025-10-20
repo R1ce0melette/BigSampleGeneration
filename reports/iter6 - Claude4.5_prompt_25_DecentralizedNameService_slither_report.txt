@@ -1,0 +1,63 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_25' running
+INFO:Detectors:
+DecentralizedNameService.transferOwnership(address) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#311-314) should emit an event for: 
+	- owner = newOwner (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#313) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+DecentralizedNameService.updateRegistrationFee(uint256) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#271-273) should emit an event for: 
+	- registrationFee = newFee (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#272) 
+DecentralizedNameService.updateRegistrationPeriod(uint256) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#279-282) should emit an event for: 
+	- registrationPeriod = newPeriod (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#281) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+DecentralizedNameService.registerName(string,address) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#52-77) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! nameRecords[name].exists || block.timestamp > nameRecords[name].expiresAt,Name already registered) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#57)
+DecentralizedNameService.renewName(string) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#83-96) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp <= record.expiresAt (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#89)
+DecentralizedNameService.updateAddress(string,address) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#103-111) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp <= nameRecords[name].expiresAt,Name has expired) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#105)
+DecentralizedNameService.transferName(string,address) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#118-131) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp <= nameRecords[name].expiresAt,Name has expired) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#121)
+DecentralizedNameService.resolve(string) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#167-172) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[name].exists,Name does not exist) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#168)
+	- require(bool,string)(block.timestamp <= nameRecords[name].expiresAt,Name has expired) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#169)
+DecentralizedNameService.getNameRecord(string) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#184-203) uses timestamp for comparisons
+	Dangerous comparisons:
+	- expired = record.exists && block.timestamp > record.expiresAt (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#193)
+DecentralizedNameService.isNameAvailable(string) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#210-212) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! nameRecords[name].exists || block.timestamp > nameRecords[name].expiresAt (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#211)
+DecentralizedNameService.getActiveNamesByOwner(address) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#228-250) uses timestamp for comparisons
+	Dangerous comparisons:
+	- nameRecords[allNames[i]].exists && block.timestamp <= nameRecords[allNames[i]].expiresAt (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#234)
+	- nameRecords[allNames[i_scope_0]].exists && block.timestamp <= nameRecords[allNames[i_scope_0]].expiresAt (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#243)
+DecentralizedNameService.getTimeUntilExpiry(string) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#257-265) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[name].exists,Name does not exist) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#258)
+	- block.timestamp >= nameRecords[name].expiresAt (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#260)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DecentralizedNameService.withdrawFees(uint256) (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#288-297):
+	- (success,None) = owner.call{value: withdrawAmount}() (contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol#295)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

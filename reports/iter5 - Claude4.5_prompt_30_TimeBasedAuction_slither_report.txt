@@ -1,0 +1,82 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_30' running
+INFO:Detectors:
+TimeBasedAuction.getActiveAuctions() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#212-232) uses a dangerous strict equality:
+	- auctions[i].status == AuctionStatus.ACTIVE && block.timestamp < auctions[i].endTime (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#216)
+TimeBasedAuction.getActiveAuctions() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#212-232) uses a dangerous strict equality:
+	- auctions[i_scope_0].status == AuctionStatus.ACTIVE && block.timestamp < auctions[i_scope_0].endTime (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#225)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in TimeBasedAuction.claimRefund(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#146-158):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#154)
+	Event emitted after the call(s):
+	- RefundClaimed(_auctionId,msg.sender,amount) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#157)
+Reentrancy in TimeBasedAuction.endAuction(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#111-130):
+	External calls:
+	- (success,None) = auction.seller.call{value: auction.highestBid}() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#123)
+	Event emitted after the call(s):
+	- AuctionEnded(_auctionId,auction.highestBidder,auction.highestBid) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#126)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TimeBasedAuction.placeBid(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#80-109) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(auction.status == AuctionStatus.ACTIVE,Auction is not active) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#85)
+	- require(bool,string)(block.timestamp < auction.endTime,Auction has ended) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#86)
+	- require(bool,string)(msg.sender != auction.seller,Seller cannot bid on own auction) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#87)
+TimeBasedAuction.endAuction(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#111-130) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(auction.status == AuctionStatus.ACTIVE,Auction is not active) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#116)
+	- require(bool,string)(block.timestamp >= auction.endTime,Auction has not ended yet) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#117)
+TimeBasedAuction.cancelAuction(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#132-144) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == auction.seller,Only seller can cancel auction) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#137)
+	- require(bool,string)(auction.status == AuctionStatus.ACTIVE,Auction is not active) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#138)
+	- require(bool,string)(auction.bidCount == 0,Cannot cancel auction with bids) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#139)
+TimeBasedAuction.timeRemaining(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#200-210) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= auction.endTime (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#205)
+TimeBasedAuction.getActiveAuctions() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#212-232) uses timestamp for comparisons
+	Dangerous comparisons:
+	- auctions[i].status == AuctionStatus.ACTIVE && block.timestamp < auctions[i].endTime (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#216)
+	- auctions[i_scope_0].status == AuctionStatus.ACTIVE && block.timestamp < auctions[i_scope_0].endTime (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#225)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TimeBasedAuction.endAuction(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#111-130):
+	- (success,None) = auction.seller.call{value: auction.highestBid}() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#123)
+Low level call in TimeBasedAuction.claimRefund(uint256) (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#146-158):
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#154)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter TimeBasedAuction.createAuction(string,string,uint256,uint256)._itemName (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#50) is not in mixedCase
+Parameter TimeBasedAuction.createAuction(string,string,uint256,uint256)._description (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#51) is not in mixedCase
+Parameter TimeBasedAuction.createAuction(string,string,uint256,uint256)._startingBid (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#52) is not in mixedCase
+Parameter TimeBasedAuction.createAuction(string,string,uint256,uint256)._durationInDays (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#53) is not in mixedCase
+Parameter TimeBasedAuction.placeBid(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#80) is not in mixedCase
+Parameter TimeBasedAuction.endAuction(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#111) is not in mixedCase
+Parameter TimeBasedAuction.cancelAuction(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#132) is not in mixedCase
+Parameter TimeBasedAuction.claimRefund(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#146) is not in mixedCase
+Parameter TimeBasedAuction.getAuction(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#160) is not in mixedCase
+Parameter TimeBasedAuction.getAuctionBids(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#190) is not in mixedCase
+Parameter TimeBasedAuction.getPendingRefund(uint256,address)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#195) is not in mixedCase
+Parameter TimeBasedAuction.getPendingRefund(uint256,address)._bidder (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#195) is not in mixedCase
+Parameter TimeBasedAuction.timeRemaining(uint256)._auctionId (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#200) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+TimeBasedAuction.owner (contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_30/TimeBasedAuction.sol analyzed (1 contracts with 100 detectors), 26 result(s) found

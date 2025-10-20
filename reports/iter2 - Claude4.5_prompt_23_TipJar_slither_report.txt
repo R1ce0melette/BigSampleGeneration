@@ -1,0 +1,53 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_23/TipJar.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_23' running
+INFO:Detectors:
+Reentrancy in TipJar.withdrawAmount(uint256) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#79-87):
+	External calls:
+	- (success,None) = creator.call{value: _amount}() (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#83)
+	Event emitted after the call(s):
+	- TipsWithdrawn(creator,_amount) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#86)
+Reentrancy in TipJar.withdrawTips() (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#69-77):
+	External calls:
+	- (success,None) = creator.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#73)
+	Event emitted after the call(s):
+	- TipsWithdrawn(creator,balance) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#76)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TipJar.getTip(uint256) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#89-104) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_index < tips.length,Invalid tip index) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#95)
+TipJar.getRecentTips(uint256) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#106-117) uses timestamp for comparisons
+	Dangerous comparisons:
+	- i < count (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#112)
+	- _count > tips.length (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#109)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TipJar.withdrawTips() (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#69-77):
+	- (success,None) = creator.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#73)
+Low level call in TipJar.withdrawAmount(uint256) (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#79-87):
+	- (success,None) = creator.call{value: _amount}() (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter TipJar.sendTip(string)._message (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#33) is not in mixedCase
+Parameter TipJar.withdrawAmount(uint256)._amount (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#79) is not in mixedCase
+Parameter TipJar.getTip(uint256)._index (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#89) is not in mixedCase
+Parameter TipJar.getRecentTips(uint256)._count (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#106) is not in mixedCase
+Parameter TipJar.getTipperInfo(address)._tipper (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#123) is not in mixedCase
+Parameter TipJar.getTopTippers(uint256)._count (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#133) is not in mixedCase
+Parameter TipJar.updateCreator(address)._newCreator (contracts/iter2 - Claude4.5/prompt_23/TipJar.sol#164) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_23/TipJar.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

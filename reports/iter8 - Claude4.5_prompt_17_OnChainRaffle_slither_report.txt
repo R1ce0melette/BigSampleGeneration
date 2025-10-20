@@ -1,0 +1,80 @@
+'solc --version' running
+'solc contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Claude4.5/prompt_17' running
+INFO:Detectors:
+OnChainRaffle.drawWinner(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#209-245) uses a weak PRNG: "winnerIndex = _generateRandomNumber(raffleId) % raffle.participants.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#219)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+OnChainRaffle.getRaffleCountByStatus(OnChainRaffle.RaffleStatus) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#473-481) uses a dangerous strict equality:
+	- raffles[allRaffleIds[i]].status == status (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#476)
+OnChainRaffle.getRafflesByStatus(OnChainRaffle.RaffleStatus) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#327-347) uses a dangerous strict equality:
+	- raffles[allRaffleIds[i]].status == status (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#330)
+OnChainRaffle.getRafflesByStatus(OnChainRaffle.RaffleStatus) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#327-347) uses a dangerous strict equality:
+	- raffle.status == status (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#340)
+OnChainRaffle.raffleClosed(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#74-77) uses a dangerous strict equality:
+	- require(bool,string)(raffles[raffleId].status == RaffleStatus.Closed,Raffle is not closed) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#75)
+OnChainRaffle.raffleOpen(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#69-72) uses a dangerous strict equality:
+	- require(bool,string)(raffles[raffleId].status == RaffleStatus.Open,Raffle is not open) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+OnChainRaffle.transferOwnership(address) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#519-523) should emit an event for: 
+	- owner = newOwner (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#522) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+OnChainRaffle.enterRaffle(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#124-165) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffle.status == RaffleStatus.Open,Raffle is not open) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#129)
+	- require(bool,string)(raffle.participants.length + entries <= raffle.maxParticipants,Exceeds max participants) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#135-138)
+OnChainRaffle._closeRaffle(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#191-203) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffle.participants.length > 0,No participants) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#193)
+OnChainRaffle.drawWinner(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#209-245) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffle.participants.length > 0,No participants) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#216)
+	- ownerFee > 0 (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#234)
+OnChainRaffle.getRafflesByStatus(OnChainRaffle.RaffleStatus) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#327-347) uses timestamp for comparisons
+	Dangerous comparisons:
+	- raffles[allRaffleIds[i]].status == status (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#330)
+	- raffle.status == status (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#340)
+OnChainRaffle.getRafflesWonByUser(address) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#438-458) uses timestamp for comparisons
+	Dangerous comparisons:
+	- raffles[allRaffleIds[i]].winner == user (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#441)
+	- raffle.winner == user (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#451)
+OnChainRaffle.getRaffleCountByStatus(OnChainRaffle.RaffleStatus) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#473-481) uses timestamp for comparisons
+	Dangerous comparisons:
+	- raffles[allRaffleIds[i]].status == status (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#476)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in OnChainRaffle.drawWinner(uint256) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#209-245):
+	External calls:
+	- address(winner).transfer(prize) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#231)
+	- address(owner).transfer(ownerFee) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#235)
+	State variables written after the call(s):
+	- stats.rafflesWon ++ (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#240)
+	- stats.totalWinnings += prize (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#241)
+	Event emitted after the call(s):
+	- PrizeWithdrawn(raffleId,winner,prize) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#244)
+	- WinnerDrawn(raffleId,winner,prize,block.timestamp) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#243)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#329) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#338) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#440) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#449) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#315) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#475) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol analyzed (1 contracts with 100 detectors), 21 result(s) found

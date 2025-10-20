@@ -1,0 +1,53 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_4' running
+INFO:Detectors:
+Reentrancy in TokenVesting.release() (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#59-70):
+	External calls:
+	- require(bool,string)(token.transfer(beneficiary,unreleased),Token transfer failed) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#67)
+	Event emitted after the call(s):
+	- TokensReleased(unreleased) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#69)
+Reentrancy in TokenVesting.revoke() (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#87-104):
+	External calls:
+	- require(bool,string)(token.transfer(beneficiary,unreleased),Token transfer failed) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#95)
+	- require(bool,string)(token.transfer(owner,refund),Refund transfer failed) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#100)
+	Event emitted after the call(s):
+	- VestingRevoked() (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TokenVesting.release() (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#59-70) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(unreleased > 0,No tokens available for release) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#63)
+	- require(bool,string)(token.transfer(beneficiary,unreleased),Token transfer failed) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#67)
+TokenVesting.vestedAmount() (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#76-85) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < cliff (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#77)
+	- block.timestamp >= startTime + duration || revoked (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#79)
+TokenVesting.revoke() (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#87-104) uses timestamp for comparisons
+	Dangerous comparisons:
+	- unreleased > 0 (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#93)
+	- require(bool,string)(token.transfer(beneficiary,unreleased),Token transfer failed) (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+TokenVesting.beneficiary (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#10) should be immutable 
+TokenVesting.cliff (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#15) should be immutable 
+TokenVesting.duration (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#16) should be immutable 
+TokenVesting.owner (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#11) should be immutable 
+TokenVesting.startTime (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#14) should be immutable 
+TokenVesting.token (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#12) should be immutable 
+TokenVesting.totalTokens (contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol#17) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_4/TokenVesting.sol analyzed (2 contracts with 100 detectors), 13 result(s) found

@@ -1,0 +1,25 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataRegistry.registerHash(bytes32) (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#33-45) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataEntries[_hash].owner == address(0),This data hash is already registered.) (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#34)
+EncryptedDataRegistry.getEntry(bytes32) (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#61-65) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(entry.owner != address(0),No entry found for this hash.) (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#63)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EncryptedDataRegistry.registerHash(bytes32)._hash (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#33) is not in mixedCase
+Parameter EncryptedDataRegistry.verifyOwnership(bytes32)._hash (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#52) is not in mixedCase
+Parameter EncryptedDataRegistry.getEntry(bytes32)._hash (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#61) is not in mixedCase
+Parameter EncryptedDataRegistry.getHashesByOwner(address)._owner (contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#72) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

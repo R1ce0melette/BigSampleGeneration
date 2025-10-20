@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+CrowdFund.constructor(address,uint256,uint256)._beneficiary (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#59) lacks a zero-check on :
+		- beneficiary = _beneficiary (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#63)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+CrowdFund.finalizeCampaign() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#84-91) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still active.) (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#85)
+CrowdFund.withdraw() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#96-108) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still active.) (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#98)
+CrowdFund.refund() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#113-125) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still active.) (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#114)
+CrowdFund.getCampaignState() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#131-139) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < deadline (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#132)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CrowdFund.withdraw() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#96-108):
+	- (success,None) = beneficiary.call{value: amount}() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#106)
+Low level call in CrowdFund.refund() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#113-125):
+	- (success,None) = msg.sender.call{value: contributionAmount}() (contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol#123)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_3/CrowdFund.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

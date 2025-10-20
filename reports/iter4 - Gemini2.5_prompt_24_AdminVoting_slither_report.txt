@@ -1,0 +1,24 @@
+'solc --version' running
+'solc contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Gemini2.5/prompt_24' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter AdminVoting.createProposal(AdminVoting.ProposalType,address)._pType (contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol#38) is not in mixedCase
+Parameter AdminVoting.createProposal(AdminVoting.ProposalType,address)._target (contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol#38) is not in mixedCase
+Parameter AdminVoting.vote(uint256)._proposalId (contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol#55) is not in mixedCase
+Parameter AdminVoting.executeProposal(uint256)._proposalId (contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol#71) is not in mixedCase
+Parameter AdminVoting.getProposal(uint256)._proposalId (contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol#87) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Gemini2.5/prompt_24/AdminVoting.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

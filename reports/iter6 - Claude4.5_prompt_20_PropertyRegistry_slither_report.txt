@@ -1,0 +1,41 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_20' running
+INFO:Detectors:
+PropertyRegistry.transferProperty(uint256,address) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#73-89) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(property.exists,Property does not exist) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#77)
+	- require(bool,string)(msg.sender == property.owner || msg.sender == registryOwner,Not authorized to transfer) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#78)
+	- require(bool,string)(newOwner != property.owner,New owner is the same as current owner) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#80)
+PropertyRegistry.verifyOwnership(uint256,address) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#97-102) uses timestamp for comparisons
+	Dangerous comparisons:
+	- property.exists && property.owner == owner (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#101)
+PropertyRegistry.getPropertyOwner(uint256) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#140-145) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(properties[propertyId].exists,Property does not exist) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#142)
+PropertyRegistry.getPropertiesByOwner(address) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#152-174) uses timestamp for comparisons
+	Dangerous comparisons:
+	- properties[ownedProperties[i]].owner == owner (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#158)
+	- properties[ownedProperties[i_scope_0]].owner == owner (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#167)
+PropertyRegistry.getPropertyCountByOwner(address) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#201-212) uses timestamp for comparisons
+	Dangerous comparisons:
+	- properties[ownedProperties[i]].owner == owner (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#206)
+PropertyRegistry.updatePropertyDescription(uint256,string) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#219-231) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(property.exists,Property does not exist) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#223)
+	- require(bool,string)(msg.sender == property.owner || msg.sender == registryOwner,Not authorized to update description) (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#224-227)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_20/PropertyRegistry.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

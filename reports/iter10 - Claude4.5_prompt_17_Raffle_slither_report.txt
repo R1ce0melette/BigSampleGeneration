@@ -1,0 +1,43 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_17' running
+INFO:Detectors:
+Raffle.selectWinner() (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#79-101) uses a weak PRNG: "randomIndex = uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,raffle.participants.length))) % raffle.participants.length (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#85-89)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Raffle.updateEntryFee(uint256) (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#130-134) should emit an event for: 
+	- entryFee = newFee (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#133) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+Reentrancy in Raffle.selectWinner() (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#79-101):
+	External calls:
+	- (success,None) = address(winner).call{value: prizeAmount}() (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#97)
+	Event emitted after the call(s):
+	- WinnerSelected(raffleId,winner,prizeAmount) (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#100)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Raffle.selectWinner() (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#79-101):
+	- (success,None) = address(winner).call{value: prizeAmount}() (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#97)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter Raffle.getRaffleInfo(uint256)._raffleId (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#103) is not in mixedCase
+Parameter Raffle.getParticipants(uint256)._raffleId (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#115) is not in mixedCase
+Parameter Raffle.getParticipantEntries(uint256,address)._raffleId (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#120) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Raffle.owner (contracts/iter10 - Claude4.5/prompt_17/Raffle.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

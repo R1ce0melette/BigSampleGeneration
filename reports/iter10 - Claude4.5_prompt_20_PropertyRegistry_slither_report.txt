@@ -1,0 +1,46 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_20' running
+Compilation warnings/errors on contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol:
+Warning: This declaration shadows an existing declaration.
+   --> contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol:134:9:
+    |
+134 |         uint256[] storage properties = ownerProperties[owner];
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol:23:5:
+   |
+23 |     mapping(uint256 => Property) public properties;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+PropertyRegistry._removePropertyFromOwner(address,uint256).properties (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#134) shadows:
+	- PropertyRegistry.properties (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#23) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+PropertyRegistry.changeRegistrar(address) (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#146-149) should emit an event for: 
+	- registrar = newRegistrar (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#148) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+PropertyRegistry.transferProperty(uint256,address) (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#70-94) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(property.owner != newOwner,New owner is already the current owner) (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#73)
+PropertyRegistry.verifyOwnership(uint256,address) (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#121-123) uses timestamp for comparisons
+	Dangerous comparisons:
+	- properties[propertyId].owner == owner (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#122)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_20/PropertyRegistry.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

@@ -1,0 +1,39 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_17' running
+Compilation warnings/errors on contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol:
+Warning: Since the VM version paris, "difficulty" was replaced by "prevrandao", which now returns a random number based on the beacon chain.
+  --> contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol:31:83:
+   |
+31 |         uint256 randomIndex = uint256(keccak256(abi.encodePacked(block.timestamp, block.difficulty))) % participants.length;
+   |                                                                                   ^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+Raffle.pickWinner() (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#26-40) uses a weak PRNG: "randomIndex = uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.difficulty))) % participants.length (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#31)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Raffle.pickWinner() (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#26-40):
+	External calls:
+	- address(winner).transfer(prizeAmount) (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#37)
+	Event emitted after the call(s):
+	- WinnerPicked(winner,prizeAmount) (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#39)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Raffle.entryFee (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#6) should be immutable 
+Raffle.owner (contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

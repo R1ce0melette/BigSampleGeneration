@@ -1,0 +1,45 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_24' running
+INFO:Detectors:
+VotingAccessControl.setVotingPeriod(uint256) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#355-358) should emit an event for: 
+	- votingPeriod = newPeriod (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#357) 
+VotingAccessControl.setQuorumPercentage(uint256) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#364-367) should emit an event for: 
+	- quorumPercentage = newPercentage (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#366) 
+VotingAccessControl.setApprovalPercentage(uint256) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#373-376) should emit an event for: 
+	- approvalPercentage = newPercentage (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#375) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+VotingAccessControl.vote(uint256,bool) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#152-169) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < proposal.deadline,Voting period has ended) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#156)
+	- require(bool,string)(! proposal.executed,Proposal already executed) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#157)
+VotingAccessControl.executeProposal(uint256) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#175-202) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= proposal.deadline,Voting period not ended) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#179)
+	- require(bool,string)(! proposal.executed,Proposal already executed) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#180)
+VotingAccessControl.getActiveProposals() (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#329-349) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! proposals[i].executed && block.timestamp < proposals[i].deadline (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#333)
+	- ! proposals[i_scope_0].executed && block.timestamp < proposals[i_scope_0].deadline (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#342)
+VotingAccessControl.canExecuteProposal(uint256) (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#393-398) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! proposal.executed && block.timestamp >= proposal.deadline (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#397)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+VotingAccessControl.owner (contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_24/VotingAccessControl.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

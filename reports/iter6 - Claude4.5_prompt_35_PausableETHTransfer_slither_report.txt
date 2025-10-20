@@ -1,0 +1,50 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_35' running
+INFO:Detectors:
+PausableETHTransfer (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#8-397) has incorrect ERC20 function interface:PausableETHTransfer.transfer(address,uint256) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#165-191)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+INFO:Detectors:
+Reentrancy in PausableETHTransfer.emergencyWithdraw(address,uint256) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#198-222):
+	External calls:
+	- (success,None) = address(user).call{value: amount}() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#218)
+	Event emitted after the call(s):
+	- Withdrawal(user,amount,block.timestamp) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#221)
+Reentrancy in PausableETHTransfer.withdraw(uint256) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#107-130):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#126)
+	Event emitted after the call(s):
+	- Withdrawal(msg.sender,amount,block.timestamp) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#129)
+Reentrancy in PausableETHTransfer.withdrawAll() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#135-158):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#154)
+	Event emitted after the call(s):
+	- Withdrawal(msg.sender,amount,block.timestamp) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#157)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+PausableETHTransfer.getTransferRecord(uint256) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#284-302) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(index < transferHistory.length,Invalid index) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#291)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in PausableETHTransfer.withdraw(uint256) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#107-130):
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#126)
+Low level call in PausableETHTransfer.withdrawAll() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#135-158):
+	- (success,None) = address(msg.sender).call{value: amount}() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#154)
+Low level call in PausableETHTransfer.emergencyWithdraw(address,uint256) (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#198-222):
+	- (success,None) = address(user).call{value: amount}() (contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol#218)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_35/PausableETHTransfer.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

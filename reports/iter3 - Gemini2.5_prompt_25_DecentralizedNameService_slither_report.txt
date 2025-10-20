@@ -1,0 +1,20 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_25' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DecentralizedNameService.register(string)._name (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#47) is not in mixedCase
+Parameter DecentralizedNameService.resolve(string)._name (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#64) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,address)._name (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#75) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,address)._newAddress (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#75) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._name (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#88) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._newOwner (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#88) is not in mixedCase
+Parameter DecentralizedNameService.release(string)._name (contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol#109) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

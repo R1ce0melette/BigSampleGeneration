@@ -1,0 +1,51 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_31' running
+INFO:Detectors:
+Reentrancy in DepositWithdrawFee.collectFees() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#82-92):
+	External calls:
+	- (success,None) = owner.call{value: fees}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#88)
+	Event emitted after the call(s):
+	- FeeCollected(owner,fees) (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#91)
+Reentrancy in DepositWithdrawFee.withdraw(uint256) (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#46-62):
+	External calls:
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#58)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountAfterFee,fee,block.timestamp) (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#61)
+Reentrancy in DepositWithdrawFee.withdrawAll() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#64-80):
+	External calls:
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#76)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountAfterFee,fee,block.timestamp) (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#79)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DepositWithdrawFee.withdraw(uint256) (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#46-62):
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#58)
+Low level call in DepositWithdrawFee.withdrawAll() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#64-80):
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#76)
+Low level call in DepositWithdrawFee.collectFees() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#82-92):
+	- (success,None) = owner.call{value: fees}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#88)
+Low level call in DepositWithdrawFee.emergencyWithdraw() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#143-149):
+	- (success,None) = owner.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#147)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DepositWithdrawFee.withdraw(uint256)._amount (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#46) is not in mixedCase
+Parameter DepositWithdrawFee.updateFeePercentage(uint256)._newPercentage (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#94) is not in mixedCase
+Parameter DepositWithdrawFee.getBalance(address)._user (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#103) is not in mixedCase
+Parameter DepositWithdrawFee.calculateWithdrawalAmount(uint256)._amount (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#111) is not in mixedCase
+Parameter DepositWithdrawFee.transferOwnership(address)._newOwner (contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol#133) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_31/DepositWithdrawFee.sol analyzed (1 contracts with 100 detectors), 13 result(s) found

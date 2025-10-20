@@ -1,0 +1,34 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+Reentrancy in CrowdFunding.claimRefund() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#102-114):
+	External calls:
+	- (success,None) = msg.sender.call{value: amountToRefund}() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#110)
+	Event emitted after the call(s):
+	- RefundIssued(msg.sender,amountToRefund) (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#113)
+Reentrancy in CrowdFunding.withdraw() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#85-97):
+	External calls:
+	- (success,None) = beneficiary.call{value: amount}() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#93)
+	Event emitted after the call(s):
+	- FundsWithdrawn(beneficiary,amount) (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#96)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+CrowdFunding.claimRefund() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#102-114) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign has not ended yet.) (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CrowdFunding.withdraw() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#85-97):
+	- (success,None) = beneficiary.call{value: amount}() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#93)
+Low level call in CrowdFunding.claimRefund() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#102-114):
+	- (success,None) = msg.sender.call{value: amountToRefund}() (contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol#110)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_3/CrowdFunding.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

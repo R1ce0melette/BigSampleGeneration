@@ -1,0 +1,40 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_34' running
+INFO:Detectors:
+MessageBoard.likeMessage(uint256) (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#58-67) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(messages[_messageId].author != msg.sender,Cannot like your own message) (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#60)
+MessageBoard.getTopMessages(uint256) (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#171-205) uses timestamp for comparisons
+	Dangerous comparisons:
+	- topMessageIds[j] == 0 || messages[i_scope_0].likes > topLikes[j] (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#190)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter MessageBoard.postMessage(string)._content (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#36) is not in mixedCase
+Parameter MessageBoard.likeMessage(uint256)._messageId (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#58) is not in mixedCase
+Parameter MessageBoard.unlikeMessage(uint256)._messageId (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#69) is not in mixedCase
+Parameter MessageBoard.deleteMessage(uint256)._messageId (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#88) is not in mixedCase
+Parameter MessageBoard.getMessage(uint256)._messageId (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#97) is not in mixedCase
+Parameter MessageBoard.getUserMessages(address)._user (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#113) is not in mixedCase
+Parameter MessageBoard.getUserActiveMessages(address)._user (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#117) is not in mixedCase
+Parameter MessageBoard.getUserLikedMessages(address)._user (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#140) is not in mixedCase
+Parameter MessageBoard.hasUserLiked(uint256,address)._messageId (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#144) is not in mixedCase
+Parameter MessageBoard.hasUserLiked(uint256,address)._user (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#144) is not in mixedCase
+Parameter MessageBoard.getRecentMessages(uint256)._count (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#148) is not in mixedCase
+Parameter MessageBoard.getTopMessages(uint256)._count (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#171) is not in mixedCase
+Parameter MessageBoard.getMessageLikes(uint256)._messageId (contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol#223) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_34/MessageBoard.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

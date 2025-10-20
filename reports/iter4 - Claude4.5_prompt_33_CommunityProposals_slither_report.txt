@@ -1,0 +1,84 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_33' running
+INFO:Detectors:
+CommunityProposals.getPassedProposals() (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#381-401) uses a dangerous strict equality:
+	- proposals[i].status == ProposalStatus.Passed (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#385)
+CommunityProposals.getPassedProposals() (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#381-401) uses a dangerous strict equality:
+	- proposals[i_scope_0].status == ProposalStatus.Passed (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#394)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+CommunityProposals.transferOwnership(address) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#479-484) should emit an event for: 
+	- owner = _newOwner (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#483) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+CommunityProposals.updateVotingPeriod(uint256) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#461-464) should emit an event for: 
+	- votingPeriod = _newVotingPeriod (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#463) 
+CommunityProposals.updateQuorumPercentage(uint256) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#470-473) should emit an event for: 
+	- quorumPercentage = _newQuorumPercentage (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#472) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+CommunityProposals.addMember(address) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#100-115) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! members[_member].isMember,Already a member) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#102)
+CommunityProposals.removeMember(address) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#121-129) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(members[_member].isMember,Not a member) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#122)
+CommunityProposals.vote(uint256,bool) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#175-195) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.isActive,Proposal is not active) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#178)
+	- require(bool,string)(block.timestamp < proposal.votingEndTime,Voting period has ended) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#179)
+CommunityProposals.finalizeProposal(uint256) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#201-220) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(proposal.isActive,Proposal is not active) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#204)
+	- require(bool,string)(block.timestamp >= proposal.votingEndTime,Voting period has not ended) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#205)
+CommunityProposals.executeProposal(uint256) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#226-238) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! proposal.isActive,Proposal still active) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#229)
+	- require(bool,string)(proposal.status == ProposalStatus.Passed,Proposal did not pass) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#230)
+	- require(bool,string)(! proposal.isExecuted,Proposal already executed) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#231)
+CommunityProposals.getPassedProposals() (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#381-401) uses timestamp for comparisons
+	Dangerous comparisons:
+	- proposals[i].status == ProposalStatus.Passed (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#385)
+	- proposals[i_scope_0].status == ProposalStatus.Passed (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#394)
+CommunityProposals.getTimeRemaining(uint256) (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#408-414) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= proposals[_proposalId].votingEndTime (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#409)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter CommunityProposals.addMember(address)._member (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#100) is not in mixedCase
+Parameter CommunityProposals.removeMember(address)._member (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#121) is not in mixedCase
+Parameter CommunityProposals.submitProposal(string,string)._title (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#137) is not in mixedCase
+Parameter CommunityProposals.submitProposal(string,string)._description (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#138) is not in mixedCase
+Parameter CommunityProposals.vote(uint256,bool)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#175) is not in mixedCase
+Parameter CommunityProposals.vote(uint256,bool)._voteFor (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#175) is not in mixedCase
+Parameter CommunityProposals.finalizeProposal(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#201) is not in mixedCase
+Parameter CommunityProposals.executeProposal(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#226) is not in mixedCase
+Parameter CommunityProposals.getProposal(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#255) is not in mixedCase
+Parameter CommunityProposals.getMember(address)._member (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#294) is not in mixedCase
+Parameter CommunityProposals.getMemberProposals(address)._member (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#317) is not in mixedCase
+Parameter CommunityProposals.getProposalVoters(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#326) is not in mixedCase
+Parameter CommunityProposals.hasAddressVoted(uint256,address)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#336) is not in mixedCase
+Parameter CommunityProposals.hasAddressVoted(uint256,address)._voter (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#336) is not in mixedCase
+Parameter CommunityProposals.getVoteChoice(uint256,address)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#346) is not in mixedCase
+Parameter CommunityProposals.getVoteChoice(uint256,address)._voter (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#346) is not in mixedCase
+Parameter CommunityProposals.getTimeRemaining(uint256)._proposalId (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#408) is not in mixedCase
+Parameter CommunityProposals.isMemberRegistered(address)._member (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#421) is not in mixedCase
+Parameter CommunityProposals.updateVotingPeriod(uint256)._newVotingPeriod (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#461) is not in mixedCase
+Parameter CommunityProposals.updateQuorumPercentage(uint256)._newQuorumPercentage (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#470) is not in mixedCase
+Parameter CommunityProposals.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol#479) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_33/CommunityProposals.sol analyzed (1 contracts with 100 detectors), 34 result(s) found

@@ -1,0 +1,97 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_26' running
+INFO:Detectors:
+RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#240-260) uses a dangerous strict equality:
+	- subscriptions[allSubs[i]].status == SubscriptionStatus.ACTIVE (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#245)
+RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#240-260) uses a dangerous strict equality:
+	- subscriptions[allSubs[i_scope_0]].status == SubscriptionStatus.ACTIVE (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#253)
+RecurringPayment.getDueSubscriptions() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#294-319) uses a dangerous strict equality:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime && address(this).balance >= sub.amount (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#299-301)
+RecurringPayment.getDueSubscriptions() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#294-319) uses a dangerous strict equality:
+	- sub_scope_1.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub_scope_1.nextPaymentTime && address(this).balance >= sub_scope_1.amount (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#310-312)
+RecurringPayment.isPaymentDue(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#267-272) uses a dangerous strict equality:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#271)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentFrequency) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#47-85):
+	External calls:
+	- (success,None) = payee.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#78)
+	State variables written after the call(s):
+	- subscriptions[subscriptionCount].totalPayments ++ (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#81)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+INFO:Detectors:
+Reentrancy in RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentFrequency) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#47-85):
+	External calls:
+	- (success,None) = payee.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#78)
+	Event emitted after the call(s):
+	- PaymentExecuted(subscriptionCount,msg.sender,payee,amount,block.timestamp) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#84)
+	- SubscriptionCreated(subscriptionCount,msg.sender,payee,amount,frequency) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#83)
+Reentrancy in RecurringPayment.executePayment(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#91-109):
+	External calls:
+	- (success,None) = sub.payee.call{value: sub.amount}() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#105)
+	Event emitted after the call(s):
+	- PaymentExecuted(subscriptionId,sub.payer,sub.payee,sub.amount,block.timestamp) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#108)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+RecurringPayment.executePayment(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#91-109) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.status == SubscriptionStatus.ACTIVE,Subscription is not active) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#95)
+	- require(bool,string)(block.timestamp >= sub.nextPaymentTime,Payment not due yet) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#96)
+	- require(bool,string)(address(this).balance >= sub.amount,Insufficient contract balance) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#97)
+	- require(bool,string)(success,Payment transfer failed) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#106)
+RecurringPayment.fundSubscription(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#115-123) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can fund subscription) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#120)
+RecurringPayment.pauseSubscription(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#129-139) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can pause subscription) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#133)
+	- require(bool,string)(sub.status == SubscriptionStatus.ACTIVE,Subscription is not active) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#134)
+RecurringPayment.resumeSubscription(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#145-158) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can resume subscription) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#149)
+	- require(bool,string)(sub.status == SubscriptionStatus.PAUSED,Subscription is not paused) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#150)
+RecurringPayment.cancelSubscription(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#164-174) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can cancel subscription) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#168)
+	- require(bool,string)(sub.status != SubscriptionStatus.CANCELLED,Subscription already cancelled) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#169)
+RecurringPayment.getActiveSubscriptionsByPayer(address) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#240-260) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscriptions[allSubs[i]].status == SubscriptionStatus.ACTIVE (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#245)
+	- subscriptions[allSubs[i_scope_0]].status == SubscriptionStatus.ACTIVE (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#253)
+RecurringPayment.isPaymentDue(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#267-272) uses timestamp for comparisons
+	Dangerous comparisons:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#271)
+RecurringPayment.getTimeUntilNextPayment(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#279-288) uses timestamp for comparisons
+	Dangerous comparisons:
+	- sub.status != SubscriptionStatus.ACTIVE || block.timestamp >= sub.nextPaymentTime (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#283)
+RecurringPayment.getDueSubscriptions() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#294-319) uses timestamp for comparisons
+	Dangerous comparisons:
+	- sub.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub.nextPaymentTime && address(this).balance >= sub.amount (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#299-301)
+	- sub_scope_1.status == SubscriptionStatus.ACTIVE && block.timestamp >= sub_scope_1.nextPaymentTime && address(this).balance >= sub_scope_1.amount (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#310-312)
+RecurringPayment.withdrawExcessFunds(uint256,uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#334-344) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == sub.payer,Only payer can withdraw) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#338)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in RecurringPayment.createSubscription(address,uint256,RecurringPayment.PaymentFrequency) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#47-85):
+	- (success,None) = payee.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#78)
+Low level call in RecurringPayment.executePayment(uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#91-109):
+	- (success,None) = sub.payee.call{value: sub.amount}() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#105)
+Low level call in RecurringPayment.withdrawExcessFunds(uint256,uint256) (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#334-344):
+	- (success,None) = msg.sender.call{value: amount}() (contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol#342)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_26/RecurringPayment.sol analyzed (1 contracts with 100 detectors), 22 result(s) found

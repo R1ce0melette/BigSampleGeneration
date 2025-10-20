@@ -1,0 +1,40 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_13' running
+INFO:Detectors:
+Reentrancy in CharityDonationTracker.withdrawAllFunds() (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#288-296):
+	External calls:
+	- (success,None) = charityOwner.call{value: balance}() (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#292)
+	Event emitted after the call(s):
+	- FundsWithdrawn(charityOwner,balance) (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#295)
+Reentrancy in CharityDonationTracker.withdrawFunds(uint256) (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#275-283):
+	External calls:
+	- (success,None) = charityOwner.call{value: amount}() (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#279)
+	Event emitted after the call(s):
+	- FundsWithdrawn(charityOwner,amount) (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#282)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CharityDonationTracker.withdrawFunds(uint256) (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#275-283):
+	- (success,None) = charityOwner.call{value: amount}() (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#279)
+Low level call in CharityDonationTracker.withdrawAllFunds() (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#288-296):
+	- (success,None) = charityOwner.call{value: balance}() (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#292)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Loop condition i < donors.length (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#208) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < donors.length (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#214) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition j < donors.length (contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol#215) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_13/CharityDonationTracker.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

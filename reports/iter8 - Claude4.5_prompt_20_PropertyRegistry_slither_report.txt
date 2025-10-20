@@ -1,0 +1,64 @@
+'solc --version' running
+'solc contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Claude4.5/prompt_20' running
+INFO:Detectors:
+PropertyRegistry.getPropertiesByType(string) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#396-419) uses a dangerous strict equality:
+	- property.exists && keccak256(bytes)(bytes(property.propertyType)) == keccak256(bytes)(bytes(propertyType)) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#400-401)
+PropertyRegistry.getPropertiesByType(string) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#396-419) uses a dangerous strict equality:
+	- property_scope_1.exists && keccak256(bytes)(bytes(property_scope_1.propertyType)) == keccak256(bytes)(bytes(propertyType)) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#411-412)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+PropertyRegistry.transferRegistryOwnership(address) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#530-537) should emit an event for: 
+	- registryOwner = newOwner (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#535) 
+	- registryOwner = newOwner (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#535) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+PropertyRegistry.transferProperty(uint256,address,string) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#149-193) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(property.owner == msg.sender || msg.sender == registryOwner || authorizedRegistrars[msg.sender],Not authorized to transfer) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#156-159)
+	- require(bool,string)(newOwner != property.owner,New owner is the same as current owner) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#161)
+PropertyRegistry.verifyOwnership(uint256,address) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#223-230) uses timestamp for comparisons
+	Dangerous comparisons:
+	- properties[propertyId].owner == owner (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#229)
+PropertyRegistry.getPropertiesByOwner(address) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#310-332) uses timestamp for comparisons
+	Dangerous comparisons:
+	- properties[propertyIds[i]].exists && properties[propertyIds[i]].owner == owner (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#315)
+	- property.exists && property.owner == owner (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#325)
+PropertyRegistry.getTransfersByAddress(address) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#361-380) uses timestamp for comparisons
+	Dangerous comparisons:
+	- i < allTransfers.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#363)
+	- allTransfers[i].fromOwner == user || allTransfers[i].toOwner == user (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#364)
+	- i_scope_0 < allTransfers.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#372)
+	- allTransfers[i_scope_0].fromOwner == user || allTransfers[i_scope_0].toOwner == user (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#373)
+PropertyRegistry.getPropertiesByType(string) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#396-419) uses timestamp for comparisons
+	Dangerous comparisons:
+	- property.exists && keccak256(bytes)(bytes(property.propertyType)) == keccak256(bytes)(bytes(propertyType)) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#400-401)
+	- property_scope_1.exists && keccak256(bytes)(bytes(property_scope_1.propertyType)) == keccak256(bytes)(bytes(propertyType)) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#411-412)
+PropertyRegistry.getRecentTransfers(uint256) (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#513-524) uses timestamp for comparisons
+	Dangerous comparisons:
+	- i < resultCount (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#519)
+	- count > totalCount (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#515)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < allTransfers.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#363) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allTransfers.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#372) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allPropertyIds.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#286) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allPropertyIds.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#295) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allPropertyIds.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#398) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allPropertyIds.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#409) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allPropertyIds.length (contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol#488) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter8 - Claude4.5/prompt_20/PropertyRegistry.sol analyzed (1 contracts with 100 detectors), 17 result(s) found

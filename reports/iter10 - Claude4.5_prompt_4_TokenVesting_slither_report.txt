@@ -1,0 +1,38 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_4' running
+INFO:Detectors:
+TokenVesting.release(uint256) (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#36-51) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= startTime + cliffDuration,Cliff period has not ended) (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#38)
+	- require(bool,string)(releasableAmount >= amount,Insufficient vested tokens) (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#43)
+TokenVesting.calculateVestedAmount() (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#53-62) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < startTime + cliffDuration (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#54)
+	- block.timestamp >= startTime + vestingDuration (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#56)
+TokenVesting.getTimeRemaining() (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#87-93) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= endTime (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#89)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+TokenVesting.beneficiary (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#5) should be immutable 
+TokenVesting.cliffDuration (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#11) should be immutable 
+TokenVesting.owner (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#6) should be immutable 
+TokenVesting.startTime (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#9) should be immutable 
+TokenVesting.totalTokens (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#7) should be immutable 
+TokenVesting.vestingDuration (contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_4/TokenVesting.sol analyzed (1 contracts with 100 detectors), 10 result(s) found

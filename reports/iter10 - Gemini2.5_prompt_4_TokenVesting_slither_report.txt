@@ -1,0 +1,41 @@
+'solc --version' running
+'solc contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Gemini2.5/prompt_4' running
+INFO:Detectors:
+Reentrancy in TokenVesting.release() (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#48-56):
+	External calls:
+	- require(bool,string)(token.transfer(beneficiary,unreleased),Token transfer failed.) (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#53)
+	Event emitted after the call(s):
+	- TokensReleased(beneficiary,unreleased) (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#55)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TokenVesting.vestedAmount() (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#32-42) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < start (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#33)
+	- block.timestamp >= start + duration (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#36)
+TokenVesting.release() (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#48-56) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(unreleased > 0,No tokens available for release.) (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#50)
+	- require(bool,string)(token.transfer(beneficiary,unreleased),Token transfer failed.) (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#53)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+TokenVesting.beneficiary (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#10) should be immutable 
+TokenVesting.duration (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#12) should be immutable 
+TokenVesting.start (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#11) should be immutable 
+TokenVesting.token (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#15) should be immutable 
+TokenVesting.totalVestingAmount (contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol#13) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Gemini2.5/prompt_4/TokenVesting.sol analyzed (2 contracts with 100 detectors), 9 result(s) found

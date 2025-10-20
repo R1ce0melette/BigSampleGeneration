@@ -1,0 +1,49 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataStorage.verifyDataHash(uint256,bytes32) (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#127-132) uses a dangerous strict equality:
+	- records[_recordId].dataHash == _dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#131)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+EncryptedDataStorage.verifyOwnership(uint256,address) (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#120-125) uses timestamp for comparisons
+	Dangerous comparisons:
+	- records[_recordId].owner == _claimedOwner (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#124)
+EncryptedDataStorage.verifyDataHash(uint256,bytes32) (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#127-132) uses timestamp for comparisons
+	Dangerous comparisons:
+	- records[_recordId].dataHash == _dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#131)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EncryptedDataStorage.storeData(bytes32,string)._dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#36) is not in mixedCase
+Parameter EncryptedDataStorage.storeData(bytes32,string)._description (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#36) is not in mixedCase
+Parameter EncryptedDataStorage.updateData(uint256,bytes32,string)._recordId (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#60) is not in mixedCase
+Parameter EncryptedDataStorage.updateData(uint256,bytes32,string)._newDataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#60) is not in mixedCase
+Parameter EncryptedDataStorage.updateData(uint256,bytes32,string)._newDescription (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#60) is not in mixedCase
+Parameter EncryptedDataStorage.deleteData(uint256)._recordId (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#86) is not in mixedCase
+Parameter EncryptedDataStorage.transferOwnership(uint256,address)._recordId (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#102) is not in mixedCase
+Parameter EncryptedDataStorage.transferOwnership(uint256,address)._newOwner (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#102) is not in mixedCase
+Parameter EncryptedDataStorage.verifyOwnership(uint256,address)._recordId (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#120) is not in mixedCase
+Parameter EncryptedDataStorage.verifyOwnership(uint256,address)._claimedOwner (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#120) is not in mixedCase
+Parameter EncryptedDataStorage.verifyDataHash(uint256,bytes32)._recordId (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#127) is not in mixedCase
+Parameter EncryptedDataStorage.verifyDataHash(uint256,bytes32)._dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#127) is not in mixedCase
+Parameter EncryptedDataStorage.getRecord(uint256)._recordId (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#134) is not in mixedCase
+Parameter EncryptedDataStorage.getRecordByHash(bytes32)._dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#153) is not in mixedCase
+Parameter EncryptedDataStorage.getOwnerRecords(address)._owner (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#172) is not in mixedCase
+Parameter EncryptedDataStorage.getOwnerActiveRecords(address)._owner (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#176) is not in mixedCase
+Parameter EncryptedDataStorage.isHashStored(bytes32)._dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#201) is not in mixedCase
+Parameter EncryptedDataStorage.getRecordIdByHash(bytes32)._dataHash (contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol#205) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 22 result(s) found

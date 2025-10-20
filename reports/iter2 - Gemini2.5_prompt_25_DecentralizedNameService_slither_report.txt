@@ -1,0 +1,30 @@
+'solc --version' running
+'solc contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Gemini2.5/prompt_25' running
+INFO:Detectors:
+Contract locking ether found:
+	Contract DecentralizedNameService (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#4-78) has payable functions:
+	 - DecentralizedNameService.registerName(string) (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#30-38)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DecentralizedNameService.registerName(string)._name (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#30) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._name (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#45) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._newOwner (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#45) is not in mixedCase
+Parameter DecentralizedNameService.resolveName(string)._name (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#65) is not in mixedCase
+Parameter DecentralizedNameService.setRegistrationFee(uint256)._newFee (contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol#73) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Gemini2.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

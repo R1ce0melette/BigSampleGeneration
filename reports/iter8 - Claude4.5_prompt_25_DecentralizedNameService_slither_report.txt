@@ -1,0 +1,61 @@
+'solc --version' running
+'solc contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Claude4.5/prompt_25' running
+INFO:Detectors:
+DecentralizedNameService.transferOwnership(address) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#508-512) should emit an event for: 
+	- owner = newOwner (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#511) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+DecentralizedNameService.updateRegistrationPeriod(uint256) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#470-473) should emit an event for: 
+	- registrationPeriod = newPeriod (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#472) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+DecentralizedNameService.renewName(string) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#133-148) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.expiryTime > block.timestamp (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#144)
+DecentralizedNameService.resolve(string) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#260-265) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < record.expiryTime,Name has expired) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#263)
+DecentralizedNameService.isNameAvailable(string) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#295-302) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! record.active || block.timestamp >= record.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#301)
+DecentralizedNameService.getNamesByOwner(address) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#318-340) uses timestamp for comparisons
+	Dangerous comparisons:
+	- nameRecords[names[i]].active && nameRecords[names[i]].owner == addr (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#324)
+	- nameRecords[names[i_scope_0]].active && nameRecords[names[i_scope_0]].owner == addr (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#333)
+DecentralizedNameService.getActiveNames() (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#354-375) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.active && block.timestamp < record.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#358)
+	- record_scope_1.active && block.timestamp < record_scope_1.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#368)
+DecentralizedNameService.getExpiredNames() (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#381-402) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.active && block.timestamp >= record.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#385)
+	- record_scope_1.active && block.timestamp >= record_scope_1.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#395)
+DecentralizedNameService.getTimeUntilExpiry(string) (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#418-429) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= record.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#425)
+DecentralizedNameService.getActiveNamesCount() (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#443-452) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.active && block.timestamp < record.expiryTime (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#447)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < allNames.length (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#445) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allNames.length (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#356) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allNames.length (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#366) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allNames.length (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#383) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allNames.length (contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol#393) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter8 - Claude4.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

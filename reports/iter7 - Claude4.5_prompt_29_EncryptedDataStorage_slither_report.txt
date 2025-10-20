@@ -1,0 +1,44 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataStorage.grantAccess(uint256,address,uint256) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#146-167) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(expiresAt == 0 || expiresAt > block.timestamp,Invalid expiration time) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#153)
+EncryptedDataStorage.batchGrantAccess(uint256,address[],uint256) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#225-249) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(expiresAt == 0 || expiresAt > block.timestamp,Invalid expiration time) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#231)
+EncryptedDataStorage._hasAccess(address,uint256) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#257-282) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[recordId].owner == user (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#263)
+	- permission.expiresAt == 0 || permission.expiresAt > block.timestamp (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#276)
+EncryptedDataStorage.getActiveAuthorizedUsers(uint256) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#407-437) uses timestamp for comparisons
+	Dangerous comparisons:
+	- permission.isActive && (permission.expiresAt == 0 || permission.expiresAt > block.timestamp) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#420)
+	- permission_scope_1.isActive && (permission_scope_1.expiresAt == 0 || permission_scope_1.expiresAt > block.timestamp) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#430)
+EncryptedDataStorage.getPublicRecords() (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#478-499) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[i].exists && dataRecords[i].isPublic (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#483)
+	- dataRecords[i_scope_0].exists && dataRecords[i_scope_0].isPublic (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#492)
+EncryptedDataStorage.getAccessibleRecords(address) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#506-527) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[i].exists && _hasAccess(user,i) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#511)
+	- dataRecords[i_scope_0].exists && _hasAccess(user,i_scope_0) (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#520)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+EncryptedDataStorage.contractOwner (contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol#28) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

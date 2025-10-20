@@ -1,0 +1,42 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_22' running
+INFO:Detectors:
+TokenAirdrop.airdrop(address[],uint256) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#44-59) has external calls inside a loop: success = token.transfer(_recipients[i],_amount) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#53)
+TokenAirdrop.bulkAirdrop(address[],uint256[]) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#66-83) has external calls inside a loop: success = token.transfer(_recipients[i_scope_0],_amounts[i_scope_0]) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#79)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in TokenAirdrop.airdrop(address[],uint256) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#44-59):
+	External calls:
+	- success = token.transfer(_recipients[i],_amount) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#53)
+	Event emitted after the call(s):
+	- Airdropped(_recipients[i],_amount) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#57)
+Reentrancy in TokenAirdrop.bulkAirdrop(address[],uint256[]) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#66-83):
+	External calls:
+	- success = token.transfer(_recipients[i_scope_0],_amounts[i_scope_0]) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#79)
+	Event emitted after the call(s):
+	- Airdropped(_recipients[i_scope_0],_amounts[i_scope_0]) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#81)
+Reentrancy in TokenAirdrop.withdrawRemainingTokens() (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#88-95):
+	External calls:
+	- success = token.transfer(owner,remainingBalance) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#92)
+	Event emitted after the call(s):
+	- TokensWithdrawn(owner,remainingBalance) (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#94)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter TokenAirdrop.airdrop(address[],uint256)._recipients (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#44) is not in mixedCase
+Parameter TokenAirdrop.airdrop(address[],uint256)._amount (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#44) is not in mixedCase
+Parameter TokenAirdrop.bulkAirdrop(address[],uint256[])._recipients (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#66) is not in mixedCase
+Parameter TokenAirdrop.bulkAirdrop(address[],uint256[])._amounts (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#66) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+TokenAirdrop.owner (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#18) should be immutable 
+TokenAirdrop.token (contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol#19) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_22/TokenAirdrop.sol analyzed (2 contracts with 100 detectors), 12 result(s) found

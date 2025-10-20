@@ -64,10 +64,10 @@ Low level call in DepositWithdrawalFee.withdrawAllFees() (contracts/iter1 - Clau
 	- (success,None) = owner.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#196)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
 INFO:Detectors:
-Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#323) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#373) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#323) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#296) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#306) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#373) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#337) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < depositors.length (contracts/iter1 - Claude4.5/prompt_31/DepositWithdrawalFee.sol#351) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length

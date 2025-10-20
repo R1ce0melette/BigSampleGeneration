@@ -1,0 +1,45 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_4' running
+INFO:Detectors:
+TokenVesting.release() (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#52-60) ignores return value by token.transfer(beneficiary,releasableAmount) (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+INFO:Detectors:
+Reentrancy in TokenVesting.release() (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#52-60):
+	External calls:
+	- token.transfer(beneficiary,releasableAmount) (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#57)
+	Event emitted after the call(s):
+	- TokensReleased(beneficiary,releasableAmount) (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#59)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TokenVesting.vestedAmount() (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#39-50) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < startTimestamp (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#40)
+	- elapsedTime >= duration (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#45)
+TokenVesting.release() (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#52-60) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(releasableAmount > 0,No tokens to release) (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter TokenVesting.setTotalVestingTokens(uint256)._totalTokens (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#33) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+TokenVesting.beneficiary (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#9) should be immutable 
+TokenVesting.duration (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#11) should be immutable 
+TokenVesting.startTimestamp (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#10) should be immutable 
+TokenVesting.token (contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol#14) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_4/TokenVesting.sol analyzed (2 contracts with 100 detectors), 10 result(s) found

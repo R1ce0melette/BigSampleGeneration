@@ -1,0 +1,28 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_4' running
+INFO:Detectors:
+Reentrancy in TokenVesting.release() (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#135-147):
+	External calls:
+	- sent = token.transfer(beneficiary,releasable) (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#143)
+	Event emitted after the call(s):
+	- TokensReleased(beneficiary,releasable) (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#146)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TokenVesting.release() (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#135-147) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(releasable > 0,No tokens available for release.) (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#139)
+	- require(bool,string)(sent,Token transfer failed.) (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#144)
+TokenVesting.vestedAmount() (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#153-166) uses timestamp for comparisons
+	Dangerous comparisons:
+	- currentTime < vestingStart (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#156)
+	- currentTime >= vestingStart + vestingDuration (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#160)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_4/TokenVesting.sol analyzed (2 contracts with 100 detectors), 4 result(s) found

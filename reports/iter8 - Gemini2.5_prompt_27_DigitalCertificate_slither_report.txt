@@ -1,0 +1,44 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_27' running
+INFO:Detectors:
+DigitalCertificate._checkOnERC721Received(address,address,uint256,bytes) (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#160-176) uses assembly
+	- INLINE ASM (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#168-170)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DigitalCertificate.mintCertificate(address,string)._recipient (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#62) is not in mixedCase
+Parameter DigitalCertificate.mintCertificate(address,string)._tokenURI (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#62) is not in mixedCase
+Parameter DigitalCertificate.tokenURI(uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#76) is not in mixedCase
+Parameter DigitalCertificate.ownerOf(uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#81) is not in mixedCase
+Parameter DigitalCertificate.balanceOf(address)._owner (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#87) is not in mixedCase
+Parameter DigitalCertificate.approve(address,uint256)._to (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#92) is not in mixedCase
+Parameter DigitalCertificate.approve(address,uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#92) is not in mixedCase
+Parameter DigitalCertificate.getApproved(uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#100) is not in mixedCase
+Parameter DigitalCertificate.setApprovalForAll(address,bool)._operator (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#105) is not in mixedCase
+Parameter DigitalCertificate.setApprovalForAll(address,bool)._approved (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#105) is not in mixedCase
+Parameter DigitalCertificate.isApprovedForAll(address,address)._owner (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#111) is not in mixedCase
+Parameter DigitalCertificate.isApprovedForAll(address,address)._operator (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#111) is not in mixedCase
+Parameter DigitalCertificate.transferFrom(address,address,uint256)._from (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#115) is not in mixedCase
+Parameter DigitalCertificate.transferFrom(address,address,uint256)._to (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#115) is not in mixedCase
+Parameter DigitalCertificate.transferFrom(address,address,uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#115) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256)._from (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#120) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256)._to (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#120) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#120) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256,bytes)._from (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#124) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256,bytes)._to (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#124) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256,bytes)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#124) is not in mixedCase
+Parameter DigitalCertificate.safeTransferFrom(address,address,uint256,bytes)._data (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#124) is not in mixedCase
+Parameter DigitalCertificate.isApprovedOrOwner(address,uint256)._spender (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#134) is not in mixedCase
+Parameter DigitalCertificate.isApprovedOrOwner(address,uint256)._tokenId (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#134) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+DigitalCertificate.owner (contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol#21) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_27/DigitalCertificate.sol analyzed (2 contracts with 100 detectors), 27 result(s) found

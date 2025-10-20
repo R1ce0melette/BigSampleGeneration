@@ -1,0 +1,42 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_25' running
+INFO:Detectors:
+DecentralizedNameService.register(string,address) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#51-65) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! isRegistered[_name] || nameRecords[_name].expires < block.timestamp,Name is already taken or has not expired.) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#52)
+DecentralizedNameService.transferName(string,address) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#72-78) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].expires >= block.timestamp,Name has expired.) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#73)
+DecentralizedNameService.updateAddress(string,address) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#85-90) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].expires >= block.timestamp,Name has expired.) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#86)
+DecentralizedNameService.resolve(string) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#97-100) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(isRegistered[_name] && nameRecords[_name].expires >= block.timestamp,Name not registered or has expired.) (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#98)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DecentralizedNameService.withdrawFees() (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#114-119):
+	- (success,None) = address(owner).call{value: balance}() (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#117)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DecentralizedNameService.register(string,address)._name (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#51) is not in mixedCase
+Parameter DecentralizedNameService.register(string,address)._targetAddress (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#51) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._name (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#72) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._newOwner (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#72) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,address)._name (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#85) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,address)._newTargetAddress (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#85) is not in mixedCase
+Parameter DecentralizedNameService.resolve(string)._name (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#97) is not in mixedCase
+Parameter DecentralizedNameService.setRegistrationFee(uint256)._newFee (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#106) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+DecentralizedNameService.owner (contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 15 result(s) found

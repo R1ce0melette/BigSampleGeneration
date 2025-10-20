@@ -1,0 +1,48 @@
+'solc --version' running
+'solc contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Claude4.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataStorage.transferOwnership(address) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#617-621) should emit an event for: 
+	- owner = newOwner (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#620) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EncryptedDataStorage.reactivateData(uint256) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#220-232) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! dataEntries[dataId].isActive,Data entry is already active) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#225)
+EncryptedDataStorage.grantAccess(uint256,address,uint256) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#240-271) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(expiryTime > block.timestamp,Expiry time must be in the future) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#251)
+EncryptedDataStorage.checkAccess(uint256,address) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#362-387) uses timestamp for comparisons
+	Dangerous comparisons:
+	- permissions[i].expiryTime == 0 || block.timestamp <= permissions[i].expiryTime (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#380)
+EncryptedDataStorage.getActivePermissions(uint256) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#487-519) uses timestamp for comparisons
+	Dangerous comparisons:
+	- allPermissions[i].expiryTime == 0 || block.timestamp <= allPermissions[i].expiryTime (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#499)
+	- perm.expiryTime == 0 || block.timestamp <= perm.expiryTime (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#511)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+EncryptedDataStorage.storeData(bytes32,string,string) (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#106-140) has costly operations inside a loop:
+	- dataIdCounter ++ (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#114)
+	Calls stack containing the loop:
+		EncryptedDataStorage.batchStoreData(bytes32[],string[],string[])
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < allDataIds.length (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#605) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Detectors:
+EncryptedDataStorage.permissionIdCounter (contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol#42) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

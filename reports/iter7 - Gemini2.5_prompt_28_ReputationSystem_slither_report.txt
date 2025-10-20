@@ -1,0 +1,18 @@
+'solc --version' running
+'solc contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Gemini2.5/prompt_28' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter ReputationSystem.upvote(address)._target (contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol#33) is not in mixedCase
+Parameter ReputationSystem.downvote(address)._target (contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol#47) is not in mixedCase
+Parameter ReputationSystem.getReputation(address)._user (contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol#62) is not in mixedCase
+Parameter ReputationSystem.getVote(address,address)._voter (contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol#72) is not in mixedCase
+Parameter ReputationSystem.getVote(address,address)._target (contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol#72) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter7 - Gemini2.5/prompt_28/ReputationSystem.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

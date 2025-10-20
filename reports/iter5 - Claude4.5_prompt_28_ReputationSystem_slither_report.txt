@@ -1,0 +1,34 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_28' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter ReputationSystem.upvote(address,string)._recipient (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#31) is not in mixedCase
+Parameter ReputationSystem.upvote(address,string)._comment (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#31) is not in mixedCase
+Parameter ReputationSystem.downvote(address,string)._recipient (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#59) is not in mixedCase
+Parameter ReputationSystem.downvote(address,string)._comment (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#59) is not in mixedCase
+Parameter ReputationSystem.changeVote(address,bool,string)._recipient (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#87) is not in mixedCase
+Parameter ReputationSystem.changeVote(address,bool,string)._newVote (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#87) is not in mixedCase
+Parameter ReputationSystem.changeVote(address,bool,string)._comment (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#87) is not in mixedCase
+Parameter ReputationSystem.removeVote(address)._recipient (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#133) is not in mixedCase
+Parameter ReputationSystem.getReputation(address)._user (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#176) is not in mixedCase
+Parameter ReputationSystem.getReputationScore(address)._user (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#185) is not in mixedCase
+Parameter ReputationSystem.hasUserVoted(address,address)._voter (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#189) is not in mixedCase
+Parameter ReputationSystem.hasUserVoted(address,address)._recipient (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#189) is not in mixedCase
+Parameter ReputationSystem.getVotesReceived(address)._user (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#193) is not in mixedCase
+Parameter ReputationSystem.getVotesGiven(address)._user (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#197) is not in mixedCase
+Parameter ReputationSystem.getVoteCount(address)._user (contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol#201) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_28/ReputationSystem.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

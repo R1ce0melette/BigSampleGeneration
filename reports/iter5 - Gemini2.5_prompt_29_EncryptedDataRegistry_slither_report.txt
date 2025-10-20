@@ -1,0 +1,25 @@
+'solc --version' running
+'solc contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Gemini2.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataRegistry.registerData(bytes32) (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#24-35) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataEntries[_dataHash].owner == address(0),Data hash is already registered.) (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#25)
+EncryptedDataRegistry.transferOwnership(bytes32,address) (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#47-57) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataEntries[_dataHash].owner == msg.sender,You are not the owner of this data.) (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#48)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EncryptedDataRegistry.registerData(bytes32)._dataHash (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#24) is not in mixedCase
+Parameter EncryptedDataRegistry.verifyOwner(bytes32)._dataHash (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#40) is not in mixedCase
+Parameter EncryptedDataRegistry.transferOwnership(bytes32,address)._dataHash (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#47) is not in mixedCase
+Parameter EncryptedDataRegistry.transferOwnership(bytes32,address)._newOwner (contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol#47) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Gemini2.5/prompt_29/EncryptedDataRegistry.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

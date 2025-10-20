@@ -1,0 +1,21 @@
+'solc --version' running
+'solc contracts/iter10 - Gemini2.5/prompt_2/NameRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Gemini2.5/prompt_2' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Gemini2.5/prompt_2/NameRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter NameRegistry.registerName(string)._name (contracts/iter10 - Gemini2.5/prompt_2/NameRegistry.sol#12) is not in mixedCase
+Parameter NameRegistry.updateName(string)._newName (contracts/iter10 - Gemini2.5/prompt_2/NameRegistry.sol#22) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter10 - Gemini2.5/prompt_2/NameRegistry.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

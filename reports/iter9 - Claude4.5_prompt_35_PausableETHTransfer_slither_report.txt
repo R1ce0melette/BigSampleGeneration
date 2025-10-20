@@ -1,0 +1,69 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_35' running
+INFO:Detectors:
+PausableETHTransfer (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#4-227) has incorrect ERC20 function interface:PausableETHTransfer.transfer(address,uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#119-128)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+INFO:Detectors:
+Reentrancy in PausableETHTransfer.emergencyWithdraw(uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#185-193):
+	External calls:
+	- (success,None) = owner.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#189)
+	Event emitted after the call(s):
+	- EmergencyWithdrawal(owner,_amount) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#192)
+Reentrancy in PausableETHTransfer.emergencyWithdrawAll() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#198-206):
+	External calls:
+	- (success,None) = owner.call{value: balance}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#202)
+	Event emitted after the call(s):
+	- EmergencyWithdrawal(owner,balance) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#205)
+Reentrancy in PausableETHTransfer.sendETH(address,uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#135-147):
+	External calls:
+	- (success,None) = _to.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#143)
+	Event emitted after the call(s):
+	- TransferExecuted(msg.sender,_to,_amount) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#146)
+Reentrancy in PausableETHTransfer.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#85-96):
+	External calls:
+	- (success,None) = msg.sender.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#92)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,_amount) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#95)
+Reentrancy in PausableETHTransfer.withdrawAll() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#101-112):
+	External calls:
+	- (success,None) = msg.sender.call{value: balance}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#108)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,balance) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#111)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in PausableETHTransfer.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#85-96):
+	- (success,None) = msg.sender.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#92)
+Low level call in PausableETHTransfer.withdrawAll() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#101-112):
+	- (success,None) = msg.sender.call{value: balance}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#108)
+Low level call in PausableETHTransfer.sendETH(address,uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#135-147):
+	- (success,None) = _to.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#143)
+Low level call in PausableETHTransfer.emergencyWithdraw(uint256) (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#185-193):
+	- (success,None) = owner.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#189)
+Low level call in PausableETHTransfer.emergencyWithdrawAll() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#198-206):
+	- (success,None) = owner.call{value: balance}() (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#202)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter PausableETHTransfer.withdraw(uint256)._amount (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#85) is not in mixedCase
+Parameter PausableETHTransfer.transfer(address,uint256)._to (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#119) is not in mixedCase
+Parameter PausableETHTransfer.transfer(address,uint256)._amount (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#119) is not in mixedCase
+Parameter PausableETHTransfer.sendETH(address,uint256)._to (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#135) is not in mixedCase
+Parameter PausableETHTransfer.sendETH(address,uint256)._amount (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#135) is not in mixedCase
+Parameter PausableETHTransfer.getBalance(address)._user (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#153) is not in mixedCase
+Parameter PausableETHTransfer.emergencyWithdraw(uint256)._amount (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#185) is not in mixedCase
+Parameter PausableETHTransfer.transferOwnership(address)._newOwner (contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol#212) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_35/PausableETHTransfer.sol analyzed (1 contracts with 100 detectors), 20 result(s) found

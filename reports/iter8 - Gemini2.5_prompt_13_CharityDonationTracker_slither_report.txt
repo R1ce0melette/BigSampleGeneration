@@ -1,0 +1,21 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_13' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CharityDonationTracker.withdraw(address) (contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol#52-59):
+	- (success,None) = _to.call{value: balance}() (contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter CharityDonationTracker.withdraw(address)._to (contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol#52) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+CharityDonationTracker.owner (contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_13/CharityDonationTracker.sol analyzed (1 contracts with 100 detectors), 4 result(s) found

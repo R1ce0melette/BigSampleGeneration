@@ -1,0 +1,39 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_17' running
+Compilation warnings/errors on contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol:
+Warning: Since the VM version paris, "difficulty" was replaced by "prevrandao", which now returns a random number based on the beacon chain.
+   --> contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol:108:13:
+    |
+108 |             block.difficulty,
+    |             ^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+OnChainRaffle.pickWinner() (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#82-97) uses a weak PRNG: "randomIndex = _pseudoRandom() % participants.length (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#88)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Reentrancy in OnChainRaffle.pickWinner() (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#82-97):
+	External calls:
+	- (success,None) = winner.call{value: prizeAmount}() (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#93)
+	Event emitted after the call(s):
+	- WinnerChosen(winner,prizeAmount) (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#96)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in OnChainRaffle.pickWinner() (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#82-97):
+	- (success,None) = winner.call{value: prizeAmount}() (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#93)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter OnChainRaffle.startRaffle(uint256)._entryFee (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#55) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+OnChainRaffle.owner (contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_17/OnChainRaffle.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

@@ -1,0 +1,33 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_21' running
+INFO:Detectors:
+AttendanceLogger.transferOrganizer(address) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#293-298) should emit an event for: 
+	- organizer = newOrganizer (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#297) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+AttendanceLogger.createEvent(string,string,uint256,uint256) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#47-68) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(startTime > block.timestamp,Start time must be in the future) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#55)
+AttendanceLogger.checkIn(uint256) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#74-88) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= eventData.startTime,Event has not started yet) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#79)
+	- require(bool,string)(block.timestamp <= eventData.endTime,Event has ended) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#80)
+AttendanceLogger.isEventOpenForCheckIn(uint256) (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#280-287) uses timestamp for comparisons
+	Dangerous comparisons:
+	- eventData.isActive && block.timestamp >= eventData.startTime && block.timestamp <= eventData.endTime (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#284-286)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_21/AttendanceLogger.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

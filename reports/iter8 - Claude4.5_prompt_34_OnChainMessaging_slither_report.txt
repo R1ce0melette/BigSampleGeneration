@@ -1,0 +1,47 @@
+'solc --version' running
+'solc contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Claude4.5/prompt_34' running
+INFO:Detectors:
+OnChainMessaging.transferOwnership(address) (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#605-609) should emit an event for: 
+	- owner = newOwner (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#608) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+OnChainMessaging.getMessagesByTimeRange(uint256,uint256) (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#448-473) uses timestamp for comparisons
+	Dangerous comparisons:
+	- message.timestamp >= startTime && message.timestamp <= endTime (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#456)
+	- message_scope_1.timestamp >= startTime && message_scope_1.timestamp <= endTime (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#466)
+OnChainMessaging.getTopContributors(uint256) (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#523-572) uses timestamp for comparisons
+	Dangerous comparisons:
+	- senders[j] == sender (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#535)
+OnChainMessaging.getMessagesWithMinLikes(uint256) (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#579-599) uses timestamp for comparisons
+	Dangerous comparisons:
+	- messages[allMessageIds[i]].likeCount >= minLikes (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#582)
+	- message.likeCount >= minLikes (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#592)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#498) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#386) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#395) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#510) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#417) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#530) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#346) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#454) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#464) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#581) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allMessageIds.length (contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol#590) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Slither:contracts/iter8 - Claude4.5/prompt_34/OnChainMessaging.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

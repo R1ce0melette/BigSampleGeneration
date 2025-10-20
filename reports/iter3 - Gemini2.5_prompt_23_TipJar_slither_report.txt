@@ -1,0 +1,29 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_23' running
+INFO:Detectors:
+TipJar.changeCreator(address) (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#79-82) should emit an event for: 
+	- creator = _newCreator (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#81) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+Reentrancy in TipJar.withdraw() (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#57-65):
+	External calls:
+	- (success,None) = creator.call{value: balance}() (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#61)
+	Event emitted after the call(s):
+	- Withdrawn(balance) (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#64)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TipJar.withdraw() (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#57-65):
+	- (success,None) = creator.call{value: balance}() (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#61)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter TipJar.changeCreator(address)._newCreator (contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol#79) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_23/TipJar.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

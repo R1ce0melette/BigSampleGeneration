@@ -1,0 +1,43 @@
+'solc --version' running
+'solc contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Gemini2.5/prompt_16' running
+INFO:Detectors:
+SimpleEscrow.constructor(address,address)._seller (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#51) lacks a zero-check on :
+		- seller = _seller (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#53)
+SimpleEscrow.constructor(address,address)._mediator (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#51) lacks a zero-check on :
+		- mediator = _mediator (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Reentrancy in SimpleEscrow.release() (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#71-81):
+	External calls:
+	- (success,None) = seller.call{value: amount}() (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#78)
+	Event emitted after the call(s):
+	- Released(seller,amount) (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#80)
+Reentrancy in SimpleEscrow.resolveDispute(bool) (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#98-107):
+	External calls:
+	- (success,None) = recipient.call{value: amount}() (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#104)
+	Event emitted after the call(s):
+	- DisputeResolved(mediator,recipient,amount) (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#106)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in SimpleEscrow.release() (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#71-81):
+	- (success,None) = seller.call{value: amount}() (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#78)
+Low level call in SimpleEscrow.resolveDispute(bool) (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#98-107):
+	- (success,None) = recipient.call{value: amount}() (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#104)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter SimpleEscrow.resolveDispute(bool)._sendToSeller (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#98) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+SimpleEscrow.buyer (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#10) should be immutable 
+SimpleEscrow.mediator (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#12) should be immutable 
+SimpleEscrow.seller (contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol#11) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Gemini2.5/prompt_16/SimpleEscrow.sol analyzed (1 contracts with 100 detectors), 11 result(s) found

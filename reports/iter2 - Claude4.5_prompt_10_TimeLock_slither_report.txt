@@ -1,0 +1,46 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_10' running
+INFO:Detectors:
+Reentrancy in TimeLock.unlockETH(uint256) (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#47-66):
+	External calls:
+	- (success,None) = msg.sender.call{value: total}() (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#62)
+	Event emitted after the call(s):
+	- ETHUnlocked(msg.sender,_lockIndex,principal,interest,total) (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#65)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TimeLock.unlockETH(uint256) (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#47-66) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= lock.unlockTime,Lock period not yet ended) (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#52)
+TimeLock.getTimeUntilUnlock(address,uint256) (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#111-119) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= lock.unlockTime (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#115)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TimeLock.unlockETH(uint256) (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#47-66):
+	- (success,None) = msg.sender.call{value: total}() (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#62)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter TimeLock.lockETH(uint256)._lockDurationInDays (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#23) is not in mixedCase
+Parameter TimeLock.unlockETH(uint256)._lockIndex (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#47) is not in mixedCase
+Parameter TimeLock.getInterestRate(uint256)._lockDurationInDays (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#68) is not in mixedCase
+Parameter TimeLock.getUserLockCount(address)._user (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#81) is not in mixedCase
+Parameter TimeLock.getUserLock(address,uint256)._user (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#85) is not in mixedCase
+Parameter TimeLock.getUserLock(address,uint256)._lockIndex (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#85) is not in mixedCase
+Parameter TimeLock.getTimeUntilUnlock(address,uint256)._user (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#111) is not in mixedCase
+Parameter TimeLock.getTimeUntilUnlock(address,uint256)._lockIndex (contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol#111) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_10/TimeLock.sol analyzed (1 contracts with 100 detectors), 13 result(s) found

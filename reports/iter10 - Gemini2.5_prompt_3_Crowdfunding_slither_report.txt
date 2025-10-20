@@ -1,0 +1,54 @@
+'solc --version' running
+'solc contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+Crowdfunding.payOut() (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#50-55) sends eth to arbitrary user
+	Dangerous calls:
+	- beneficiary.transfer(totalAmount) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#53)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+Crowdfunding.constructor(uint256,uint256,address)._beneficiary (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#19) lacks a zero-check on :
+		- beneficiary = _beneficiary (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#22)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Crowdfunding.contribute() (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#25-38) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Campaign has ended.) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#27)
+Crowdfunding.checkGoal() (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#40-48) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= deadline (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#42)
+Crowdfunding.refund() (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#57-66) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline && ! fundingGoalReached,Refund conditions not met.) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#58)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Crowdfunding.payOut() (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#50-55):
+	External calls:
+	- beneficiary.transfer(totalAmount) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#53)
+	Event emitted after the call(s):
+	- BeneficiaryPaid(beneficiary) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#54)
+Reentrancy in Crowdfunding.refund() (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#57-66):
+	External calls:
+	- address(msg.sender).transfer(amountToRefund) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#64)
+	Event emitted after the call(s):
+	- Refunded(msg.sender,amountToRefund) (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#65)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Crowdfunding.beneficiary (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#5) should be immutable 
+Crowdfunding.deadline (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#7) should be immutable 
+Crowdfunding.fundingGoal (contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol#6) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Gemini2.5/prompt_3/Crowdfunding.sol analyzed (1 contracts with 100 detectors), 11 result(s) found

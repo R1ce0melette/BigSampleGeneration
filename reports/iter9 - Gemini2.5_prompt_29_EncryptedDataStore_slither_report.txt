@@ -1,0 +1,34 @@
+'solc --version' running
+'solc contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Gemini2.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataStore.storeData(bytes32) (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#15-25) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataRecords[_dataHash].owner == address(0),Data hash already exists.) (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#16)
+EncryptedDataStore.verifyOwnership(bytes32,address) (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#27-29) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[_dataHash].owner == _owner (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#28)
+EncryptedDataStore.getDataTimestamp(bytes32) (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#31-34) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataRecords[_dataHash].owner != address(0),Data hash not found.) (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#32)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EncryptedDataStore.storeData(bytes32)._dataHash (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#15) is not in mixedCase
+Parameter EncryptedDataStore.verifyOwnership(bytes32,address)._dataHash (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#27) is not in mixedCase
+Parameter EncryptedDataStore.verifyOwnership(bytes32,address)._owner (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#27) is not in mixedCase
+Parameter EncryptedDataStore.getDataTimestamp(bytes32)._dataHash (contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol#31) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter9 - Gemini2.5/prompt_29/EncryptedDataStore.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

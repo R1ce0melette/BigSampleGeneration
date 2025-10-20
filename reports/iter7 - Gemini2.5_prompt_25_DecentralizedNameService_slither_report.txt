@@ -1,0 +1,18 @@
+'solc --version' running
+'solc contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Gemini2.5/prompt_25' running
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DecentralizedNameService.registerName(string)._name (contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol#34) is not in mixedCase
+Parameter DecentralizedNameService.resolveName(string)._name (contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol#50) is not in mixedCase
+Parameter DecentralizedNameService.getNameByAddress(address)._owner (contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol#59) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._name (contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol#69) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._newOwner (contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol#69) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter7 - Gemini2.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

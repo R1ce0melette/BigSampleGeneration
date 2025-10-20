@@ -1,0 +1,47 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_10' running
+INFO:Detectors:
+Reentrancy in StakingContract.withdraw(uint256) (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#39-58):
+	External calls:
+	- (success,None) = msg.sender.call{value: totalAmount}() (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#54)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,principal,interest,_stakeIndex) (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+StakingContract.withdraw(uint256) (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#39-58) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= userStake.unlockTimestamp,Stake is still locked) (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#45)
+StakingContract.timeUntilUnlock(address,uint256) (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#102-112) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= userStake.unlockTimestamp (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#107)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in StakingContract.withdraw(uint256) (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#39-58):
+	- (success,None) = msg.sender.call{value: totalAmount}() (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter StakingContract.stake(uint256)._lockPeriodInDays (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#20) is not in mixedCase
+Parameter StakingContract.withdraw(uint256)._stakeIndex (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#39) is not in mixedCase
+Parameter StakingContract.calculateInterest(address,uint256)._user (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#60) is not in mixedCase
+Parameter StakingContract.calculateInterest(address,uint256)._stakeIndex (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#60) is not in mixedCase
+Parameter StakingContract.getStakeInfo(address,uint256)._user (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#75) is not in mixedCase
+Parameter StakingContract.getStakeInfo(address,uint256)._stakeIndex (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#75) is not in mixedCase
+Parameter StakingContract.getUserStakeCount(address)._user (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#98) is not in mixedCase
+Parameter StakingContract.timeUntilUnlock(address,uint256)._user (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#102) is not in mixedCase
+Parameter StakingContract.timeUntilUnlock(address,uint256)._stakeIndex (contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol#102) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_10/StakingContract.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

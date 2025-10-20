@@ -1,0 +1,28 @@
+'solc --version' running
+'solc contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Gemini2.5/prompt_20' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter PropertyRegistry.registerProperty(string,address)._details (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#29) is not in mixedCase
+Parameter PropertyRegistry.registerProperty(string,address)._initialOwner (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#29) is not in mixedCase
+Parameter PropertyRegistry.transferProperty(uint256,address)._propertyId (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#35) is not in mixedCase
+Parameter PropertyRegistry.transferProperty(uint256,address)._newOwner (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#35) is not in mixedCase
+Parameter PropertyRegistry.getPropertyOwner(uint256)._propertyId (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#46) is not in mixedCase
+Parameter PropertyRegistry.getPropertyDetails(uint256)._propertyId (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#51) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+PropertyRegistry.contractOwner (contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter9 - Gemini2.5/prompt_20/PropertyRegistry.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

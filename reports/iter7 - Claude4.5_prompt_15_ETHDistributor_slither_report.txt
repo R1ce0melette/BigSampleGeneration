@@ -1,0 +1,60 @@
+'solc --version' running
+'solc contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - Claude4.5/prompt_15' running
+INFO:Detectors:
+ETHDistributor.distributeETH(address[]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#39-67) has external calls inside a loop: (success,None) = recipients[i_scope_0].call{value: amountPerRecipient}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#59)
+ETHDistributor.distributeAmount(address[],uint256) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#78-107) has external calls inside a loop: (success,None) = recipients[i_scope_0].call{value: amountPerRecipient}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#99)
+ETHDistributor.distributeCustomAmounts(address[],uint256[]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#118-143) has external calls inside a loop: (success,None) = recipients[i_scope_1].call{value: amounts[i_scope_1]}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#138)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in ETHDistributor.distributeAmount(address[],uint256) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#78-107):
+	External calls:
+	- (success,None) = recipients[i_scope_0].call{value: amountPerRecipient}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#99)
+	Event emitted after the call(s):
+	- ETHDistributed(recipients,amountPerRecipient,totalDistributed,block.timestamp) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#106)
+	- ETHSent(recipients[i_scope_0],amountPerRecipient) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#103)
+Reentrancy in ETHDistributor.distributeCustomAmounts(address[],uint256[]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#118-143):
+	External calls:
+	- (success,None) = recipients[i_scope_1].call{value: amounts[i_scope_1]}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#138)
+	Event emitted after the call(s):
+	- ETHSent(recipients[i_scope_1],amounts[i_scope_1]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#141)
+Reentrancy in ETHDistributor.distributeETH(address[]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#39-67):
+	External calls:
+	- (success,None) = recipients[i_scope_0].call{value: amountPerRecipient}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#59)
+	Event emitted after the call(s):
+	- ETHDistributed(recipients,amountPerRecipient,totalDistributed,block.timestamp) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#66)
+	- ETHSent(recipients[i_scope_0],amountPerRecipient) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#63)
+Reentrancy in ETHDistributor.sendETH(address,uint256) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#150-159):
+	External calls:
+	- (success,None) = recipient.call{value: amount}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#155)
+	Event emitted after the call(s):
+	- ETHSent(recipient,amount) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#158)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in ETHDistributor.distributeETH(address[]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#39-67):
+	- (success,None) = recipients[i_scope_0].call{value: amountPerRecipient}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#59)
+Low level call in ETHDistributor.distributeAmount(address[],uint256) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#78-107):
+	- (success,None) = recipients[i_scope_0].call{value: amountPerRecipient}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#99)
+Low level call in ETHDistributor.distributeCustomAmounts(address[],uint256[]) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#118-143):
+	- (success,None) = recipients[i_scope_1].call{value: amounts[i_scope_1]}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#138)
+Low level call in ETHDistributor.sendETH(address,uint256) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#150-159):
+	- (success,None) = recipient.call{value: amount}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#155)
+Low level call in ETHDistributor.withdrawAll() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#194-200):
+	- (success,None) = owner.call{value: balance}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#198)
+Low level call in ETHDistributor.withdraw(uint256) (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#206-212):
+	- (success,None) = owner.call{value: amount}() (contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol#210)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter7 - Claude4.5/prompt_15/ETHDistributor.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

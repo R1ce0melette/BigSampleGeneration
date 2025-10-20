@@ -1,0 +1,58 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_16' running
+INFO:Detectors:
+Reentrancy in Escrow.confirmDelivery(uint256) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#53-68):
+	External calls:
+	- (success,None) = txn.seller.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#63)
+	Event emitted after the call(s):
+	- DeliveryConfirmed(_transactionId,msg.sender) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#66)
+	- FundsReleased(_transactionId,txn.seller,txn.amount) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#67)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#83-112):
+	External calls:
+	- (success,None) = txn.buyer.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#97)
+	Event emitted after the call(s):
+	- Refunded(_transactionId,txn.buyer,txn.amount) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#100)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#83-112):
+	External calls:
+	- (success_scope_0,None) = txn.seller.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#105)
+	Event emitted after the call(s):
+	- FundsReleased(_transactionId,txn.seller,txn.amount) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#108)
+Reentrancy in Escrow.resolveDispute(uint256,bool) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#83-112):
+	External calls:
+	- (success,None) = txn.buyer.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#97)
+	- (success_scope_0,None) = txn.seller.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#105)
+	Event emitted after the call(s):
+	- DisputeResolved(_transactionId,msg.sender,winner) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#111)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Escrow.confirmDelivery(uint256) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#53-68):
+	- (success,None) = txn.seller.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#63)
+Low level call in Escrow.resolveDispute(uint256,bool) (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#83-112):
+	- (success,None) = txn.buyer.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#97)
+	- (success_scope_0,None) = txn.seller.call{value: txn.amount}() (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#105)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter Escrow.createTransaction(address,address)._seller (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#29) is not in mixedCase
+Parameter Escrow.createTransaction(address,address)._mediator (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#29) is not in mixedCase
+Parameter Escrow.confirmDelivery(uint256)._transactionId (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#53) is not in mixedCase
+Parameter Escrow.raiseDispute(uint256)._transactionId (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#70) is not in mixedCase
+Parameter Escrow.resolveDispute(uint256,bool)._transactionId (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#83) is not in mixedCase
+Parameter Escrow.resolveDispute(uint256,bool)._favorBuyer (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#83) is not in mixedCase
+Parameter Escrow.getTransaction(uint256)._transactionId (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#114) is not in mixedCase
+Parameter Escrow.getTransactionState(uint256)._transactionId (contracts/iter5 - Claude4.5/prompt_16/Escrow.sol#136) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_16/Escrow.sol analyzed (1 contracts with 100 detectors), 15 result(s) found

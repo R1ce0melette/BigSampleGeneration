@@ -1,0 +1,41 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_13' running
+INFO:Detectors:
+Reentrancy in CharityDonationTracker.withdrawFunds(address,uint256) (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#203-212):
+	External calls:
+	- (success,None) = _recipient.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#208)
+	Event emitted after the call(s):
+	- FundsWithdrawn(_recipient,_amount) (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#211)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in CharityDonationTracker.withdrawFunds(address,uint256) (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#203-212):
+	- (success,None) = _recipient.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#208)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter CharityDonationTracker.donate(string)._message (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#38) is not in mixedCase
+Parameter CharityDonationTracker.getDonation(uint256)._donationId (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#90) is not in mixedCase
+Parameter CharityDonationTracker.getDonorDonations(address)._donor (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#115) is not in mixedCase
+Parameter CharityDonationTracker.getDonorTotal(address)._donor (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#124) is not in mixedCase
+Parameter CharityDonationTracker.getRecentDonations(uint256)._limit (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#133) is not in mixedCase
+Parameter CharityDonationTracker.getTopDonors(address[])._donors (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#150) is not in mixedCase
+Parameter CharityDonationTracker.withdrawFunds(address,uint256)._recipient (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#203) is not in mixedCase
+Parameter CharityDonationTracker.withdrawFunds(address,uint256)._amount (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#203) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+CharityDonationTracker.owner (contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_13/CharityDonationTracker.sol analyzed (1 contracts with 100 detectors), 12 result(s) found

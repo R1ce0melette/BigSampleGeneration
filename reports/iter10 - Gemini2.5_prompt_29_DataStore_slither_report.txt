@@ -1,0 +1,27 @@
+'solc --version' running
+'solc contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Gemini2.5/prompt_29' running
+INFO:Detectors:
+DataStore.storeData(bytes32) (contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol#15-25) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(records[_dataHash].owner == address(0),Data hash already exists.) (contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol#16)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DataStore.storeData(bytes32)._dataHash (contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol#15) is not in mixedCase
+Parameter DataStore.verifyOwnership(bytes32)._dataHash (contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol#27) is not in mixedCase
+Parameter DataStore.getTimestamp(bytes32)._dataHash (contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol#31) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter10 - Gemini2.5/prompt_29/DataStore.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

@@ -1,0 +1,53 @@
+'solc --version' running
+'solc contracts/iter6 - GPT4/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - GPT4/prompt_16' running
+INFO:Detectors:
+Reentrancy in Escrow.resolve(address) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#50-57):
+	External calls:
+	- _release(to) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#54)
+		- (sent,None) = to.call{value: payout}() (contracts/iter6 - GPT4/prompt_16/Escrow.sol#63)
+	State variables written after the call(s):
+	- resolved = true (contracts/iter6 - GPT4/prompt_16/Escrow.sol#55)
+	Escrow.resolved (contracts/iter6 - GPT4/prompt_16/Escrow.sol#12) can be used in cross function reentrancies:
+	- Escrow.resolve(address) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#50-57)
+	- Escrow.resolved (contracts/iter6 - GPT4/prompt_16/Escrow.sol#12)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Escrow.constructor(address,address,address)._buyer (contracts/iter6 - GPT4/prompt_16/Escrow.sol#19) lacks a zero-check on :
+		- buyer = _buyer (contracts/iter6 - GPT4/prompt_16/Escrow.sol#20)
+Escrow.constructor(address,address,address)._seller (contracts/iter6 - GPT4/prompt_16/Escrow.sol#19) lacks a zero-check on :
+		- seller = _seller (contracts/iter6 - GPT4/prompt_16/Escrow.sol#21)
+Escrow.constructor(address,address,address)._mediator (contracts/iter6 - GPT4/prompt_16/Escrow.sol#19) lacks a zero-check on :
+		- mediator = _mediator (contracts/iter6 - GPT4/prompt_16/Escrow.sol#22)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Reentrancy in Escrow.resolve(address) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#50-57):
+	External calls:
+	- _release(to) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#54)
+		- (sent,None) = to.call{value: payout}() (contracts/iter6 - GPT4/prompt_16/Escrow.sol#63)
+	Event emitted after the call(s):
+	- Resolved(to) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#56)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - GPT4/prompt_16/Escrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Escrow._release(address) (contracts/iter6 - GPT4/prompt_16/Escrow.sol#59-65):
+	- (sent,None) = to.call{value: payout}() (contracts/iter6 - GPT4/prompt_16/Escrow.sol#63)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Escrow.buyer (contracts/iter6 - GPT4/prompt_16/Escrow.sol#5) should be immutable 
+Escrow.mediator (contracts/iter6 - GPT4/prompt_16/Escrow.sol#7) should be immutable 
+Escrow.seller (contracts/iter6 - GPT4/prompt_16/Escrow.sol#6) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - GPT4/prompt_16/Escrow.sol analyzed (1 contracts with 100 detectors), 10 result(s) found

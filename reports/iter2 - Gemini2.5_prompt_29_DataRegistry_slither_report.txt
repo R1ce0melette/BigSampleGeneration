@@ -1,0 +1,36 @@
+'solc --version' running
+'solc contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Gemini2.5/prompt_29' running
+INFO:Detectors:
+DataRegistry.registerData(bytes32) (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#23-34) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataEntries[_dataHash].owner == address(0),Data hash is already registered.) (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#24)
+DataRegistry.isOwner(bytes32) (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#41-43) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataEntries[_dataHash].owner == msg.sender (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#42)
+DataRegistry.transferOwnership(bytes32,address) (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#59-68) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(dataEntries[_dataHash].owner == msg.sender,Only the current owner can transfer ownership.) (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#60)
+	- require(bool,string)(dataEntries[_dataHash].owner != _newOwner,New owner is the same as the old owner.) (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#62)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DataRegistry.registerData(bytes32)._dataHash (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#23) is not in mixedCase
+Parameter DataRegistry.isOwner(bytes32)._dataHash (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#41) is not in mixedCase
+Parameter DataRegistry.getOwner(bytes32)._dataHash (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#50) is not in mixedCase
+Parameter DataRegistry.transferOwnership(bytes32,address)._dataHash (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#59) is not in mixedCase
+Parameter DataRegistry.transferOwnership(bytes32,address)._newOwner (contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol#59) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Gemini2.5/prompt_29/DataRegistry.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

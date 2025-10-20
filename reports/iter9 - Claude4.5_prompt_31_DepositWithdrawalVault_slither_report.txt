@@ -1,0 +1,53 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_31' running
+INFO:Detectors:
+DepositWithdrawalVault.transferOwnership(address) (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#183-187) should emit an event for: 
+	- owner = _newOwner (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#186) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+Reentrancy in DepositWithdrawalVault.collectFees() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#100-110):
+	External calls:
+	- (success,None) = owner.call{value: feeAmount}() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#106)
+	Event emitted after the call(s):
+	- FeeCollected(owner,feeAmount) (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#109)
+Reentrancy in DepositWithdrawalVault.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#56-73):
+	External calls:
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#69)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountAfterFee,fee) (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#72)
+Reentrancy in DepositWithdrawalVault.withdrawAll() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#78-95):
+	External calls:
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#91)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountAfterFee,fee) (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#94)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DepositWithdrawalVault.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#56-73):
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#69)
+Low level call in DepositWithdrawalVault.withdrawAll() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#78-95):
+	- (success,None) = msg.sender.call{value: amountAfterFee}() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#91)
+Low level call in DepositWithdrawalVault.collectFees() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#100-110):
+	- (success,None) = owner.call{value: feeAmount}() (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#106)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DepositWithdrawalVault.withdraw(uint256)._amount (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#56) is not in mixedCase
+Parameter DepositWithdrawalVault.updateFeePercentage(uint256)._newFeePercentage (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#116) is not in mixedCase
+Parameter DepositWithdrawalVault.getBalance(address)._user (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#130) is not in mixedCase
+Parameter DepositWithdrawalVault.calculateWithdrawal(uint256)._amount (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#140) is not in mixedCase
+Parameter DepositWithdrawalVault.transferOwnership(address)._newOwner (contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol#183) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_31/DepositWithdrawalVault.sol analyzed (1 contracts with 100 detectors), 13 result(s) found

@@ -1,0 +1,30 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_11' running
+INFO:Detectors:
+SubscriptionManager.subscribe() (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#49-64) uses timestamp for comparisons
+	Dangerous comparisons:
+	- currentEndTime > block.timestamp (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#56)
+SubscriptionManager.isSubscribed(address) (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#71-73) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscriptionEndTimes[_user] > block.timestamp (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#72)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in SubscriptionManager.withdrawFees() (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#88-94):
+	- (success,None) = owner.call{value: balance}() (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#92)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter SubscriptionManager.isSubscribed(address)._user (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#71) is not in mixedCase
+Parameter SubscriptionManager.setSubscriptionFee(uint256)._newFee (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#79) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+SubscriptionManager.owner (contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_11/SubscriptionManager.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

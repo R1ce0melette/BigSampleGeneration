@@ -1,0 +1,50 @@
+'solc --version' running
+'solc contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter5 - Claude4.5/prompt_31' running
+INFO:Detectors:
+Reentrancy in DepositWithFee.withdraw(uint256) (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#32-47):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: amountAfterFee}() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#43)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountAfterFee,fee) (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#46)
+Reentrancy in DepositWithFee.withdrawAll() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#49-64):
+	External calls:
+	- (success,None) = address(msg.sender).call{value: amountAfterFee}() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#60)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountAfterFee,fee) (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#63)
+Reentrancy in DepositWithFee.withdrawFees() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#66-76):
+	External calls:
+	- (success,None) = address(owner).call{value: feesToWithdraw}() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#72)
+	Event emitted after the call(s):
+	- FeesWithdrawn(owner,feesToWithdraw) (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#75)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DepositWithFee.withdraw(uint256) (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#32-47):
+	- (success,None) = address(msg.sender).call{value: amountAfterFee}() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#43)
+Low level call in DepositWithFee.withdrawAll() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#49-64):
+	- (success,None) = address(msg.sender).call{value: amountAfterFee}() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#60)
+Low level call in DepositWithFee.withdrawFees() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#66-76):
+	- (success,None) = address(owner).call{value: feesToWithdraw}() (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#72)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DepositWithFee.withdraw(uint256)._amount (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#32) is not in mixedCase
+Parameter DepositWithFee.getUserBalance(address)._user (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#82) is not in mixedCase
+Parameter DepositWithFee.calculateWithdrawalAmount(uint256)._amount (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#86) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+DepositWithFee.owner (contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter5 - Claude4.5/prompt_31/DepositWithFee.sol analyzed (1 contracts with 100 detectors), 11 result(s) found

@@ -1,0 +1,31 @@
+'solc --version' running
+'solc contracts/iter3 - GPT4/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - GPT4/prompt_17' running
+INFO:Detectors:
+Raffle.pickWinner() (contracts/iter3 - GPT4/prompt_17/Raffle.sol#26-36) uses a weak PRNG: "winnerIndex = rand % participants.length (contracts/iter3 - GPT4/prompt_17/Raffle.sol#31)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter3 - GPT4/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Raffle.pickWinner() (contracts/iter3 - GPT4/prompt_17/Raffle.sol#26-36):
+	External calls:
+	- address(winner).transfer(address(this).balance) (contracts/iter3 - GPT4/prompt_17/Raffle.sol#34)
+	Event emitted after the call(s):
+	- WinnerSelected(winner) (contracts/iter3 - GPT4/prompt_17/Raffle.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Raffle.owner (contracts/iter3 - GPT4/prompt_17/Raffle.sol#7) should be immutable 
+Raffle.ticketPrice (contracts/iter3 - GPT4/prompt_17/Raffle.sol#6) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter3 - GPT4/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

@@ -1,0 +1,52 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_10' running
+INFO:Detectors:
+Reentrancy in StakingVault.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#67-87):
+	External calls:
+	- (success,None) = msg.sender.call{value: totalAmount}() (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#83)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,_stakeIndex,principal,interest) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#86)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+StakingVault.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#67-87) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= userStake.unlockTimestamp,Stake is still locked) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#73)
+StakingVault.isUnlocked(address,uint256) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#167-171) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= userStakes[_user][_stakeIndex].unlockTimestamp (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#170)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in StakingVault.withdraw(uint256) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#67-87):
+	- (success,None) = msg.sender.call{value: totalAmount}() (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#83)
+Low level call in StakingVault.ownerWithdraw(uint256) (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#185-190):
+	- (success,None) = owner.call{value: _amount}() (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#188)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter StakingVault.stake(uint256)._lockPeriod (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#43) is not in mixedCase
+Parameter StakingVault.withdraw(uint256)._stakeIndex (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#67) is not in mixedCase
+Parameter StakingVault.calculateInterestRate(uint256)._lockPeriod (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#94) is not in mixedCase
+Parameter StakingVault.getUserStakeCount(address)._user (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#123) is not in mixedCase
+Parameter StakingVault.getStakeDetails(address,uint256)._user (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#138) is not in mixedCase
+Parameter StakingVault.getStakeDetails(address,uint256)._stakeIndex (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#138) is not in mixedCase
+Parameter StakingVault.isUnlocked(address,uint256)._user (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#167) is not in mixedCase
+Parameter StakingVault.isUnlocked(address,uint256)._stakeIndex (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#167) is not in mixedCase
+Parameter StakingVault.ownerWithdraw(uint256)._amount (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#185) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+StakingVault.owner (contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol#13) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_10/StakingVault.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

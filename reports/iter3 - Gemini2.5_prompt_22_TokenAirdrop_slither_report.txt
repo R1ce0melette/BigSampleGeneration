@@ -1,0 +1,29 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_22' running
+INFO:Detectors:
+TokenAirdrop.transferOwnership(address) (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#98-101) should emit an event for: 
+	- owner = newOwner (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#100) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+TokenAirdrop.airdrop(address[],uint256) (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#54-73) has external calls inside a loop: success = token.transfer(recipient,_amount) (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#65)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in TokenAirdrop.airdrop(address[],uint256) (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#54-73):
+	External calls:
+	- success = token.transfer(recipient,_amount) (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#65)
+	Event emitted after the call(s):
+	- Airdropped(recipient,_amount) (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter TokenAirdrop.airdrop(address[],uint256)._recipients (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#54) is not in mixedCase
+Parameter TokenAirdrop.airdrop(address[],uint256)._amount (contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol#54) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_22/TokenAirdrop.sol analyzed (2 contracts with 100 detectors), 6 result(s) found

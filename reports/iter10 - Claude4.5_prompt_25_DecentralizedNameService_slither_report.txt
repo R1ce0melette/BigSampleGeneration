@@ -1,0 +1,48 @@
+'solc --version' running
+'solc contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter10 - Claude4.5/prompt_25' running
+INFO:Detectors:
+DecentralizedNameService.updateRegistrationFee(uint256) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#174-176) should emit an event for: 
+	- registrationFee = newFee (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#175) 
+DecentralizedNameService.updateRegistrationPeriod(uint256) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#178-181) should emit an event for: 
+	- registrationPeriod = newPeriodInDays * 86400 (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#180) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+DecentralizedNameService.registerName(string,address) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#44-70) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! isNameTaken[name] || isNameExpired(name),Name already taken) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#49)
+	- nameRecords[name].exists && isNameExpired(name) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#52)
+DecentralizedNameService.resolveName(string) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#132-136) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[name].exists,Name does not exist) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#133)
+DecentralizedNameService.isNameExpired(string) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#149-154) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp > nameRecords[name].expirationDate (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#153)
+DecentralizedNameService.isNameAvailable(string) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#156-158) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! isNameTaken[name] || isNameExpired(name) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#157)
+DecentralizedNameService.getTimeUntilExpiration(string) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#164-172) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[name].exists,Name does not exist) (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#165)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DecentralizedNameService.withdrawFees() (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#183-189):
+	- (success,None) = serviceOwner.call{value: balance}() (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#187)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+DecentralizedNameService.serviceOwner (contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol#19) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter10 - Claude4.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 10 result(s) found

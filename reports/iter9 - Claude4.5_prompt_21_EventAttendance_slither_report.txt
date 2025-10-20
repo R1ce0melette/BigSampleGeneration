@@ -1,0 +1,49 @@
+'solc --version' running
+'solc contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter9 - Claude4.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.transferOrganizer(address) (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#277-281) should emit an event for: 
+	- organizer = _newOrganizer (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#280) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EventAttendance.createEvent(string,string,uint256,uint256) (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#50-73) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_startTime >= block.timestamp,Start time must be in the future) (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#58)
+EventAttendance.checkIn(uint256) (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#79-99) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= evt.startTime,Event has not started yet) (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#85)
+	- require(bool,string)(block.timestamp <= evt.endTime,Event has ended) (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#86)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._name (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#51) is not in mixedCase
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._location (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#52) is not in mixedCase
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._startTime (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#53) is not in mixedCase
+Parameter EventAttendance.createEvent(string,string,uint256,uint256)._endTime (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#54) is not in mixedCase
+Parameter EventAttendance.checkIn(uint256)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#79) is not in mixedCase
+Parameter EventAttendance.checkInAttendee(uint256,address)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#106) is not in mixedCase
+Parameter EventAttendance.checkInAttendee(uint256,address)._attendee (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#106) is not in mixedCase
+Parameter EventAttendance.activateEvent(uint256)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#131) is not in mixedCase
+Parameter EventAttendance.deactivateEvent(uint256)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#144) is not in mixedCase
+Parameter EventAttendance.hasCheckedIn(uint256,address)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#159) is not in mixedCase
+Parameter EventAttendance.hasCheckedIn(uint256,address)._attendee (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#159) is not in mixedCase
+Parameter EventAttendance.getEvent(uint256)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#176) is not in mixedCase
+Parameter EventAttendance.getAttendanceRecord(uint256,address)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#208) is not in mixedCase
+Parameter EventAttendance.getAttendanceRecord(uint256,address)._attendee (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#208) is not in mixedCase
+Parameter EventAttendance.getEventAttendees(uint256)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#229) is not in mixedCase
+Parameter EventAttendance.getAttendeeCount(uint256)._eventId (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#240) is not in mixedCase
+Parameter EventAttendance.transferOrganizer(address)._newOrganizer (contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol#277) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter9 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 21 result(s) found

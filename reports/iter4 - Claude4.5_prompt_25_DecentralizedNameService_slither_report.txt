@@ -1,0 +1,105 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_25' running
+Compilation warnings/errors on contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol:
+Warning: This declaration shadows an existing declaration.
+   --> contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol:184:9:
+    |
+184 |         address owner,
+    |         ^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol:24:5:
+   |
+24 |     address public owner;
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+DecentralizedNameService.getNameRecord(string).owner (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#184) shadows:
+	- DecentralizedNameService.owner (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#24) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+DecentralizedNameService.transferOwnership(address) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#324-329) should emit an event for: 
+	- owner = _newOwner (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#328) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+DecentralizedNameService.updateRegistrationFee(uint256) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#268-270) should emit an event for: 
+	- registrationFee = _newFee (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#269) 
+DecentralizedNameService.updateRegistrationPeriod(uint256) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#284-287) should emit an event for: 
+	- registrationPeriod = _newPeriod (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#286) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+DecentralizedNameService.registerName(string,address) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#61-83) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! nameExists[_name] || ! nameRecords[_name].isActive || block.timestamp > nameRecords[_name].expirationTime,Name already registered) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#66-67)
+DecentralizedNameService.renewName(string) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#89-103) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].isActive,Name is not active) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#91)
+	- block.timestamp < record.expirationTime (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#96)
+DecentralizedNameService.updateAddress(string,address) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#110-119) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].isActive,Name is not active) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#112)
+	- require(bool,string)(block.timestamp < nameRecords[_name].expirationTime,Name has expired) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#113)
+DecentralizedNameService.transferName(string,address) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#126-137) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].isActive,Name is not active) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#129)
+	- require(bool,string)(block.timestamp < nameRecords[_name].expirationTime,Name has expired) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#130)
+DecentralizedNameService.releaseName(string) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#143-149) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].isActive,Name is not active) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#144)
+DecentralizedNameService.resolve(string) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#156-162) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[_name].isActive,Name is not active) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#158)
+	- require(bool,string)(block.timestamp < nameRecords[_name].expirationTime,Name has expired) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#159)
+DecentralizedNameService.isNameAvailable(string) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#208-217) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! record.isActive || block.timestamp > record.expirationTime (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#216)
+DecentralizedNameService.getTimeUntilExpiration(string) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#241-251) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! record.isActive || block.timestamp >= record.expirationTime (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#246)
+DecentralizedNameService.isNameExpired(string) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#258-262) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= nameRecords[_name].expirationTime (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#261)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DecentralizedNameService.withdrawFees() (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#292-298):
+	- (success,None) = owner.call{value: balance}() (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#296)
+Low level call in DecentralizedNameService.withdrawAmount(uint256) (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#304-310):
+	- (success,None) = owner.call{value: _amount}() (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#308)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DecentralizedNameService.registerName(string,address)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#61) is not in mixedCase
+Parameter DecentralizedNameService.registerName(string,address)._resolvedAddress (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#61) is not in mixedCase
+Parameter DecentralizedNameService.renewName(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#89) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,address)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#110) is not in mixedCase
+Parameter DecentralizedNameService.updateAddress(string,address)._newAddress (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#110) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#126) is not in mixedCase
+Parameter DecentralizedNameService.transferName(string,address)._newOwner (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#126) is not in mixedCase
+Parameter DecentralizedNameService.releaseName(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#143) is not in mixedCase
+Parameter DecentralizedNameService.resolve(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#156) is not in mixedCase
+Parameter DecentralizedNameService.getNameOwner(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#169) is not in mixedCase
+Parameter DecentralizedNameService.getNameRecord(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#183) is not in mixedCase
+Parameter DecentralizedNameService.isNameAvailable(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#208) is not in mixedCase
+Parameter DecentralizedNameService.getNamesByOwner(address)._owner (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#224) is not in mixedCase
+Parameter DecentralizedNameService.getTimeUntilExpiration(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#241) is not in mixedCase
+Parameter DecentralizedNameService.isNameExpired(string)._name (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#258) is not in mixedCase
+Parameter DecentralizedNameService.updateRegistrationFee(uint256)._newFee (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#268) is not in mixedCase
+Parameter DecentralizedNameService.updateRenewalFee(uint256)._newFee (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#276) is not in mixedCase
+Parameter DecentralizedNameService.updateRegistrationPeriod(uint256)._newPeriod (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#284) is not in mixedCase
+Parameter DecentralizedNameService.withdrawAmount(uint256)._amount (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#304) is not in mixedCase
+Parameter DecentralizedNameService.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol#324) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 36 result(s) found

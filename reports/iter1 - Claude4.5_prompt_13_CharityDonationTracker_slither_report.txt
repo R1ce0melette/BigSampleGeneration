@@ -56,10 +56,10 @@ Parameter CharityDonationTracker.updateCharityInfo(string,string)._charityName (
 Parameter CharityDonationTracker.updateCharityInfo(string,string)._charityDescription (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#127) is not in mixedCase
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
 INFO:Detectors:
-Loop condition i < donations.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#290) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < donations.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#300) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < donors.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#245) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < donors.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#245) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < donors.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#251) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition j < donors.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#252) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < donations.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#290) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < donations.length (contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol#300) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter1 - Claude4.5/prompt_13/CharityDonationTracker.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

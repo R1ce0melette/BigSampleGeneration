@@ -1,0 +1,54 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_34' running
+INFO:Detectors:
+OnChainMessaging.transferOwnership(address) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#451-456) should emit an event for: 
+	- owner = _newOwner (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#455) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+OnChainMessaging.likeMessage(uint256) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#107-134) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(message.isActive,Message is not active) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#110)
+	- require(bool,string)(msg.sender != message.sender,Cannot like your own message) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#112)
+OnChainMessaging.unlikeMessage(uint256) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#140-154) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(message.isActive,Message is not active) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#143)
+OnChainMessaging.deleteMessage(uint256) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#160-168) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(message.isActive,Message already deleted) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#163)
+OnChainMessaging.getTopLikedMessages(uint256) (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#339-370) uses timestamp for comparisons
+	Dangerous comparisons:
+	- likes > topLikes[j] (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#354)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter OnChainMessaging.sendMessage(string)._content (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#68) is not in mixedCase
+Parameter OnChainMessaging.likeMessage(uint256)._messageId (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#107) is not in mixedCase
+Parameter OnChainMessaging.unlikeMessage(uint256)._messageId (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#140) is not in mixedCase
+Parameter OnChainMessaging.deleteMessage(uint256)._messageId (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#160) is not in mixedCase
+Parameter OnChainMessaging.getMessage(uint256)._messageId (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#180) is not in mixedCase
+Parameter OnChainMessaging.getUser(address)._user (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#209) is not in mixedCase
+Parameter OnChainMessaging.getUserMessages(address)._user (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#232) is not in mixedCase
+Parameter OnChainMessaging.getUserActiveMessages(address)._user (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#241) is not in mixedCase
+Parameter OnChainMessaging.getMessageLikers(uint256)._messageId (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#270) is not in mixedCase
+Parameter OnChainMessaging.hasUserLiked(uint256,address)._messageId (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#280) is not in mixedCase
+Parameter OnChainMessaging.hasUserLiked(uint256,address)._user (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#280) is not in mixedCase
+Parameter OnChainMessaging.getMessages(uint256,uint256)._startIndex (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#290) is not in mixedCase
+Parameter OnChainMessaging.getMessages(uint256,uint256)._count (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#290) is not in mixedCase
+Parameter OnChainMessaging.getTopLikedMessages(uint256)._count (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#339) is not in mixedCase
+Parameter OnChainMessaging.isUserRegistered(address)._user (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#443) is not in mixedCase
+Parameter OnChainMessaging.transferOwnership(address)._newOwner (contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol#451) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_34/OnChainMessaging.sol analyzed (1 contracts with 100 detectors), 22 result(s) found

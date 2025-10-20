@@ -1,0 +1,52 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_35' running
+INFO:Detectors:
+PausableTransfer (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#4-156) has incorrect ERC20 function interface:PausableTransfer.transfer(address,uint256) (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#85-95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+INFO:Detectors:
+Reentrancy in PausableTransfer.emergencyWithdraw() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#107-117):
+	External calls:
+	- (success,None) = msg.sender.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#113)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,balance,block.timestamp) (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#116)
+Reentrancy in PausableTransfer.withdraw(uint256) (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#59-70):
+	External calls:
+	- (success,None) = msg.sender.call{value: _amount}() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#66)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,_amount,block.timestamp) (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#69)
+Reentrancy in PausableTransfer.withdrawAll() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#72-83):
+	External calls:
+	- (success,None) = msg.sender.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#79)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,balance,block.timestamp) (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#82)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in PausableTransfer.withdraw(uint256) (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#59-70):
+	- (success,None) = msg.sender.call{value: _amount}() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#66)
+Low level call in PausableTransfer.withdrawAll() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#72-83):
+	- (success,None) = msg.sender.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#79)
+Low level call in PausableTransfer.emergencyWithdraw() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#107-117):
+	- (success,None) = msg.sender.call{value: balance}() (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#113)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter PausableTransfer.withdraw(uint256)._amount (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#59) is not in mixedCase
+Parameter PausableTransfer.transfer(address,uint256)._to (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#85) is not in mixedCase
+Parameter PausableTransfer.transfer(address,uint256)._amount (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#85) is not in mixedCase
+Parameter PausableTransfer.getBalance(address)._user (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#119) is not in mixedCase
+Parameter PausableTransfer.transferOwnership(address)._newOwner (contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol#147) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_35/PausableTransfer.sol analyzed (1 contracts with 100 detectors), 13 result(s) found

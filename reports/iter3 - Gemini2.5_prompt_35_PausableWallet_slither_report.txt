@@ -1,0 +1,27 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_35' running
+INFO:Detectors:
+PausableWallet.transferOwnership(address) (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#112-115) should emit an event for: 
+	- owner = _newOwner (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#114) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter PausableWallet.withdraw(uint256)._amount (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#84) is not in mixedCase
+Parameter PausableWallet.getUserBalance(address)._user (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#97) is not in mixedCase
+Parameter PausableWallet.transferOwnership(address)._newOwner (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#112) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Reentrancy in PausableWallet.withdraw(uint256) (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#84-92):
+	External calls:
+	- address(msg.sender).transfer(_amount) (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#89)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,_amount) (contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol#91)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_35/PausableWallet.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

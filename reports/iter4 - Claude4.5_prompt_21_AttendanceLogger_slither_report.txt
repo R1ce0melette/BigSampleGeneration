@@ -1,0 +1,69 @@
+'solc --version' running
+'solc contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter4 - Claude4.5/prompt_21' running
+Compilation warnings/errors on contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol:
+Warning: This declaration has the same name as another declaration.
+   --> contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol:177:9:
+    |
+177 |         bool hasCheckedIn
+    |         ^^^^^^^^^^^^^^^^^
+Note: The other declaration is here:
+   --> contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol:196:5:
+    |
+196 |     function hasCheckedIn(uint256 _eventId, address _attendee) external view returns (bool) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+INFO:Detectors:
+AttendanceLogger.getAttendanceRecord(uint256,address).hasCheckedIn (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#177) shadows:
+	- AttendanceLogger.hasCheckedIn(uint256,address) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#196-200) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+INFO:Detectors:
+AttendanceLogger.transferOrganizer(address) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#345-350) should emit an event for: 
+	- eventOrganizer = _newOrganizer (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#349) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+AttendanceLogger.createEvent(string,string,uint256,uint256) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#54-77) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(_endTime > block.timestamp,End time must be in the future) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#62)
+AttendanceLogger.checkIn(uint256) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#83-103) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= evt.startTime,Event has not started yet) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#89)
+	- require(bool,string)(block.timestamp <= evt.endTime,Event has ended) (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#90)
+AttendanceLogger.getUpcomingEvents() (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#281-303) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < events[i].endTime (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#286)
+	- block.timestamp < events[i_scope_0].endTime (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#296)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter AttendanceLogger.createEvent(string,string,uint256,uint256)._name (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#55) is not in mixedCase
+Parameter AttendanceLogger.createEvent(string,string,uint256,uint256)._location (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#56) is not in mixedCase
+Parameter AttendanceLogger.createEvent(string,string,uint256,uint256)._startTime (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#57) is not in mixedCase
+Parameter AttendanceLogger.createEvent(string,string,uint256,uint256)._endTime (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#58) is not in mixedCase
+Parameter AttendanceLogger.checkIn(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#83) is not in mixedCase
+Parameter AttendanceLogger.activateEvent(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#109) is not in mixedCase
+Parameter AttendanceLogger.deactivateEvent(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#122) is not in mixedCase
+Parameter AttendanceLogger.getEvent(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#142) is not in mixedCase
+Parameter AttendanceLogger.getAttendanceRecord(uint256,address)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#174) is not in mixedCase
+Parameter AttendanceLogger.getAttendanceRecord(uint256,address)._attendee (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#174) is not in mixedCase
+Parameter AttendanceLogger.hasCheckedIn(uint256,address)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#196) is not in mixedCase
+Parameter AttendanceLogger.hasCheckedIn(uint256,address)._attendee (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#196) is not in mixedCase
+Parameter AttendanceLogger.haveICheckedIn(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#207) is not in mixedCase
+Parameter AttendanceLogger.getEventAttendees(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#218) is not in mixedCase
+Parameter AttendanceLogger.getAttendeeCount(uint256)._eventId (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#229) is not in mixedCase
+Parameter AttendanceLogger.transferOrganizer(address)._newOrganizer (contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol#345) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter4 - Claude4.5/prompt_21/AttendanceLogger.sol analyzed (1 contracts with 100 detectors), 22 result(s) found

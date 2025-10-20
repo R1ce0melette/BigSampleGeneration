@@ -1,0 +1,30 @@
+'solc --version' running
+'solc contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter8 - Gemini2.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.checkIn() (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#34-43) uses a dangerous strict equality:
+	- require(bool,string)(attendees[msg.sender] == 0,You have already checked in.) (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#36)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+EventAttendance.checkIn() (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#34-43) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(attendees[msg.sender] == 0,You have already checked in.) (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#36)
+EventAttendance.hasCheckedIn(address) (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#68-70) uses timestamp for comparisons
+	Dangerous comparisons:
+	- attendees[_attendee] > 0 (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#69)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EventAttendance.hasCheckedIn(address)._attendee (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#68) is not in mixedCase
+Parameter EventAttendance.getCheckInTime(address)._attendee (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#77) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+EventAttendance.owner (contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter8 - Gemini2.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

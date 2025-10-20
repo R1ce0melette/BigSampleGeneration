@@ -1,0 +1,68 @@
+'solc --version' running
+'solc contracts/iter2 - Claude4.5/prompt_17/Raffle.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter2 - Claude4.5/prompt_17' running
+INFO:Detectors:
+Raffle.selectWinner() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#81-107) uses a weak PRNG: "randomIndex = uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,currentRaffle.participants.length,msg.sender))) % currentRaffle.participants.length (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#88-93)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Raffle.buyTicket(uint256) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#53-69) uses a dangerous strict equality:
+	- require(bool,string)(raffles[raffleId].state == RaffleState.OPEN,Raffle is not open) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Raffle.updateTicketPrice(uint256) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#148-152) should emit an event for: 
+	- ticketPrice = _newPrice (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#151) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+Reentrancy in Raffle.selectWinner() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#81-107):
+	External calls:
+	- (success,None) = address(winner).call{value: prize}() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#103)
+	Event emitted after the call(s):
+	- PrizeTransferred(raffleId,winner,prize) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#106)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Raffle.startRaffle() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#40-51) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffles[raffleId].state != RaffleState.OPEN,Raffle is already active) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#41)
+Raffle.buyTicket(uint256) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#53-69) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffles[raffleId].state == RaffleState.OPEN,Raffle is not open) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#54)
+Raffle.closeRaffle() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#71-79) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffles[raffleId].state == RaffleState.OPEN,Raffle is not open) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#72)
+Raffle.selectWinner() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#81-107) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffles[raffleId].state == RaffleState.CLOSED,Raffle is not closed) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#82)
+	- require(bool,string)(currentRaffle.participants.length > 0,No participants in raffle) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#85)
+Raffle.updateTicketPrice(uint256) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#148-152) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(raffles[raffleId].state != RaffleState.OPEN,Cannot change price during active raffle) (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#150)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Raffle.selectWinner() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#81-107):
+	- (success,None) = address(winner).call{value: prize}() (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter Raffle.buyTicket(uint256)._numberOfTickets (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#53) is not in mixedCase
+Parameter Raffle.getRaffleInfo(uint256)._raffleId (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#109) is not in mixedCase
+Parameter Raffle.getParticipants(uint256)._raffleId (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#132) is not in mixedCase
+Parameter Raffle.getUserTicketCount(uint256,address)._raffleId (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#137) is not in mixedCase
+Parameter Raffle.getUserTicketCount(uint256,address)._user (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#137) is not in mixedCase
+Parameter Raffle.updateTicketPrice(uint256)._newPrice (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#148) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Raffle.owner (contracts/iter2 - Claude4.5/prompt_17/Raffle.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter2 - Claude4.5/prompt_17/Raffle.sol analyzed (1 contracts with 100 detectors), 18 result(s) found

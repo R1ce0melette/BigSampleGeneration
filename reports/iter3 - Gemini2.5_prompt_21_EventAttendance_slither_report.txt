@@ -1,0 +1,20 @@
+'solc --version' running
+'solc contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter3 - Gemini2.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.transferOrganizership(address) (contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol#126-129) should emit an event for: 
+	- organizer = _newOrganizer (contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol#128) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter EventAttendance.openCheckIn(string)._eventName (contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol#57) is not in mixedCase
+Parameter EventAttendance.didUserCheckIn(address)._user (contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol#118) is not in mixedCase
+Parameter EventAttendance.transferOrganizership(address)._newOrganizer (contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol#126) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter3 - Gemini2.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

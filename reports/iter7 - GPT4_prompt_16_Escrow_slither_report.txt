@@ -1,0 +1,41 @@
+'solc --version' running
+'solc contracts/iter7 - GPT4/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter7 - GPT4/prompt_16' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter7 - GPT4/prompt_16/Escrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in Escrow.confirmDelivery() (contracts/iter7 - GPT4/prompt_16/Escrow.sol#48-53):
+	External calls:
+	- address(seller).transfer(amount) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#51)
+	Event emitted after the call(s):
+	- Delivered(seller) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#52)
+Reentrancy in Escrow.resolveToBuyer() (contracts/iter7 - GPT4/prompt_16/Escrow.sol#62-68):
+	External calls:
+	- address(buyer).transfer(amount) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#65)
+	Event emitted after the call(s):
+	- Refunded(buyer) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#66)
+	- Resolved(buyer,amount) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#67)
+Reentrancy in Escrow.resolveToSeller() (contracts/iter7 - GPT4/prompt_16/Escrow.sol#70-76):
+	External calls:
+	- address(seller).transfer(amount) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#73)
+	Event emitted after the call(s):
+	- Delivered(seller) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#74)
+	- Resolved(seller,amount) (contracts/iter7 - GPT4/prompt_16/Escrow.sol#75)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Escrow.buyer (contracts/iter7 - GPT4/prompt_16/Escrow.sol#7) should be immutable 
+Escrow.mediator (contracts/iter7 - GPT4/prompt_16/Escrow.sol#9) should be immutable 
+Escrow.seller (contracts/iter7 - GPT4/prompt_16/Escrow.sol#8) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter7 - GPT4/prompt_16/Escrow.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

@@ -1,0 +1,88 @@
+'solc --version' running
+'solc contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter6 - Claude4.5/prompt_4' running
+INFO:Detectors:
+Reentrancy in TokenVesting.revoke() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#80-103):
+	External calls:
+	- (success,None) = beneficiary.call{value: unreleased}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#89)
+	- (success_scope_0,None) = owner.call{value: refund}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#97)
+	State variables written after the call(s):
+	- revoked = true (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#101)
+	TokenVesting.revoked (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#19) can be used in cross function reentrancies:
+	- TokenVesting.constructor(address,uint256,uint256,uint256,bool) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#33-55)
+	- TokenVesting.getVestedAmount() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#117-129)
+	- TokenVesting.getVestingInfo() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#170-190)
+	- TokenVesting.release() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#61-73)
+	- TokenVesting.revoke() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#80-103)
+	- TokenVesting.revoked (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#19)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Reentrancy in TokenVesting.release() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#61-73):
+	External calls:
+	- (success,None) = beneficiary.call{value: unreleased}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#69)
+	Event emitted after the call(s):
+	- TokensReleased(unreleased) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#72)
+Reentrancy in TokenVesting.revoke() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#80-103):
+	External calls:
+	- (success,None) = beneficiary.call{value: unreleased}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#89)
+	Event emitted after the call(s):
+	- TokensReleased(unreleased) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#91)
+Reentrancy in TokenVesting.revoke() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#80-103):
+	External calls:
+	- (success,None) = beneficiary.call{value: unreleased}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#89)
+	- (success_scope_0,None) = owner.call{value: refund}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#97)
+	Event emitted after the call(s):
+	- VestingRevoked() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#102)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+TokenVesting.release() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#61-73) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(unreleased > 0,No tokens available for release) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#65)
+	- require(bool,string)(success,Transfer failed) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#70)
+TokenVesting.revoke() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#80-103) uses timestamp for comparisons
+	Dangerous comparisons:
+	- unreleased > 0 (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#87)
+	- require(bool,string)(success,Transfer to beneficiary failed) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#90)
+	- refund > 0 (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#96)
+	- require(bool,string)(success_scope_0,Transfer to owner failed) (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#98)
+TokenVesting.getVestedAmount() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#117-129) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < startTime + cliff (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#118)
+	- block.timestamp >= startTime + duration || revoked (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#121)
+TokenVesting.getRemainingTime() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#143-149) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= endTime (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#145)
+TokenVesting.isCliffPassed() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#155-157) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= startTime + cliff (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#156)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in TokenVesting.release() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#61-73):
+	- (success,None) = beneficiary.call{value: unreleased}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#69)
+Low level call in TokenVesting.revoke() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#80-103):
+	- (success,None) = beneficiary.call{value: unreleased}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#89)
+	- (success_scope_0,None) = owner.call{value: refund}() (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#97)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+TokenVesting.beneficiary (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#9) should be immutable 
+TokenVesting.cliff (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#15) should be immutable 
+TokenVesting.duration (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#16) should be immutable 
+TokenVesting.owner (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#10) should be immutable 
+TokenVesting.revocable (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#18) should be immutable 
+TokenVesting.startTime (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#14) should be immutable 
+TokenVesting.totalTokens (contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol#12) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter6 - Claude4.5/prompt_4/TokenVesting.sol analyzed (1 contracts with 100 detectors), 19 result(s) found
