@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+interface IERC20 {
+    function transfer(address to, uint256 amount) external returns (bool);
+}
+
+contract TokenFaucet {
+    IERC20 public token;
+    uint256 public claimAmount;
+    mapping(address => uint256) public lastClaimed;
+
+    constructor(address _token, uint256 _claimAmount) {
+        token = IERC20(_token);
+        claimAmount = _claimAmount;
+    }
+
+    function claim() external {
+        require(block.timestamp - lastClaimed[msg.sender] >= 1 days, "Claim once every 24h");
+        lastClaimed[msg.sender] = block.timestamp;
+        require(token.transfer(msg.sender, claimAmount), "Transfer failed");
+    }
+}

@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Feedback {
+    struct Review {
+        address user;
+        string feedback;
+        uint8 rating;
+    }
+
+    Review[] public reviews;
+    mapping(address => bool) public hasReviewed;
+
+    event FeedbackSubmitted(address indexed user, string feedback, uint8 rating);
+
+    function submitFeedback(string calldata feedback, uint8 rating) external {
+        require(!hasReviewed[msg.sender], "Already reviewed");
+        require(rating >= 1 && rating <= 5, "Rating must be 1-5");
+        reviews.push(Review(msg.sender, feedback, rating));
+        hasReviewed[msg.sender] = true;
+        emit FeedbackSubmitted(msg.sender, feedback, rating);
+    }
+
+    function getReview(uint256 index) external view returns (address, string memory, uint8) {
+        require(index < reviews.length, "Invalid index");
+        Review storage r = reviews[index];
+        return (r.user, r.feedback, r.rating);
+    }
+
+    function getReviewCount() external view returns (uint256) {
+        return reviews.length;
+    }
+}

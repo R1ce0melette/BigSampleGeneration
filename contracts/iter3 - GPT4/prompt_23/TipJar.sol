@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract TipJar {
+    address public creator;
+    uint256 public totalTips;
+
+    event Tipped(address indexed from, uint256 amount);
+
+    constructor() {
+        creator = msg.sender;
+    }
+
+    function tip() external payable {
+        require(msg.value > 0, "No ETH sent");
+        totalTips += msg.value;
+        emit Tipped(msg.sender, msg.value);
+    }
+
+    function withdraw() external {
+        require(msg.sender == creator, "Not creator");
+        payable(creator).transfer(address(this).balance);
+    }
+}
