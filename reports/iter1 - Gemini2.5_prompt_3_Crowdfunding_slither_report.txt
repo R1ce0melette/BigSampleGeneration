@@ -1,0 +1,33 @@
+'solc --version' running
+'solc contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Gemini2.5/prompt_3' running
+INFO:Detectors:
+Crowdfunding.contribute() (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#21-26) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Funding period has ended.) (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#22)
+Crowdfunding.withdrawFunds() (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#28-35) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Funding period has not ended yet.) (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#30)
+Crowdfunding.getRefund() (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#37-46) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Funding period has not ended yet.) (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#38)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Crowdfunding.deadline (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#7) should be immutable 
+Crowdfunding.fundingGoal (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#6) should be immutable 
+Crowdfunding.owner (contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Gemini2.5/prompt_3/Crowdfunding.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

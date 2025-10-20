@@ -1,0 +1,69 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_25' running
+INFO:Detectors:
+DecentralizedNameService.transferOwnership(address) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#337-340) should emit an event for: 
+	- owner = newOwner (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#339) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+DecentralizedNameService.updateRegistrationFee(uint256) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#297-300) should emit an event for: 
+	- registrationFee = newFee (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#299) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+INFO:Detectors:
+DecentralizedNameService.registerName(string,address) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#73-99) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(! nameExists[name] || block.timestamp >= nameRecords[name].expiresAt,Name already registered) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#78)
+	- nameExists[name] && block.timestamp >= nameRecords[name].expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#81)
+DecentralizedNameService.renewName(string) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#105-118) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < record.expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#111)
+DecentralizedNameService.transferName(string,address) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#125-135) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < nameRecords[name].expiresAt,Name has expired) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#127)
+DecentralizedNameService.updateAddress(string,address) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#142-150) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < nameRecords[name].expiresAt,Name has expired) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#144)
+DecentralizedNameService.resolve(string) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#175-180) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[name].exists,Name not registered) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#176)
+	- require(bool,string)(block.timestamp < nameRecords[name].expiresAt,Name has expired) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#177)
+DecentralizedNameService.isNameAvailable(string) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#214-220) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= nameRecords[name].expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#219)
+DecentralizedNameService.isNameValid(string) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#227-229) uses timestamp for comparisons
+	Dangerous comparisons:
+	- nameRecords[name].exists && block.timestamp < nameRecords[name].expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#228)
+DecentralizedNameService.getNamesByOwner(address) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#236-264) uses timestamp for comparisons
+	Dangerous comparisons:
+	- nameRecords[name].owner == _owner && nameRecords[name].exists && block.timestamp < nameRecords[name].expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#242-244)
+	- nameRecords[name_scope_1].owner == _owner && nameRecords[name_scope_1].exists && block.timestamp < nameRecords[name_scope_1].expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#255-257)
+DecentralizedNameService.getTimeUntilExpiration(string) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#271-281) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= nameRecords[name].expiresAt (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#276)
+DecentralizedNameService.getNameOwner(string) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#288-291) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(nameRecords[name].exists,Name not registered) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#289)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in DecentralizedNameService.withdraw() (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#305-311):
+	- (success,None) = owner.call{value: balance}() (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#309)
+Low level call in DecentralizedNameService.withdrawAmount(uint256) (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#317-323):
+	- (success,None) = owner.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#321)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter DecentralizedNameService.getNamesByOwner(address)._owner (contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol#236) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_25/DecentralizedNameService.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

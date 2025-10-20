@@ -1,0 +1,35 @@
+'solc --version' running
+'solc contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Gemini2.5/prompt_31' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter DepositWithFee.withdraw(uint256)._amount (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#29) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Reentrancy in DepositWithFee.withdraw(uint256) (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#29-42):
+	External calls:
+	- address(msg.sender).transfer(amountToTransfer) (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#39)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,amountToTransfer,fee) (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#41)
+Reentrancy in DepositWithFee.withdrawFees() (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#44-52):
+	External calls:
+	- address(owner).transfer(feesToWithdraw) (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#49)
+	Event emitted after the call(s):
+	- FeesWithdrawn(owner,feesToWithdraw) (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#51)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+DepositWithFee.owner (contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Gemini2.5/prompt_31/DepositWithFee.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

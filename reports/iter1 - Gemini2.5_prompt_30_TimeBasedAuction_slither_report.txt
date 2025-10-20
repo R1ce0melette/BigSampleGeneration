@@ -1,0 +1,42 @@
+'solc --version' running
+'solc contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Gemini2.5/prompt_30' running
+INFO:Detectors:
+TimeBasedAuction.endAuction() (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#47-61) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= auctionEndTime,Auction is still running.) (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#48)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Reentrancy in TimeBasedAuction.bid() (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#32-45):
+	External calls:
+	- address(highestBidder).transfer(highestBid) (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#37)
+	State variables written after the call(s):
+	- bids[msg.sender] = msg.value (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#42)
+	- highestBid = msg.value (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#41)
+	- highestBidder = msg.sender (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#40)
+	Event emitted after the call(s):
+	- HighestBidIncreased(msg.sender,msg.value) (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#44)
+Reentrancy in TimeBasedAuction.endAuction() (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#47-61):
+	External calls:
+	- address(owner).transfer(highestBid) (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#55)
+	Event emitted after the call(s):
+	- AuctionEnded(highestBidder,highestBid) (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#56)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+TimeBasedAuction.auctionEndTime (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#6) should be immutable 
+TimeBasedAuction.owner (contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Gemini2.5/prompt_30/TimeBasedAuction.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

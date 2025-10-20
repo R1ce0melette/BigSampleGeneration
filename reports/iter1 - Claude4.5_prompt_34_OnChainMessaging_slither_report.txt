@@ -1,0 +1,25 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_34' running
+INFO:Detectors:
+OnChainMessaging.likeMessage(uint256) (contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol#100-116) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(messages[messageId].author != msg.sender,Cannot like own message) (contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol#102)
+OnChainMessaging.getMostLikedMessages(uint256) (contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol#308-353) uses timestamp for comparisons
+	Dangerous comparisons:
+	- messages[activeMessageIds[i_scope_1]].likes < messages[activeMessageIds[j]].likes (contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol#336)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_34/OnChainMessaging.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

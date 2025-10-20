@@ -1,0 +1,34 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_29' running
+INFO:Detectors:
+EncryptedDataStorage.verifyOwnership(uint256,address) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#233-240) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[recordId].owner == claimedOwner (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#239)
+EncryptedDataStorage.hasAccess(uint256,address) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#248-271) uses timestamp for comparisons
+	Dangerous comparisons:
+	- dataRecords[recordId].owner == user (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#255)
+	- grant.expiresAt != 0 && block.timestamp > grant.expiresAt (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#266)
+EncryptedDataStorage.getDataHash(uint256) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#315-336) uses timestamp for comparisons
+	Dangerous comparisons:
+	- record.owner == msg.sender (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#324)
+	- require(bool,string)(block.timestamp <= grant.expiresAt,Access has expired) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#332)
+EncryptedDataStorage.getActiveGrantees(uint256) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#405-435) uses timestamp for comparisons
+	Dangerous comparisons:
+	- grant.isActive && (grant.expiresAt == 0 || block.timestamp <= grant.expiresAt) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#417)
+	- grant_scope_1.isActive && (grant_scope_1.expiresAt == 0 || block.timestamp <= grant_scope_1.expiresAt) (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#428)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

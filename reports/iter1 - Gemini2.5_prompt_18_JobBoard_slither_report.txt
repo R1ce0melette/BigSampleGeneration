@@ -1,0 +1,27 @@
+'solc --version' running
+'solc contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Gemini2.5/prompt_18' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter JobBoard.postJob(string,uint256)._description (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#31) is not in mixedCase
+Parameter JobBoard.postJob(string,uint256)._reward (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#31) is not in mixedCase
+Parameter JobBoard.applyForJob(uint256)._jobId (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#43) is not in mixedCase
+Parameter JobBoard.closeJob(uint256)._jobId (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#54) is not in mixedCase
+Parameter JobBoard.getJob(uint256)._jobId (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#64) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+JobBoard.owner (contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Gemini2.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

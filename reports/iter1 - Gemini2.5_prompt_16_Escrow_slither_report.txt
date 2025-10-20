@@ -1,0 +1,43 @@
+'solc --version' running
+'solc contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Gemini2.5/prompt_16' running
+INFO:Detectors:
+Escrow.constructor(address,address)._seller (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#39) lacks a zero-check on :
+		- seller = _seller (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#41)
+Escrow.constructor(address,address)._mediator (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#39) lacks a zero-check on :
+		- mediator = _mediator (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#42)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter Escrow.resolveDispute(address)._winner (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#65) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Reentrancy in Escrow.release() (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#53-57):
+	External calls:
+	- seller.transfer(amount) (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#55)
+	Event emitted after the call(s):
+	- Released(seller,amount) (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#56)
+Reentrancy in Escrow.resolveDispute(address) (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#65-70):
+	External calls:
+	- _winner.transfer(amount) (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#68)
+	Event emitted after the call(s):
+	- Resolved(_winner,amount) (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#69)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Detectors:
+Escrow.buyer (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#8) should be immutable 
+Escrow.mediator (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#10) should be immutable 
+Escrow.seller (contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Gemini2.5/prompt_16/Escrow.sol analyzed (1 contracts with 100 detectors), 9 result(s) found

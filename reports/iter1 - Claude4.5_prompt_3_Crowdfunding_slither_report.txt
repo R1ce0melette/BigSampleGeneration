@@ -1,0 +1,60 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_3' running
+INFO:Detectors:
+Reentrancy in Crowdfunding.refund() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#98-114):
+	External calls:
+	- (success,None) = msg.sender.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#110)
+	Event emitted after the call(s):
+	- RefundIssued(msg.sender,amount) (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#113)
+Reentrancy in Crowdfunding.withdrawFunds() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#76-93):
+	External calls:
+	- (success,None) = owner.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#89)
+	Event emitted after the call(s):
+	- FundsWithdrawn(owner,amount) (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#92)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+Crowdfunding.contribute() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#43-57) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp < deadline,Campaign deadline has passed) (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#45)
+Crowdfunding.checkGoalReached() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#62-71) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still ongoing) (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#63)
+Crowdfunding.withdrawFunds() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#76-93) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still ongoing) (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#78)
+Crowdfunding.refund() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#98-114) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= deadline,Campaign is still ongoing) (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#99)
+Crowdfunding.getTimeRemaining() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#129-134) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= deadline (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#130)
+Crowdfunding.getCampaignStatus() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#143-158) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp >= deadline (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#153)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in Crowdfunding.withdrawFunds() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#76-93):
+	- (success,None) = owner.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#89)
+Low level call in Crowdfunding.refund() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#98-114):
+	- (success,None) = msg.sender.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#110)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Crowdfunding.deadline (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#12) should be immutable 
+Crowdfunding.fundingGoal (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#11) should be immutable 
+Crowdfunding.owner (contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol#10) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_3/Crowdfunding.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

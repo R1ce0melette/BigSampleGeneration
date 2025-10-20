@@ -1,0 +1,82 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_18' running
+INFO:Detectors:
+JobBoard.getFilledJobs() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#272-294) uses a dangerous strict equality:
+	- jobs[i].status == JobStatus.FILLED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#277)
+JobBoard.getFilledJobs() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#272-294) uses a dangerous strict equality:
+	- jobs[i_scope_0].status == JobStatus.FILLED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#287)
+JobBoard.getJobStats() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#350-367) uses a dangerous strict equality:
+	- jobs[i].status == JobStatus.OPEN (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#361)
+JobBoard.getJobStats() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#350-367) uses a dangerous strict equality:
+	- jobs[i].status == JobStatus.FILLED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#362)
+JobBoard.getJobStats() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#350-367) uses a dangerous strict equality:
+	- jobs[i].status == JobStatus.CLOSED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#363)
+JobBoard.getOpenJobs() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#244-266) uses a dangerous strict equality:
+	- jobs[i].status == JobStatus.OPEN (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#249)
+JobBoard.getOpenJobs() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#244-266) uses a dangerous strict equality:
+	- jobs[i_scope_0].status == JobStatus.OPEN (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#259)
+JobBoard.searchJobsBySalary(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#301-323) uses a dangerous strict equality:
+	- jobs[i].status == JobStatus.OPEN && jobs[i].salary >= minSalary (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#306)
+JobBoard.searchJobsBySalary(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#301-323) uses a dangerous strict equality:
+	- jobs[i_scope_0].status == JobStatus.OPEN && jobs[i_scope_0].salary >= minSalary (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#316)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+JobBoard.applyForJob(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#93-106) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(job.id != 0,Job does not exist) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#96)
+	- require(bool,string)(job.status == JobStatus.OPEN,Job is not open) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#97)
+	- require(bool,string)(msg.sender != job.employer,Employer cannot apply to own job) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#98)
+JobBoard.selectApplicant(uint256,address) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#113-125) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(job.id != 0,Job does not exist) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#116)
+	- require(bool,string)(msg.sender == job.employer,Only employer can select applicant) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#117)
+	- require(bool,string)(job.status == JobStatus.OPEN,Job is not open) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#118)
+JobBoard.closeJob(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#131-141) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(job.id != 0,Job does not exist) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#134)
+	- require(bool,string)(msg.sender == job.employer,Only employer can close job) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#135)
+	- require(bool,string)(job.status == JobStatus.OPEN,Job is not open) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#136)
+JobBoard.updateJob(uint256,string,string,uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#150-170) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(job.id != 0,Job does not exist) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#158)
+	- require(bool,string)(msg.sender == job.employer,Only employer can update job) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#159)
+	- require(bool,string)(job.status == JobStatus.OPEN,Job is not open) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#160)
+JobBoard.getJobDetails(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#185-210) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(job.id != 0,Job does not exist) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#197)
+JobBoard.getJobApplicants(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#217-220) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(jobs[jobId].id != 0,Job does not exist) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#218)
+JobBoard.getOpenJobs() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#244-266) uses timestamp for comparisons
+	Dangerous comparisons:
+	- jobs[i].status == JobStatus.OPEN (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#249)
+	- jobs[i_scope_0].status == JobStatus.OPEN (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#259)
+JobBoard.getFilledJobs() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#272-294) uses timestamp for comparisons
+	Dangerous comparisons:
+	- jobs[i].status == JobStatus.FILLED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#277)
+	- jobs[i_scope_0].status == JobStatus.FILLED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#287)
+JobBoard.searchJobsBySalary(uint256) (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#301-323) uses timestamp for comparisons
+	Dangerous comparisons:
+	- jobs[i].status == JobStatus.OPEN && jobs[i].salary >= minSalary (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#306)
+	- jobs[i_scope_0].status == JobStatus.OPEN && jobs[i_scope_0].salary >= minSalary (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#316)
+JobBoard.getJobStats() (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#350-367) uses timestamp for comparisons
+	Dangerous comparisons:
+	- jobs[i].status == JobStatus.OPEN (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#361)
+	- jobs[i].status == JobStatus.FILLED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#362)
+	- jobs[i].status == JobStatus.CLOSED (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#363)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 20 result(s) found

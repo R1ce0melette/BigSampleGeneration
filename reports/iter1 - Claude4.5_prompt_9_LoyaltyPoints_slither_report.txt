@@ -1,0 +1,26 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_9' running
+INFO:Detectors:
+LoyaltyPoints.transferOwnership(address) (contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol#103-106) should emit an event for: 
+	- owner = newOwner (contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol#105) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+LoyaltyPoints.getTransaction(uint256) (contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol#150-166) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(transactionId < transactions.length,Transaction does not exist) (contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol#156)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_9/LoyaltyPoints.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

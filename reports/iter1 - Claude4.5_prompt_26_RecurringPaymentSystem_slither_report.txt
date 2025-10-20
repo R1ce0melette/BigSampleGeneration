@@ -1,0 +1,95 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_26' running
+INFO:Detectors:
+RecurringPaymentSystem.getActiveSubscriptionsByPayer(address) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#319-343) uses a dangerous strict equality:
+	- subscriptions[subId].status == SubscriptionStatus.ACTIVE (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#325)
+RecurringPaymentSystem.getActiveSubscriptionsByPayer(address) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#319-343) uses a dangerous strict equality:
+	- subscriptions[subId_scope_1].status == SubscriptionStatus.ACTIVE (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#336)
+RecurringPaymentSystem.isPaymentDue(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#287-295) uses a dangerous strict equality:
+	- sub.id == 0 || sub.status != SubscriptionStatus.ACTIVE (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#290)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in RecurringPaymentSystem.createSubscription(address,uint256,RecurringPaymentSystem.PaymentInterval) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#69-115):
+	External calls:
+	- (success,None) = recipient.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#102)
+	- (refundSuccess,None) = msg.sender.call{value: msg.value - amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#107)
+	Event emitted after the call(s):
+	- PaymentProcessed(subscriptionId,msg.sender,recipient,amount,block.timestamp) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#112)
+	- SubscriptionCreated(subscriptionId,msg.sender,recipient,amount,interval) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#111)
+Reentrancy in RecurringPaymentSystem.processPayment(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#121-147):
+	External calls:
+	- (success,None) = sub.recipient.call{value: sub.amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#137)
+	- (refundSuccess,None) = msg.sender.call{value: msg.value - sub.amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#142)
+	Event emitted after the call(s):
+	- PaymentProcessed(subscriptionId,sub.payer,sub.recipient,sub.amount,block.timestamp) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#146)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+RecurringPaymentSystem.processPayment(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#121-147) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#124)
+	- require(bool,string)(msg.sender == sub.payer,Only payer can process payment) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#125)
+	- require(bool,string)(sub.status == SubscriptionStatus.ACTIVE,Subscription not active) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#126)
+	- require(bool,string)(block.timestamp >= sub.nextPaymentDue,Payment not yet due) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#127)
+	- require(bool,string)(msg.value >= sub.amount,Insufficient payment amount) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#128)
+	- require(bool,string)(success,Payment transfer failed) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#138)
+	- msg.value > sub.amount (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#141)
+	- require(bool,string)(refundSuccess,Refund failed) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#143)
+RecurringPaymentSystem.pauseSubscription(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#153-163) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#156)
+	- require(bool,string)(msg.sender == sub.payer,Only payer can pause) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#157)
+	- require(bool,string)(sub.status == SubscriptionStatus.ACTIVE,Subscription not active) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#158)
+RecurringPaymentSystem.resumeSubscription(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#169-182) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#172)
+	- require(bool,string)(msg.sender == sub.payer,Only payer can resume) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#173)
+	- require(bool,string)(sub.status == SubscriptionStatus.PAUSED,Subscription not paused) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#174)
+RecurringPaymentSystem.cancelSubscription(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#188-201) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#191)
+	- require(bool,string)(msg.sender == sub.payer || msg.sender == sub.recipient,Only payer or recipient can cancel) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#192-195)
+	- require(bool,string)(sub.status != SubscriptionStatus.CANCELLED,Already cancelled) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#196)
+RecurringPaymentSystem.updateSubscriptionAmount(uint256,uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#208-219) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#211)
+	- require(bool,string)(msg.sender == sub.payer,Only payer can update amount) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#212)
+	- require(bool,string)(sub.status != SubscriptionStatus.CANCELLED,Subscription cancelled) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#214)
+RecurringPaymentSystem.getSubscriptionDetails(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#235-262) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#248)
+RecurringPaymentSystem.isPaymentDue(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#287-295) uses timestamp for comparisons
+	Dangerous comparisons:
+	- sub.id == 0 || sub.status != SubscriptionStatus.ACTIVE (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#290)
+	- block.timestamp >= sub.nextPaymentDue (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#294)
+RecurringPaymentSystem.getTimeUntilNextPayment(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#302-312) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(sub.id != 0,Subscription does not exist) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#305)
+	- block.timestamp >= sub.nextPaymentDue (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#307)
+RecurringPaymentSystem.getActiveSubscriptionsByPayer(address) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#319-343) uses timestamp for comparisons
+	Dangerous comparisons:
+	- subscriptions[subId].status == SubscriptionStatus.ACTIVE (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#325)
+	- subscriptions[subId_scope_1].status == SubscriptionStatus.ACTIVE (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#336)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in RecurringPaymentSystem.createSubscription(address,uint256,RecurringPaymentSystem.PaymentInterval) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#69-115):
+	- (success,None) = recipient.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#102)
+	- (refundSuccess,None) = msg.sender.call{value: msg.value - amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#107)
+Low level call in RecurringPaymentSystem.processPayment(uint256) (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#121-147):
+	- (success,None) = sub.recipient.call{value: sub.amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#137)
+	- (refundSuccess,None) = msg.sender.call{value: msg.value - sub.amount}() (contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#142)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_26/RecurringPaymentSystem.sol analyzed (1 contracts with 100 detectors), 17 result(s) found

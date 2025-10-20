@@ -1,29 +1,11 @@
 'solc --version' running
-'solc contracts/prompt_27/DigitalCertificate.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/prompt_27' running
-Compilation warnings/errors on contracts/prompt_27/DigitalCertificate.sol:
-Error: Source "@openzeppelin/contracts/token/ERC721/ERC721.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:4:1:
-  |
-4 | import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Error: Source "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:5:1:
-  |
-5 | import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Error: Source "@openzeppelin/contracts/access/Ownable.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:6:1:
-  |
-6 | import "@openzeppelin/contracts/access/Ownable.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Error: Source "@openzeppelin/contracts/utils/Counters.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:7:1:
-  |
-7 | import "@openzeppelin/contracts/utils/Counters.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+'solc contracts/iter1 - Claude4.5/prompt_33/CommunityProposalSystem.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_33' running
+Compilation warnings/errors on contracts/iter1 - Claude4.5/prompt_33/CommunityProposalSystem.sol:
+Error: Stack too deep. Try compiling with `--via-ir` (cli) or the equivalent `viaIR: true` (standard JSON) while enabling the optimizer. Otherwise, try removing local variables.
+   --> contracts/iter1 - Claude4.5/prompt_33/CommunityProposalSystem.sol:382:46:
+    |
+382 |         Proposal memory proposal = proposals[proposalId];
+    |                                              ^^^^^^^^^^
 
 
 Traceback (most recent call last):
@@ -69,28 +51,10 @@ Traceback (most recent call last):
            ^^^^^^^^^^
   File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/crytic_compile/platform/solc.py", line 585, in _run_solc
     raise InvalidCompilation(f"Invalid solc compilation {stderr}")
-crytic_compile.platform.exceptions.InvalidCompilation: Invalid solc compilation Error: Source "@openzeppelin/contracts/token/ERC721/ERC721.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:4:1:
-  |
-4 | import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Error: Source "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:5:1:
-  |
-5 | import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Error: Source "@openzeppelin/contracts/access/Ownable.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:6:1:
-  |
-6 | import "@openzeppelin/contracts/access/Ownable.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Error: Source "@openzeppelin/contracts/utils/Counters.sol" not found: File not found. Searched the following locations: "".
- --> contracts/prompt_27/DigitalCertificate.sol:7:1:
-  |
-7 | import "@openzeppelin/contracts/utils/Counters.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crytic_compile.platform.exceptions.InvalidCompilation: Invalid solc compilation Error: Stack too deep. Try compiling with `--via-ir` (cli) or the equivalent `viaIR: true` (standard JSON) while enabling the optimizer. Otherwise, try removing local variables.
+   --> contracts/iter1 - Claude4.5/prompt_33/CommunityProposalSystem.sol:382:46:
+    |
+382 |         Proposal memory proposal = proposals[proposalId];
+    |                                              ^^^^^^^^^^
 
 

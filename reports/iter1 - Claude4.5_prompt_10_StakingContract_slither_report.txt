@@ -1,0 +1,39 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_10' running
+INFO:Detectors:
+Reentrancy in StakingContract.withdraw(uint256) (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#91-116):
+	External calls:
+	- (success,None) = msg.sender.call{value: total}() (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#112)
+	Event emitted after the call(s):
+	- Withdrawn(msg.sender,stakeId,principal,interest,total) (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#115)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+StakingContract.withdraw(uint256) (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#91-116) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= userStake.startTime + userStake.lockDuration,Lock period not completed) (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#97-100)
+StakingContract.canWithdraw(address,uint256) (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#210-219) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! userStake.withdrawn && block.timestamp >= userStake.startTime + userStake.lockDuration (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#217-218)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in StakingContract.withdraw(uint256) (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#91-116):
+	- (success,None) = msg.sender.call{value: total}() (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#112)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+StakingContract.owner (contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol#30) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_10/StakingContract.sol analyzed (1 contracts with 100 detectors), 6 result(s) found

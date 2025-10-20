@@ -1,0 +1,24 @@
+'solc --version' running
+'solc contracts/iter1 - GPT4/prompt_24/VotingAccessControl.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - GPT4/prompt_24' running
+INFO:Detectors:
+VotingAccessControl.voteToRemoveAdmin(address) (contracts/iter1 - GPT4/prompt_24/VotingAccessControl.sol#39-58) has costly operations inside a loop:
+	- admins.pop() (contracts/iter1 - GPT4/prompt_24/VotingAccessControl.sol#51)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - GPT4/prompt_24/VotingAccessControl.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+VotingAccessControl.minVotes (contracts/iter1 - GPT4/prompt_24/VotingAccessControl.sol#9) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Slither:contracts/iter1 - GPT4/prompt_24/VotingAccessControl.sol analyzed (1 contracts with 100 detectors), 3 result(s) found

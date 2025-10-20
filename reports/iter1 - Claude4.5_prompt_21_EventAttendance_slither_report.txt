@@ -1,0 +1,38 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_21' running
+INFO:Detectors:
+EventAttendance.transferOwnership(address) (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#359-362) should emit an event for: 
+	- owner = newOwner (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#361) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+INFO:Detectors:
+EventAttendance.createEvent(string,string,uint256,uint256) (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#59-83) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(startTime >= block.timestamp,Start time must be in the future) (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#67)
+EventAttendance.checkIn(uint256) (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#89-103) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp >= evt.startTime,Event has not started yet) (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#94)
+	- require(bool,string)(block.timestamp <= evt.endTime,Event has ended) (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#95)
+EventAttendance.getOngoingEvents() (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#291-317) uses timestamp for comparisons
+	Dangerous comparisons:
+	- events[i].isActive && block.timestamp >= events[i].startTime && block.timestamp <= events[i].endTime (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#296-298)
+	- events[i_scope_0].isActive && block.timestamp >= events[i_scope_0].startTime && block.timestamp <= events[i_scope_0].endTime (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#308-310)
+EventAttendance.getUpcomingEvents() (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#323-345) uses timestamp for comparisons
+	Dangerous comparisons:
+	- events[i].isActive && block.timestamp < events[i].startTime (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#328)
+	- events[i_scope_0].isActive && block.timestamp < events[i_scope_0].startTime (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#338)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 6 result(s) found
