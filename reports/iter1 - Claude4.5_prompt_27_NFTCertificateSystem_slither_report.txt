@@ -1,0 +1,43 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_27' running
+INFO:Detectors:
+NFTCertificateSystem.getTokensByCertificateType(string) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#351-373) uses a dangerous strict equality:
+	- keccak256(bytes)(bytes(certificates[i].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#356)
+NFTCertificateSystem.getTokensByCertificateType(string) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#351-373) uses a dangerous strict equality:
+	- keccak256(bytes)(bytes(certificates[i_scope_0].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#366)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+NFTCertificateSystem.revokeCertificate(uint256) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#118-129) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == cert.issuer || msg.sender == contractOwner,Only issuer or contract owner can revoke) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#120-123)
+	- require(bool,string)(! cert.revoked,Certificate already revoked) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#124)
+NFTCertificateSystem.updateMetadataURI(uint256,string) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#136-147) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(msg.sender == cert.issuer || msg.sender == contractOwner,Only issuer can update) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#142)
+NFTCertificateSystem.getTokensByIssuer(address) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#322-344) uses timestamp for comparisons
+	Dangerous comparisons:
+	- certificates[i].issuer == issuer (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#327)
+	- certificates[i_scope_0].issuer == issuer (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#337)
+NFTCertificateSystem.getTokensByCertificateType(string) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#351-373) uses timestamp for comparisons
+	Dangerous comparisons:
+	- keccak256(bytes)(bytes(certificates[i].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#356)
+	- keccak256(bytes)(bytes(certificates[i_scope_0].certificateType)) == keccak256(bytes)(bytes(certificateType)) (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#366)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+NFTCertificateSystem.contractOwner (contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol#29) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_27/NFTCertificateSystem.sol analyzed (1 contracts with 100 detectors), 8 result(s) found

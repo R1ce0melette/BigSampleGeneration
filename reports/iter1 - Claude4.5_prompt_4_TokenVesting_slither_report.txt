@@ -1,0 +1,63 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_4' running
+INFO:Detectors:
+TokenVesting.getReleasableAmount(address) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#173-181) uses a dangerous strict equality:
+	- schedule.totalAmount == 0 || schedule.revoked (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#175)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+TokenVesting.createVestingSchedule(address,uint256,uint256,uint256,bool) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#69-101) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(vestingSchedules[beneficiary].totalAmount == 0,Vesting schedule already exists) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#79)
+	- require(bool,string)(balances[owner] >= amount,Insufficient balance) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#80)
+TokenVesting.release() (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#106-121) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(schedule.totalAmount > 0,No vesting schedule found) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#108)
+	- require(bool,string)(! schedule.revoked,Vesting has been revoked) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#109)
+	- require(bool,string)(releasable > 0,No tokens available for release) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#114)
+TokenVesting.revoke(address) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#127-150) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(schedule.totalAmount > 0,No vesting schedule found) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#129)
+	- require(bool,string)(schedule.revocable,Vesting is not revocable) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#130)
+	- require(bool,string)(! schedule.revoked,Vesting already revoked) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#131)
+	- releasable > 0 (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#136)
+TokenVesting._computeVestedAmount(TokenVesting.VestingSchedule) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#157-166) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < schedule.startTime + schedule.cliffDuration (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#158)
+	- block.timestamp >= schedule.startTime + schedule.vestingDuration (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#160)
+TokenVesting.getReleasableAmount(address) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#173-181) uses timestamp for comparisons
+	Dangerous comparisons:
+	- schedule.totalAmount == 0 || schedule.revoked (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#175)
+TokenVesting.transfer(address,uint256) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#213-222) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(balances[msg.sender] >= amount,Insufficient balance) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#215)
+TokenVesting.transferFrom(address,address,uint256) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#234-245) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(balances[from] >= amount,Insufficient balance) (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#236)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter TokenVesting.allowance(address,address)._owner (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#230) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+TokenVesting.decimals (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#12) should be constant 
+TokenVesting.name (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#10) should be constant 
+TokenVesting.symbol (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#11) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Detectors:
+TokenVesting.owner (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#32) should be immutable 
+TokenVesting.totalSupply (contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol#13) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_4/TokenVesting.sol analyzed (1 contracts with 100 detectors), 15 result(s) found

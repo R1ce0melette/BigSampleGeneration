@@ -1,0 +1,27 @@
+'solc --version' running
+'solc contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Gemini2.5/prompt_33' running
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter CommunityProposals.addMember(address)._newMember (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#41) is not in mixedCase
+Parameter CommunityProposals.createProposal(string)._description (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#48) is not in mixedCase
+Parameter CommunityProposals.vote(uint256)._proposalId (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#56) is not in mixedCase
+Parameter CommunityProposals.executeProposal(uint256)._proposalId (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#67) is not in mixedCase
+Parameter CommunityProposals.getProposal(uint256)._proposalId (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#82) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+CommunityProposals.owner (contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:contracts/iter1 - Gemini2.5/prompt_33/CommunityProposals.sol analyzed (1 contracts with 100 detectors), 7 result(s) found
