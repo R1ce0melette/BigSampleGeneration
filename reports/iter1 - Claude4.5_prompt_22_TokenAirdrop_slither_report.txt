@@ -34,9 +34,9 @@ Parameter TokenAirdrop.allowance(address,address)._owner (contracts/iter1 - Clau
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
 INFO:Detectors:
 Loop condition i_scope_0 < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#117) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#193) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#74) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#307) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#193) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#271) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < eligibleAddresses.length (contracts/iter1 - Claude4.5/prompt_22/TokenAirdrop.sol#281) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length

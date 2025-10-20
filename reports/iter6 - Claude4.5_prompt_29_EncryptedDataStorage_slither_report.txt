@@ -85,9 +85,9 @@ It is used by:
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
 INFO:Detectors:
 Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#300) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#275) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#284) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#248) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#257) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#275) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allDataHashes.length (contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol#284) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter6 - Claude4.5/prompt_29/EncryptedDataStorage.sol analyzed (1 contracts with 100 detectors), 16 result(s) found

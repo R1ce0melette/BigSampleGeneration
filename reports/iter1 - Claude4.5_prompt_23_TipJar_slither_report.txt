@@ -52,10 +52,10 @@ Low level call in TipJar.withdrawAmount(uint256) (contracts/iter1 - Claude4.5/pr
 	- (success,None) = creator.call{value: amount}() (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#101)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
 INFO:Detectors:
-Loop condition i < tips.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#258) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < tips.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#268) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < tippers.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#213) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < tippers.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#213) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < tippers.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#219) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition j < tippers.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#220) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < tips.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#258) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < tips.length (contracts/iter1 - Claude4.5/prompt_23/TipJar.sol#268) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter1 - Claude4.5/prompt_23/TipJar.sol analyzed (1 contracts with 100 detectors), 14 result(s) found

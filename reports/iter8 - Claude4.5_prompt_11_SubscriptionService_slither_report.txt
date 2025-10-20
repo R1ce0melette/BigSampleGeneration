@@ -45,8 +45,8 @@ Reentrancy in SubscriptionService.withdrawFunds(uint256) (contracts/iter8 - Clau
 	- FundsWithdrawn(owner,amount) (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#291)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < allPayments.length (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#329) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < subscribers.length (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#260) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < subscribers.length (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#260) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allPayments.length (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#329) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < subscribers.length (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#227) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < subscribers.length (contracts/iter8 - Claude4.5/prompt_11/SubscriptionService.sol#236) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length

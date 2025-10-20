@@ -111,11 +111,11 @@ Reentrancy in RecurringPaymentSystem.processPayment(uint256) (contracts/iter8 - 
 	- PaymentProcessed(subscriptionId,paymentCounter,subscription.payer,subscription.payee,subscription.amount) (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#209)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#377) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#390) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#399) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#504) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#416) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#427) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#504) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#377) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#390) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allSubscriptionIds.length (contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol#399) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_26/RecurringPaymentSystem.sol analyzed (1 contracts with 100 detectors), 27 result(s) found

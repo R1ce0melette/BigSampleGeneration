@@ -70,11 +70,11 @@ Reentrancy in OnChainRaffle.drawWinner(uint256) (contracts/iter8 - Claude4.5/pro
 	- WinnerDrawn(raffleId,winner,prize,block.timestamp) (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#243)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#329) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#338) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#315) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#440) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#449) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#315) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#475) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#329) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allRaffleIds.length (contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol#338) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_17/OnChainRaffle.sol analyzed (1 contracts with 100 detectors), 21 result(s) found

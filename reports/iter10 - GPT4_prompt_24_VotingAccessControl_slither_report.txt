@@ -15,9 +15,9 @@ It is used by:
 	- ^0.8.0 (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#2)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
 INFO:Detectors:
-Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#55) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#67) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#61) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#61) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#73) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#55) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < admins.length (contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol#67) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter10 - GPT4/prompt_24/VotingAccessControl.sol analyzed (1 contracts with 100 detectors), 5 result(s) found

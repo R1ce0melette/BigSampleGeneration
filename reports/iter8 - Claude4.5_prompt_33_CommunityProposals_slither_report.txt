@@ -58,11 +58,11 @@ Parameter CommunityProposals.updateVotingParameters(uint256,uint256,uint256)._qu
 Parameter CommunityProposals.updateVotingParameters(uint256,uint256,uint256)._approvalThreshold (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#629) is not in mixedCase
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
 INFO:Detectors:
-Loop condition i < allProposalIds.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#433) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < members.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#557) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allProposalIds.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#419) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allProposalIds.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#433) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allProposalIds.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#442) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < members.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#507) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < members.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#516) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < members.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#557) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allProposalIds.length (contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol#419) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_33/CommunityProposals.sol analyzed (1 contracts with 100 detectors), 21 result(s) found

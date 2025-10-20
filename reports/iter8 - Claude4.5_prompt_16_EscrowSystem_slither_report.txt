@@ -79,9 +79,9 @@ Reentrancy in EscrowSystem.resolveDispute(uint256,bool) (contracts/iter8 - Claud
 	- DisputeResolved(escrowId,msg.sender,refundToBuyer) (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#262)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < allEscrowIds.length (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#286) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allEscrowIds.length (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#434) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allEscrowIds.length (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#327) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allEscrowIds.length (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#336) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allEscrowIds.length (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#434) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEscrowIds.length (contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol#286) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_16/EscrowSystem.sol analyzed (1 contracts with 100 detectors), 21 result(s) found

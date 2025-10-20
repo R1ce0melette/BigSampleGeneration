@@ -58,9 +58,9 @@ It is used by:
 	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#2)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
 INFO:Detectors:
-Loop condition i < allAirdropIds.length (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#330) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allAirdropIds.length (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#343) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allAirdropIds.length (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#343) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allAirdropIds.length (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#353) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allAirdropIds.length (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#330) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Detectors:
 TokenAirdrop.decimals (contracts/iter8 - Claude4.5/prompt_22/TokenAirdrop.sol#12) should be immutable 

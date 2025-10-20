@@ -35,10 +35,10 @@ Reentrancy in PausableETHTransfer.withdraw(uint256) (contracts/iter7 - Claude4.5
 	- Withdrawn(msg.sender,amount,block.timestamp) (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#171)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#427) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#435) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#499) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#499) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#511) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allTransfers.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#523) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#427) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < users.length (contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol#435) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter7 - Claude4.5/prompt_35/PausableETHTransfer.sol analyzed (1 contracts with 100 detectors), 10 result(s) found

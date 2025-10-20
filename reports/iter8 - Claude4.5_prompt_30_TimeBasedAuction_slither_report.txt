@@ -89,10 +89,10 @@ Reentrancy in TimeBasedAuction.withdrawUnsuccessfulBid(uint256) (contracts/iter8
 	- BidRefunded(msg.sender,bidAmount) (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#355)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#435) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#475) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#486) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#435) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#448) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#458) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#475) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < allAuctionIds.length (contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol#486) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_30/TimeBasedAuction.sol analyzed (1 contracts with 100 detectors), 25 result(s) found

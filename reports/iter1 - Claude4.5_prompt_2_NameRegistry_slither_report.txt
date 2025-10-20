@@ -1,0 +1,28 @@
+'solc --version' running
+'solc contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/runner/work/BigSampleGeneration/BigSampleGeneration/contracts/iter1 - Claude4.5/prompt_2' running
+INFO:Detectors:
+NameRegistry.removeName() (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#90-110) has costly operations inside a loop:
+	- registeredAddresses.pop() (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#104)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+INFO:Detectors:
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess
+	- AbiReencodingHeadOverflowWithStaticArrayCleanup
+	- DirtyBytesArrayToStorage
+	- DataLocationChangeInInternalOverride
+	- NestedCalldataArrayAbiReencodingSizeValidation
+	- SignedImmutables
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching.
+It is used by:
+	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter NameRegistry.registerName(string)._name (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#28) is not in mixedCase
+Parameter NameRegistry.updateName(string)._newName (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#62) is not in mixedCase
+Parameter NameRegistry.getName(address)._address (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#117) is not in mixedCase
+Parameter NameRegistry.getAddress(string)._name (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#126) is not in mixedCase
+Parameter NameRegistry.isNameAvailable(string)._name (contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol#135) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Slither:contracts/iter1 - Claude4.5/prompt_2/NameRegistry.sol analyzed (1 contracts with 100 detectors), 7 result(s) found

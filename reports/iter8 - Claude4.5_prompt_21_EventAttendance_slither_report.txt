@@ -48,14 +48,14 @@ It is used by:
 	- ^0.8.0 (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#2)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
 INFO:Detectors:
-Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#360) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#372) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#294) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#485) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#494) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#307) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#307) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#316) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#294) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#333) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#343) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#360) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#372) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#485) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < allEventIds.length (contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol#494) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_21/EventAttendance.sol analyzed (1 contracts with 100 detectors), 18 result(s) found

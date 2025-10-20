@@ -45,12 +45,12 @@ Reentrancy in ETHDepositWithdrawal.withdrawFees() (contracts/iter8 - Claude4.5/p
 	- FeeCollected(owner,feesToWithdraw) (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#177)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < depositors.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#270) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < depositors.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#339) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < depositors.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#270) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allDeposits.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#375) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allDeposits.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#384) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < depositors.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#287) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allWithdrawals.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#406) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allWithdrawals.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#415) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < depositors.length (contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol#339) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_31/ETHDepositWithdrawal.sol analyzed (1 contracts with 100 detectors), 13 result(s) found

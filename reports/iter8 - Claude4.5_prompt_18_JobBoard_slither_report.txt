@@ -69,9 +69,9 @@ Reentrancy in JobBoard.cancelJob(uint256) (contracts/iter8 - Claude4.5/prompt_18
 	- JobCancelled(jobId,msg.sender) (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#289)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
 INFO:Detectors:
-Loop condition i < allJobIds.length (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#551) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < allJobIds.length (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#327) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < allJobIds.length (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#327) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < allJobIds.length (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#341) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < allJobIds.length (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#350) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < allJobIds.length (contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol#551) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter8 - Claude4.5/prompt_18/JobBoard.sol analyzed (1 contracts with 100 detectors), 17 result(s) found

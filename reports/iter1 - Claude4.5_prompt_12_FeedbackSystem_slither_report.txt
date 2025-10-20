@@ -60,10 +60,10 @@ It is used by:
 	- ^0.8.0 (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#2)
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
 INFO:Detectors:
-Loop condition i < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#158) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i_scope_0 < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#168) should use cached array length instead of referencing `length` member of the storage array.
- Loop condition i < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#193) should use cached array length instead of referencing `length` member of the storage array.
+Loop condition i < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#193) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#235) should use cached array length instead of referencing `length` member of the storage array.
  Loop condition i_scope_0 < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#245) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#158) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i_scope_0 < feedbacks.length (contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol#168) should use cached array length instead of referencing `length` member of the storage array.
  Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
 INFO:Slither:contracts/iter1 - Claude4.5/prompt_12/FeedbackSystem.sol analyzed (1 contracts with 100 detectors), 18 result(s) found
