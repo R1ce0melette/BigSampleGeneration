@@ -1,0 +1,3 @@
+Each of the file in current folder contains a prompt, use this prompt as instruction to write corresponding smart contracts.
+Append the implementing code, do not delete any existing text in the files.
+Do not explain the code in conversation window, just say done when you complete the task.

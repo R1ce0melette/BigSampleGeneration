@@ -1,0 +1,101 @@
+vulnerability_type,vulnerability_name,severity
+Access Control,functions-that-send-ether-to-arbitrary-destinations,high
+Access Control,arbitrary-from-in-transferfrom,high
+Access Control,arbitrary-from-in-transferfrom-used-with-permit,high
+Access Control,dangerous-usage-of-txorigin,medium
+Access Control,missing-events-access-control,low
+Access Control,protected-variables,high
+Access Control,suicidal,high
+Access Control,unprotected-upgradeable-contract,high
+Price Oracle Manipulation,chronicle-unchecked-price,medium
+Price Oracle Manipulation,pyth-unchecked-confidence-level,medium
+Price Oracle Manipulation,pyth-unchecked-publishtime,medium
+Price Oracle Manipulation,chainlink-feed-registry-usage,low
+Price Oracle Manipulation,pyth-deprecated-functions,medium
+Logic Errors,dangerous-strict-equalities,medium
+Logic Errors,boolean-equality,informational
+Logic Errors,misuse-of-a-boolean-constant,medium
+Logic Errors,tautological-compare,medium
+Logic Errors,tautology-or-contradiction,medium
+Logic Errors,incorrect-exponentiation,high
+Logic Errors,assert-state-change,informational
+Logic Errors,write-after-write,medium
+Logic Errors,dead-code,informational
+Logic Errors,redundant-statements,informational
+Logic Errors,dangerous-unary-expressions,low
+Logic Errors,out-of-order-retryable-transactions,medium
+Lack of Input Validation,missing-zero-address-validation,low
+Lack of Input Validation,uninitialized-state-variables,high
+Lack of Input Validation,uninitialized-storage-variables,high
+Lack of Input Validation,uninitialized-local-variables,medium
+Lack of Input Validation,void-constructor,low
+Lack of Input Validation,pre-declaration-usage-of-local-variables,low
+Reentrancy,reentrancy-vulnerabilities-2,low
+Reentrancy,reentrancy-vulnerabilities-1,medium
+Reentrancy,reentrancy-vulnerabilities,high
+Reentrancy,reentrancy-vulnerabilities-4,informational
+Reentrancy,reentrancy-vulnerabilities-3,low
+Unchecked External Call (or Low Level Call),controlled-delegatecall,high
+Unchecked External Call (or Low Level Call),unchecked-transfer,high
+Unchecked External Call (or Low Level Call),unchecked-low-level-calls,medium
+Unchecked External Call (or Low Level Call),unchecked-send,medium
+Unchecked External Call (or Low Level Call),unchecked-transfer,high
+Unchecked External Call (or Low Level Call),low-level-calls,informational
+Unchecked External Call (or Low Level Call),assembly-usage,informational
+Insecure Randomness,weak-PRNG,high
+Insecure Randomness,gelato-unprotected-randomness,medium
+Insecure Randomness,domain-separator-collision,medium
+Denial of Service,costly-operations-inside-a-loop,informational
+Denial of Service,calls-inside-a-loop,low
+Denial of Service,payable-functions-using-delegatecall-inside-a-loop,high
+Denial of Service,msgvalue-inside-a-loop,high
+Denial of Service,return-bomb,low
+Denial of Service,cache-array-length,optimization
+Arithmetic Issue (Over/Under Flow),divide-before-multiply,medium
+Arithmetic Issue (Over/Under Flow),missing-events-arithmetic,low
+Others,contracts-that-lock-ether,medium
+Others,backdoor,informational
+Others,unused-state-variable,informational
+Others,state-variables-that-could-be-declared-constant,optimization
+Others,state-variables-that-could-be-declared-immutable,optimization
+Others,function-initializing-state,informational
+Others,block-timestamp,low
+Others,conformance-to-solidity-naming-conventions,informational
+Others,public-function-that-could-be-declared-external,optimization
+Others,too-many-digits,informational
+Others,cyclomatic-complexity,informational
+Others,incorrect-erc20-interface,medium
+Others,incorrect-erc721-interface,medium
+Others,unindexed-erc20-event-parameters,informational
+Others,incorrect-versions-of-solidity,informational
+Others,different-pragma-directives-are-used,informational
+Others,deprecated-standards,informational
+Others,optimism-deprecated-predeploy-or-function,low
+Others,storage-signed-integer-array,high
+Others,storage-abiencoderv2-array,high
+Others,modifying-storage-array-by-value,high
+Others,deletion-on-mapping-containing-a-structure,medium
+Others,array-length-assignment,high
+Others,right-to-left-override-character,high
+Others,abi-encodepacked-collision,high
+Others,public-variable-read-in-external-context,optimization
+Others,constant-functions-using-assembly-code,medium
+Others,constant-functions-changing-the-state,medium
+Others,state-variable-shadowing-from-abstract-contracts,medium
+Others,state-variable-shadowing,high
+Others,local-variable-shadowing,low
+Others,builtin-symbol-shadowing,low
+Others,name-reused,high
+Others,unimplemented-functions,informational
+Others,missing-inheritance,informational
+Others,incorrect-shift-in-assembly,high
+Others,uninitialized-function-pointers-in-constructors,low
+Others,dangerous-enum-conversion,medium
+Others,multiple-constructor-schemes,high
+Others,public-mappings-with-nested-variables,high
+Others,reused-base-constructors,medium
+Others,incorrect-modifier,low
+Others,codex,high
+Others,incorrect-return-in-assembly,high
+Others,return-instead-of-leave-in-assembly,high
+Others,unused-return,medium
